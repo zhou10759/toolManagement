@@ -260,7 +260,7 @@ export default {
   name: "Login",
   data() {
     const validatePhone = (rule, value, callback) => {
-      if (!/^1[3456789]d{9}$/.test(value)) {
+      if (!( /^[1][3,4,5,7,8,9][0-9]{9}$/.test(value))) {
         callback(new Error("未知的手机号格式"));
       } else {
         callback();
