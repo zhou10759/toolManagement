@@ -63,3 +63,138 @@ div:focus {
 .app-container {
   padding: 20px;
 }
+
+
+
+.flex-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.flex-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.items-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.flex-grow {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+.m-t-auto {
+  margin-top: auto;
+}
+img,
+svg,
+video {
+  max-width: 100%;
+}
+.m-r-md {
+  margin-right: 1.25em;
+}
+.text-truncate,
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.din-font {
+  font-family: suite-admin-din-font !important;
+}
+.by {
+  font-family: by !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.m-t-auto {
+    margin-top: auto;
+}
+body #app a.text-underline, html #app a.text-underline {
+    text-decoration: underline;
+}
+.m-t-md {
+    margin-top: 1.25em;
+}
+.el-image__inner {
+    vertical-align: top;
+}
+.items-start {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+.flex-center {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+ .d2-container-full {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    overflow: hidden;
+}
+.d2-container-full__body {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    height: 100%;
+    padding: 16px 16px;
+    overflow: auto;
+    position: relative;
+    background: transparent;
+}
+.by-card-block ,.h-full {
+    min-height: 100%;
+    margin-bottom: -16px;
+        border-radius: 8px;
+    -webkit-box-shadow: 0 5px 10px 0 rgba(31,35,41,.1);
+    box-shadow: 0 5px 10px 0 rgba(31,35,41,.1)
+}
+.page-recharge {
+    padding: 1.25em;
+}
+.m-t-xl {
+    margin-top: 3.25em;
+}
+.el-image__error, .el-image__inner, .el-image__placeholder {
+    width: 100%;
+    height: 100%;
+}
+.el-image, .image-slot {
+    width: 100%;
+    height: 100%;
+}
+.text-center{
+  text-align: center;
+}
+.login-type1{
+  padding: 3px 5px;
+  background-color: #f5f5f5;
+}

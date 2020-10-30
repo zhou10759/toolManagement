@@ -110,7 +110,17 @@ export const constantRoutes = [
       }
     ]
   },
-
+  {
+    path: '/kefu',
+    component: Layout,
+    hidden: true, // 不在侧边栏线上
+    children: [{
+      path: 'center',
+      name: 'Center',
+      component: () => import('@/views/kefu/center'),
+      meta: { title: '客服中心'}
+    }]
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
