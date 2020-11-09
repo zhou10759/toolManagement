@@ -198,3 +198,93 @@ body #app a.text-underline, html #app a.text-underline {
   padding: 3px 5px;
   background-color: #f5f5f5;
 }
+
+.p-md {
+  padding: 1.25em;
+}
+.p-x-md {
+  padding-left: 1.25em;
+  padding-right: 1.25em;
+}
+
+.d2-search-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.m-l-xs {
+  margin-left: .5em;
+}
+.m-l-xs {
+  margin-left: .5em;
+}
+.d2-filter-group>.item+.item {
+  margin-left: .5em;
+}
+.d2-filter-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.d2-crud .d2-crud-body {
+  padding: 15px 0;
+  overflow: hidden;
+}
+
+.by-status.light-pending {
+  background-color: #ece2fe;
+  color: #7f3bf5;
+}
+
+.by-status {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  padding-right: 12px;
+  border-radius: 12px;
+  max-width: 100%;
+  height: 24px;
+  line-height: 24px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  align-items: center;
+  min-width: 100px;
+}
+
+.by-status .icon {
+  padding: 0 8px 0 4px;
+  font-size: 18px;
+}
+
+.by-status .text {
+  font-size: 14px;
+  line-height: 24px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.by-status.light-info {
+  background-color: #f5f6f7;
+  color: #646a73;
+}
+.by-status.light-success {
+  background-color: #d9f5d6;
+  color: #34c724;
+}
+.margin-left{
+  margin-left: 5px;
+}
+.margin-left-15{
+  margin-left: 15px;
+}
+.m-t-xs {
+  margin-top: .5em;
+}

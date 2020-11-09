@@ -107,6 +107,12 @@ export const constantRoutes = [
         component: () => import('@/views/costCnter/historyBill'),
         name: 'HistoryBill',
         meta: { title: '历史账单' }
+      },
+      {
+        path: 'vouchers-detail/:id',
+        name: 'Vouchers-detail',
+        component: () => import('@/views/costCnter/vouchers-detail'),
+        meta: { title: '兑换劵详情'}
       }
     ]
   },
