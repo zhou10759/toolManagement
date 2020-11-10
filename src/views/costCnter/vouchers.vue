@@ -153,7 +153,7 @@
                   style="float: right"
                   @size-change="handleSizeChange"
                   @current-change="handleCurrentChange"
-                  :current-page="currentPage4"
+                  :current-page="currentPage"
                   :page-sizes="[100, 200, 300, 400]"
                   :page-size="20"
                   layout="total, sizes, prev, pager, next, jumper"
@@ -227,6 +227,7 @@ export default {
         createTime: "2020/11/09 06:00",
         endTime: "- -",
       }),
+      currentPage: 1
     };
   },
   methods: {

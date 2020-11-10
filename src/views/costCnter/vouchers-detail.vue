@@ -11,14 +11,14 @@
                   <div class="flex items-center">
                     <div class="bill-id">兑换劵编号 {{ vouchers.id }}</div>
                     <div
-                      class="by-status light-pending"
+                      class="by-status light-pending m-l-md"
                       v-if="vouchers.status === '待领取'"
                     >
                       <i></i>
                       <span>{{ vouchers.status }}</span>
                     </div>
                     <div
-                      class="by-status light-pending"
+                      class="by-status light-pending m-l-md"
                       v-if="vouchers.status === '待使用'"
                     >
                       <svg
@@ -40,7 +40,7 @@
                       <span>{{ vouchers.status }}</span>
                     </div>
                     <div
-                      class="by-status light-info"
+                      class="by-status light-info m-l-md"
                       v-if="vouchers.status === '已过期'"
                     >
                       <svg
@@ -62,14 +62,14 @@
                       <span>{{ vouchers.status }}</span>
                     </div>
                     <div
-                      class="by-status light-info"
+                      class="by-status light-info m-l-md"
                       v-if="vouchers.status === '已作废'"
                     >
                       <i></i>
                       <span>{{ vouchers.status }}</span>
                     </div>
                     <div
-                      class="by-status light-success"
+                      class="by-status light-success m-l-md"
                       v-if="vouchers.status === '已使用'"
                     >
                       <svg
@@ -183,7 +183,7 @@ export default {
     padding: 1.25em 2em 2em;
     border-radius: 6px;
     border: 1px solid #dee0e3;
-    border-bottom-color: transparent;
+    // border-bottom-color: transparent;
     position: relative;
     .title {
       font-size: 16px;

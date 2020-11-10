@@ -70,7 +70,7 @@
             </div>
             <div class="f m-t-auto">
               <div class="quick-button-group">
-                <div class="button-item text-icon">
+                <div class="button-item text-icon" @click="$router.push({path:'/costCnter/integral'})">
                   <svg
                     t="1604907535641"
                     class="icon"
@@ -98,7 +98,7 @@
                     ></path></svg
                   ><span>积分充值 </span>
                 </div>
-                <div class="button-item text-icon">
+                <div class="button-item text-icon" @click="$router.push({path:'/costCnter/historyBill'})">
                   <svg
                     t="1604907570494"
                     class="icon"
@@ -126,7 +126,7 @@
                     ></path></svg
                   ><span>消费记录 </span>
                 </div>
-                <div class="button-item text-icon">
+                <div class="button-item text-icon" @click="$router.push({path:'/kefu/center'})">
                   <svg
                     t="1604907615559"
                     class="icon"
@@ -214,7 +214,7 @@
     <div class="home-bottom quick-wrap m-t-md">
       <div class="title">我的常用入口</div>
       <div class="apps-wrap">
-        <div class="app-item">
+        <div class="app-item"  @click="$router.push({path:'/tool/smartRecommend'})">
           <div class="el-image app-icon">
             <img
               src="https://cdn.biio.cn/platform/app/material/quick-app/recommend-quick-icon.svg"
@@ -224,7 +224,7 @@
           </div>
           <div class="app-label">智能推荐模拟</div>
         </div>
-        <div class="app-item">
+        <div class="app-item"  @click="$router.push({path:'/costCnter/historyBill'})">
           <div class="el-image app-icon">
             <img
               src="https://cdn.biio.cn/platform/app/material/quick-app/bill-history-icon.svg"
@@ -234,7 +234,7 @@
           </div>
           <div class="app-label">消费记录</div>
         </div>
-        <div class="app-item">
+        <div class="app-item"  @click="$router.push({path:'/kefu/center'})">
           <div class="el-image app-icon">
             <img
               src="https://cdn.biio.cn/platform/app/material/quick-app/kf-quick-icon.svg"

@@ -111,6 +111,7 @@ export const constantRoutes = [
       {
         path: 'vouchers-detail/:id',
         name: 'Vouchers-detail',
+        hidden: true, // 不在侧边栏线上
         component: () => import('@/views/costCnter/vouchers-detail'),
         meta: { title: '兑换劵详情'}
       }
