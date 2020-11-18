@@ -238,6 +238,240 @@
                         >
                       </div>
                     </div>
+                    <div class="items-form m-t-md">
+                      <div class="label-title">列表设置</div>
+                      <div class="feed-items">
+                        <draggable v-model="list">
+                          <div class="feed-item editor">
+                            <div class="header">
+                              <svg
+                                t="1605685614022"
+                                class="icon handle"
+                                viewBox="0 0 1024 1024"
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                p-id="7208"
+                                width="16"
+                                height="16"
+                              >
+                                <path
+                                  d="M720 960c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74s64.3-5.6 87.2 17.2c22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-384c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74s64.3-5.6 87.2 17.2c22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-352c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4zM336 960c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-384c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-352c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z"
+                                  fill="#4A4C5B"
+                                  p-id="7209"
+                                ></path>
+                              </svg>
+                              <span class="title">自定义数据设置</span>
+                              <span class="feed-edit-clean">清空</span>
+                            </div>
+                            <div class="editor-wrap m-t-xs">
+                              <el-input
+                                v-model="input"
+                                placeholder="标题"
+                              ></el-input>
+                              <el-row
+                                class="m-t-sm"
+                                style="margin-left: -5px; margin-right: -5px"
+                              >
+                                <el-col
+                                  :span="8"
+                                  style="padding-left: 5px; padding-right: 5px"
+                                >
+                                  <div class="form-item">
+                                    <div class="label">媒体名称</div>
+                                    <div class="b">
+                                      <el-input
+                                        v-model="input"
+                                        placeholder="媒体"
+                                        clearable
+                                      ></el-input>
+                                    </div>
+                                  </div>
+                                </el-col>
+                                <el-col
+                                  :span="8"
+                                  style="padding-left: 5px; padding-right: 5px"
+                                  ><div class="form-item">
+                                    <div class="label">评论数</div>
+                                    <div class="b">
+                                      <el-input
+                                        v-model="input"
+                                        placeholder="评论数"
+                                        clearable
+                                      ></el-input>
+                                    </div></div
+                                ></el-col>
+                                <el-col
+                                  :span="8"
+                                  style="padding-left: 5px; padding-right: 5px"
+                                  ><div class="form-item">
+                                    <div class="label">发布时间</div>
+                                    <div class="b">
+                                      <el-input
+                                        v-model="input"
+                                        placeholder="例：2020-09-12 12:00:00"
+                                        clearable
+                                      ></el-input>
+                                    </div></div
+                                ></el-col>
+                              </el-row>
+                              <div class="type-select m-t-sm">
+                                <el-row
+                                  style="
+                                    margin-left: -7.5px;
+                                    margin-right: -7.5px;
+                                  "
+                                >
+                                  <el-col
+                                    :span="5"
+                                    style="
+                                      padding-left: 7.5px;
+                                      padding-right: 7.5px;
+                                    "
+                                  >
+                                    <div class="options-wrap">
+                                      <div class="side-menu">
+                                        <div
+                                          :class="[
+                                            toggleVideoType === 1
+                                              ? 'active'
+                                              : '',
+                                            'item',
+                                          ]"
+                                        >
+                                          文章（单图）
+                                        </div>
+                                        <div
+                                          :class="[
+                                            toggleVideoType === 2
+                                              ? 'active'
+                                              : '',
+                                            'item',
+                                          ]"
+                                        >
+                                          文章（多图）
+                                        </div>
+                                        <div
+                                          :class="[
+                                            toggleVideoType === 3
+                                              ? 'active'
+                                              : '',
+                                            'item',
+                                          ]"
+                                        >
+                                          视频 / 文章无图
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </el-col>
+                                  <el-col
+                                    :span="19"
+                                    style="
+                                      padding-left: 7.5px;
+                                      padding-right: 7.5px;
+                                    "
+                                  >
+                                    <div class="flex">
+                                      <div>
+                                        <el-upload
+                                          action="https://jsonplaceholder.typicode.com/posts/"
+                                          list-type="picture-card"
+                                          :on-preview="handlePictureCardPreview"
+                                          :on-remove="handleRemove"
+                                        >
+                                          <i class="el-icon-plus"></i>
+                                        </el-upload>
+                                      </div>
+                                      <div class="video-duration m-l-xs">
+                                        <div class="label">视频时长</div>
+                                        <div class="b">
+                                          <el-input
+                                            placeholder="例：12:24"
+                                            v-model="articleForm.searchArticle"
+                                            clearable
+                                          >
+                                          </el-input>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </el-col>
+                                </el-row>
+                              </div>
+                            </div>
+                          </div>
+                          <block v-for="(el, i) in list" :key="i">
+                            <div class="feed-item normal" v-if="el.default!==1">
+                              <div class="l">
+                                <svg
+                                  t="1605685614022"
+                                  class="icon handle"
+                                  viewBox="0 0 1024 1024"
+                                  version="1.1"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  p-id="7208"
+                                  width="16"
+                                  height="16"
+                                >
+                                  <path
+                                    d="M720 960c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74s64.3-5.6 87.2 17.2c22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-384c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74s64.3-5.6 87.2 17.2c22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-352c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4zM336 960c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-384c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-352c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z"
+                                    fill="#4A4C5B"
+                                    p-id="7209"
+                                  ></path>
+                                </svg>
+                                <span class="title">{{ el.list }}</span>
+                              </div>
+                              <div class="r flex">
+                                <div class="button-link">
+                                  <svg
+                                    t="1605685679082"
+                                    class="icon"
+                                    viewBox="0 0 1024 1024"
+                                    version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    p-id="8053"
+                                    width="16"
+                                    height="16"
+                                  >
+                                    <path
+                                      d="M855.93673837 414.24955857c-3.62038672 3.62038672-14.48154688 7.24077344-18.1019336 10.86116016l-173.77856254 0c-14.48154688 0-25.34270704-10.86116016-25.34270704-25.34270704 0-14.48154688 10.86116016-25.34270704 25.34270704-25.34270704l152.05624222 0 0-152.05624222c0-14.48154688 10.86116016-25.34270704 25.34270704-25.34270704s25.34270704 10.86116016 25.34270704 25.34270704l0 173.77856254c-7.24077344 7.24077344-7.24077344 14.48154688-10.86116016 18.1019336z m-445.30756652 264.28823054c-3.62038672 3.62038672-14.48154688 7.24077344-18.1019336 10.86116015l-148.43585551-3.62038672 0 152.05624223c0 14.48154688-10.86116016 25.34270704-25.34270703 25.34270704-14.48154688 0-25.34270704-10.86116016-25.34270704-25.34270704l-3.62038672-177.39894926c0-14.48154688 10.86116016-25.34270704 25.34270704-25.34270704l177.39894926 3.62038672c14.48154688 0 25.34270704 10.86116016 25.34270704 25.34270704 3.62038672 3.62038672 0 7.24077344-7.24077344 14.48154688z"
+                                      fill="#2c2c2c"
+                                      p-id="8054"
+                                    ></path>
+                                    <path
+                                      d="M747.32513678 783.52900398c-61.54657423 61.54657423-148.43585551 97.75044143-235.32513678 97.75044143-130.33392191 0-249.80668366-76.02812111-304.11248445-195.50088287-7.24077344-7.24077344-3.62038672-25.34270704 10.86116016-32.58348047 10.86116016-3.62038672 28.96309376 0 36.20386719 14.48154688 47.06502736 97.75044143 148.43585551 162.91740239 257.0474571 162.91740238 126.71353519 3.62038672 238.9455235-79.64850783 275.1493907-202.7416563 3.62038672-10.86116016 18.1019336-18.1019336 32.58348047-18.1019336 10.86116016 3.62038672 18.1019336 18.1019336 18.1019336 32.58348048-21.72232032 57.92618751-50.68541408 101.37082815-90.50966799 141.19508207z m97.75044143-387.38137901L837.83480477 403.38839841c-14.48154688 7.24077344-28.96309376 0-32.58348048-10.86116016-47.06502736-97.75044143-148.43585551-162.91740239-257.04745709-162.91740238-123.09314847 0-238.9455235 79.64850783-275.1493907 202.7416563-3.62038672 10.86116016-18.1019336 18.1019336-32.58348048 18.1019336-14.48154688-14.48154688-21.72232032-28.96309376-18.10193359-39.82425392 39.82425392-141.19508207 173.77856254-238.9455235 325.83480477-238.9455235 130.33392191 0 246.18629694 79.64850783 304.11248445 195.50088286 0 7.24077344 0 21.72232032-7.24077344 28.96309376z"
+                                      fill="#2c2c2c"
+                                      p-id="8055"
+                                    ></path>
+                                  </svg>
+                                </div>
+                                <div class="button-link">
+                                  <svg
+                                    t="1605685700299"
+                                    class="icon"
+                                    viewBox="0 0 1024 1024"
+                                    version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    p-id="8856"
+                                    width="16"
+                                    height="16"
+                                  >
+                                    <path
+                                      d="M891.264 901.248a30.784 30.784 0 0 1-21.76-9.024L128.256 150.976a30.72 30.72 0 1 1 43.52-43.52l741.312 741.312a30.848 30.848 0 0 1-21.824 52.48"
+                                      fill="#c43a61"
+                                      p-id="8857"
+                                    ></path>
+                                    <path
+                                      d="M150.016 901.248a30.72 30.72 0 0 1-21.76-52.544l741.312-741.248a30.784 30.784 0 0 1 43.456 43.52L171.776 892.224a30.72 30.72 0 0 1-21.76 9.024"
+                                      fill="#c43a61"
+                                      p-id="8858"
+                                    ></path>
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                          </block>
+                        </draggable>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -251,6 +485,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import draggable from "vuedraggable";
 import RecommendHeader from "./Header/index";
 export default {
   name: "smartRecommend",
@@ -259,6 +494,7 @@ export default {
   },
   components: {
     RecommendHeader,
+    draggable,
   },
   data() {
     return {
@@ -297,6 +533,23 @@ export default {
       articleForm: {
         searchArticle: "",
       }, //智能分析
+      list: [
+        {
+          default: 1,
+          title: "",
+          mediaName: "",
+          comments: null,
+          releaseTime: "",
+          mediaType: 1,
+          imgList: [
+            "https://cdn.biio.cn/platform/app/never/recommend/record/2020-11-18/20201118152438_TAoI2.png",
+          ],
+          video:
+            "https://cdn.biio.cn/platform/app/never/recommend/record/2020-11-18/20201118152438_TAoI2.png",
+          videoTime: "",
+        },
+      ],
+      toggleVideoType: 1,
     };
   },
   methods: {
@@ -428,6 +681,109 @@ export default {
   .mock-form .label-title {
     font-size: 14px;
     margin-bottom: 0.5em;
+  }
+  .mock-form .feed-items .feed-item {
+    background-color: #f7f7f7;
+    border-radius: 4px;
+    padding: 0.5em 0.375em;
+  }
+  .mock-form .feed-items .feed-item .header .title {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+  }
+  .mock-form .feed-items .feed-item .header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .mock-form .feed-edit-clean {
+    font-size: 14px;
+    cursor: pointer;
+    color: #ff4d4f;
+  }
+  .mock-form .feed-items .feed-item.editor .editor-wrap {
+    background-color: #fff;
+    padding: 0.5em;
+    border-radius: 6px;
+  }
+  .side-menu {
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 14px;
+  }
+  .side-menu > .item {
+    padding: 0.5em 0.75em;
+    cursor: pointer;
+  }
+  .side-menu > .item:first-child {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+  .side-menu > .item:last-child {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+  .side-menu > .item.active {
+    background-color: #3370ff;
+    color: #fff;
+  }
+  .side-menu > .item + .item {
+    border-top: 1px solid #eaecef;
+  }
+  .mock-form .form-item .label {
+    font-size: 14px;
+    margin-bottom: 0.375em;
+  }
+  .label {
+    font-size: 14px;
+    margin-bottom: 0.375em;
+  }
+  .mock-form .feed-items .feed-item.normal {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .mock-form .feed-items .title {
+    font-size: 14px;
+  }
+  .mock-form .feed-items > .feed-item + .feed-item {
+    margin-top: 0.375em;
+  }
+  .mock-form .feed-items .l {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .button-link {
+    display: inline-block;
+    padding: 0.125em 0.5em;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .mock-form .feed-items .handle {
+    cursor: move;
+    margin-right: 0.375em;
+    height: 1em;
+    line-height: 1;
+  }
+  ::v-deep .el-upload--picture-card {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
   }
   ::v-deep .el-form-item__label {
     line-height: 1;
