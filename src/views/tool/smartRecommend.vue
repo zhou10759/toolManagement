@@ -6,7 +6,7 @@
           <div class="d2-switch-tab-bar">
             <div>
               <el-menu
-                :default-active="activeIndex"
+                :default-active="activeIndex + ''"
                 class="el-menu-demo"
                 mode="horizontal"
                 @select="handleSelect"
@@ -331,7 +331,7 @@
                       </div>
                     </div>
                     <!-- 头条 -->
-                    <div class="toutiao-app" v-if="activeIndex == '1'">
+                    <div class="toutiao-app" v-if="activeIndex == 1">
                       <!-- 手机头部 -->
                       <div class="header">
                         <div class="c">
@@ -400,7 +400,7 @@
                       </div>
                       <!-- 内容 -->
                       <div class="content">
-                        <div  class="item toutiao-item">
+                        <div class="item toutiao-item">
                           <div class="recommend-placeholder-item">
                             <span class="recommend-placeholder-title"
                               >数据模拟区域</span
@@ -430,6 +430,312 @@
                       </div>
                     </div>
                     <!-- 网易 -->
+                    <div class="wangyi-app" v-if="activeIndex == 2">
+                      <div class="header">
+                        <div class="logo">
+                          <img src="@/assets/wangyi-logo.png" alt="" />
+                        </div>
+                        <div class="input">
+                          <svg-icon icon-class="wangyiinput"></svg-icon>
+                          <div class="text"></div>
+                        </div>
+                        <div class="g">
+                          <div class="hot">
+                            <svg
+                              data-v-d7391482=""
+                              viewBox="0 0 73 73"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="icon"
+                            >
+                              <path
+                                data-v-d7391482=""
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M34.74 3.78c3.96-1.3 7.63-.7 9.8-.17a2 2 0 011.51 1.94c0 6.76 3.5 10.74 6.23 12.58l.84-3.1a2 2 0 013.12-1.09c9.34 6.87 12.63 20.94 9.7 33.02-1.5 6.12-4.6 11.9-9.5 16.16-4.93 4.28-11.56 6.93-19.89 6.93-7.6 0-13.57-1.9-18.15-5.08a27.14 27.14 0 01-9.57-12.22c-3.83-9.3-3.3-20.17-1.18-26.8a2 2 0 012.8-1.18l2.07 1.03a23 23 0 017.77-15.3 2 2 0 012.58.05l2.07 1.81c2.8-4.88 6.3-7.43 9.8-8.58zM36 7.58c-2.84.93-6.07 3.25-8.62 8.8a2 2 0 01-3.13.68l-2.64-2.3c-2.43 2.59-5.66 7.75-5.06 14.1a2 2 0 01-2.88 1.98l-2.81-1.4c-1.33 5.94-1.33 14.47 1.68 21.8 1.7 4.11 4.32 7.79 8.15 10.44 3.82 2.65 8.97 4.37 15.87 4.37 7.43 0 13.11-2.34 17.26-5.95 4.18-3.63 6.91-8.63 8.24-14.08 2.4-9.87.09-20.66-5.9-26.86l-.67 2.42a2 2 0 01-2.62 1.35c-3.58-1.32-10.07-6.2-10.75-15.74-1.72-.27-3.89-.34-6.12.39z"
+                                fill="#fff"
+                              ></path>
+                              <path
+                                data-v-d7391482=""
+                                d="M49.66 47.2c.58 0 1.03-.3 1.4-.87.52-.8.87-2.6 1.03-5.41l-2.3-1.15a26.5 26.5 0 01-.22 3.1c-.16.86-.32 1.31-.48 1.31-.2 0-.39-.32-.58-.9-.51-1.3-.74-3.67-.74-7.13v-6.43h-6.52v-3.94h-2.98v3.94h-3.4v2.97h3.4a29.72 29.72 0 01-.48 4.32 27.3 27.3 0 00-2.05-1.28l-1.63 2.37a26.1 26.1 0 012.82 1.83 12.99 12.99 0 01-4.23 5.6l2.24 1.98a15.08 15.08 0 004.42-5.63 35.4 35.4 0 013.26 3.04l1.73-2.6a35.9 35.9 0 00-3.94-3.42c.48-1.85.77-3.9.84-6.2h3.55v3.45c0 4.86.67 8.06 2.01 9.63.77.9 1.7 1.38 2.85 1.41zM22.94 29.6v2.93h4.29v4.9c-1.66.35-3.4.64-5.12.86l.7 2.85c1.5-.25 2.98-.57 4.42-.9v3.11c0 .77-.32 1.18-.96 1.18-.86 0-1.76-.1-2.69-.22l.7 2.91h3.05c1.95 0 2.94-1.05 2.94-3.13V39.5c1.15-.29 2.27-.6 3.42-.93v-2.9c-1.12.37-2.27.7-3.42 1.01v-4.16h3.65V29.6h-3.65v-3.8h-3.04v3.8h-4.29zm3.3 18.4a23.05 23.05 0 01-3.9 5.75l2.49 1.82c1.5-1.79 2.82-3.9 3.97-6.33l-2.56-1.25zm7.68.89l-2.85.57c.6 1.73 1.12 3.71 1.54 6.02l3.04-.7a61.54 61.54 0 00-1.73-5.9zm6.62-.45l-2.85.6c.9 1.83 1.67 3.94 2.28 6.37l3-.7c-.7-2.24-1.5-4.35-2.43-6.27zm6.15-.96l-2.47 1.57a47.1 47.1 0 014.32 6.43l2.53-1.8a50.08 50.08 0 00-4.38-6.2z"
+                                fill="#fff"
+                              ></path>
+                            </svg>
+                          </div>
+                          <div class="more">
+                            <svg
+                              data-v-d7391482=""
+                              viewBox="0 0 73 73"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="icon"
+                            >
+                              <path
+                                data-v-d7391482=""
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M9.76 43.63c1.06 4.71 3.18 8.58 5.87 10.84a2 2 0 01.33 2.7L11.76 63h30.41c8.15-1.44 13.76-5.44 17.2-10.55 3.49-5.19 4.82-11.64 4.11-17.98C62.07 21.77 52.62 10 36.84 10c-8.11 0-14.1 2.23-18.38 5.6-4.29 3.37-7 8-8.38 13a31.43 31.43 0 00-.32 15.03zm6.23-31.18C21.07 8.45 27.96 6 36.84 6c18.23 0 29.03 13.73 30.62 28.03.8 7.16-.7 14.58-4.77 20.65-4.1 6.1-10.75 10.7-20 12.3a2 2 0 01-.35.02H7.84a2 2 0 01-1.62-3.17l5.48-7.58c-2.83-2.98-4.8-7.17-5.85-11.74-1.2-5.3-1.18-11.3.38-16.98a28.53 28.53 0 019.76-15.08z"
+                                fill="#fff"
+                              ></path>
+                              <circle
+                                data-v-d7391482=""
+                                cx="23.84"
+                                cy="36.5"
+                                r="4.5"
+                                fill="#fff"
+                              ></circle>
+                              <circle
+                                data-v-d7391482=""
+                                cx="36.84"
+                                cy="36.5"
+                                r="4.5"
+                                fill="#fff"
+                              ></circle>
+                              <circle
+                                data-v-d7391482=""
+                                cx="49.84"
+                                cy="36.5"
+                                r="4.5"
+                                fill="#fff"
+                              ></circle>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="nav">
+                        <div class="nav-items">
+                          <div
+                            :class="[i == 1 ? 'active' : '', 'item']"
+                            v-for="(el, i) in barList[activeIndex - 1].content
+                              .headerTab"
+                            :key="i"
+                          >
+                            {{ el.name }}
+                          </div>
+                        </div>
+                        <div class="menu">
+                          <svg
+                            data-v-3b7dbd72=""
+                            viewBox="0 0 40 37"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon"
+                          >
+                            <path
+                              data-v-3b7dbd72=""
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M0 2C0 .9.9 0 2 0h36a2 2 0 110 4H2a2 2 0 01-2-2zM0 18c0-1.1.9-2 2-2h36a2 2 0 110 4H2a2 2 0 01-2-2zM0 35c0-1.1.9-2 2-2h36a2 2 0 110 4H2a2 2 0 01-2-2z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="content">
+                        <div class="items">
+                          <div class="item wangyi-item">
+                            <div class="recommend-placeholder-item">
+                              <span class="recommend-placeholder-title"
+                                >数据模拟区域</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab">
+                        <div class="tab-items">
+                          <div
+                            :class="[i === 0 ? 'active' : '', 'item']"
+                            v-for="(el, i) in barList[activeIndex - 1].content
+                              .bottomTab"
+                            :key="i"
+                          >
+                            <svg
+                              viewBox="0 0 64 64"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="icon"
+                              v-html="el.icon"
+                            ></svg>
+                            <div class="label">{{ el.name }}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 百度 -->
+                    <div class="baidu-app" v-if="activeIndex == 3">
+                      <div class="header">
+                        <div class="search-input">
+                          <svg
+                            viewBox="0 0 55 55"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="logo"
+                          >
+                            <path
+                              d="M21.97 4.06a3.5 3.5 0 012.62.59 6.57 6.57 0 012.44 3.42c.7 2.1.66 4.43-.14 6.53a7.06 7.06 0 01-1.81 2.69c-.67.55-1.54.97-2.41.97a3.91 3.91 0 01-2.45-.83 6.67 6.67 0 01-2.23-3.5 9.99 9.99 0 01.17-6.14 6.67 6.67 0 012.17-3 3.36 3.36 0 011.64-.73zm13.3 1.04c.63-.14 1.3.04 1.88.32a5.8 5.8 0 012.06 1.74 7.47 7.47 0 011.5 3.5c.15.87 0 1.77-.24 2.61a9.17 9.17 0 01-1.36 2.9 6.15 6.15 0 01-1.99 1.92 4.1 4.1 0 01-2.48.6 4.49 4.49 0 01-2.9-1.2 5.37 5.37 0 01-1.43-2.79 11 11 0 01-.07-3.38 9.24 9.24 0 013.04-5.13 4 4 0 011.99-1.09zm-23.91 9.5c.97-.18 1.99.03 2.83.49a7.13 7.13 0 012.86 3.14c.24.52.45 1.12.49 1.7.17 1.51.14 3.05-.32 4.48-.28.98-.8 1.92-1.57 2.58a5.52 5.52 0 01-3.49 1.3c-1.05 0-2.1-.4-2.9-1.09a6.65 6.65 0 01-2.02-3.56c-.21-.9-.32-1.85-.18-2.8.21-1.53.67-3.1 1.57-4.4a4.4 4.4 0 012.73-1.84zm31.07 3.45c1.15-.14 2.37 0 3.38.6a5.82 5.82 0 012.2 2.3c.42.8.7 1.68.77 2.59.03 1.29.07 2.58-.21 3.84a5.73 5.73 0 01-1.08 2.44 4.23 4.23 0 01-2.13 1.4 7 7 0 01-2.55.17 5.3 5.3 0 01-2.86-1.05 4.65 4.65 0 01-1.47-2.23 12.36 12.36 0 01-.38-3.6c.03-1.25.2-2.55.7-3.7.38-.87.97-1.67 1.78-2.16a4.6 4.6 0 011.85-.6zm-15.47 4.61a6.4 6.4 0 013.42.56 9.63 9.63 0 013.88 3.7 39.02 39.02 0 004.08 4.85c1.4 1.43 2.9 2.8 4.44 4.09.24.2.52.42.76.66a7.44 7.44 0 012.03 4.5c.17 1.78-.25 3.56-.98 5.17a6.07 6.07 0 01-2.58 2.8c-1.57.87-3.42 1.04-5.17 1a19.3 19.3 0 01-5.06-.9c-2-.56-4.09-.7-6.11-.46-.94.1-1.89.39-2.83.53-2.13.35-4.3.45-6.46.31a6.39 6.39 0 01-4.64-2.37 8.36 8.36 0 01-1.5-2.93 8.1 8.1 0 01.56-6.5c.87-1.6 2.16-2.9 3.6-3.98.41-.31.87-.59 1.18-.97.66-.63 1.36-1.23 2.03-1.85a22.1 22.1 0 003.31-3.91c.28-.42.5-.84.8-1.23a8.1 8.1 0 015.24-3.07zm-3.7 7.37v4.4h-3.1c-.35 0-.7.07-1.02.17-.84.25-1.57.73-2.2 1.33a6.18 6.18 0 00-1.53 2.65c-.14.9-.18 1.85 0 2.72.17.88.49 1.71 1.04 2.41a5.1 5.1 0 002.9 1.92c.56.14 1.12.07 1.68.07h5.23V30c-1 .03-1.99.03-3 .03zm4.57 4.6v7.9c-.03.87.35 1.74.98 2.33.56.53 1.33.8 2.1.88h7.19v-11.1h-2.97v8.55h-3.14c-.35 0-.7-.1-.9-.39-.22-.24-.32-.55-.32-.87V34.6c-.95.04-1.92.04-2.94.04z"
+                              fill="currentColor"
+                            ></path>
+                            <path
+                              d="M19.98 37.15c.21-.07.42-.21.63-.17h2.65v6.24H20.9c-.8.04-1.6-.38-2.1-1.08-.38-.56-.59-1.29-.59-1.95 0-.56.1-1.16.31-1.68.32-.66.88-1.08 1.47-1.36z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                          <div class="text"></div>
+                          <svg
+                            viewBox="0 0 55 55"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="camera"
+                          >
+                            <path
+                              d="M27 39c5.51 0 10-4.49 10-10s-4.49-10-10-10-10 4.49-10 10 4.49 10 10 10zm0-17.41A7.43 7.43 0 0134.41 29 7.43 7.43 0 0127 36.41 7.43 7.43 0 0119.59 29 7.43 7.43 0 0127 21.59z"
+                              fill="currentColor"
+                            ></path>
+                            <path
+                              d="M45.27 12.67h-6.15C38.82 11.24 37.3 5 32.24 5H21.75c-5.05 0-6.58 6.24-6.87 7.67H8.72A5.78 5.78 0 003 18.51v24.66A5.78 5.78 0 008.72 49h36.55A5.79 5.79 0 0051 43.17V18.5a5.8 5.8 0 00-5.73-5.84zM5.51 18.72a3.4 3.4 0 013.42-3.42h6.5c.97 0 1.79-.99 1.94-1.98 0-.06.97-5.7 4.65-5.7h9.96c3.66 0 4.66 5.65 4.67 5.7.15 1 .96 1.98 1.95 1.98H45c1.89 0 3.42 1.28 3.42 3.2v24.67c0 1.2-1.63 3.2-3.52 3.2H8.92c-1.99 0-3.41-1.83-3.41-3V18.72z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="nav">
+                        <div class="nav-items">
+                          <div
+                            :class="[i == 1 ? 'active' : '', 'item']"
+                            v-for="(el, i) in barList[activeIndex - 1].content
+                              .headerTab"
+                            :key="i"
+                          >
+                            {{ el.name }}
+                          </div>
+                        </div>
+                        <div class="menu">
+                          <svg
+                            viewBox="0 0 48 48"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M6 9c0-1.1.9-2 2-2h32a2 2 0 110 4H8a2 2 0 01-2-2zM6 24c0-1.1.9-2 2-2h32a2 2 0 110 4H8a2 2 0 01-2-2zM6 39c0-1.1.9-2 2-2h32a2 2 0 110 4H8a2 2 0 01-2-2z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="earphone">
+                          <svg
+                            viewBox="0 0 48 48"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon"
+                          >
+                            <path
+                              d="M24 3C12.81 3 3 13.06 3 24.52c0 6.68 2.12 9.65 3.51 10.85C7.75 39.4 11.47 45 15.81 45c3.73 0 5.63-4.06 5.63-12.08 0-8-1.9-12.07-5.64-12.07-4.13 0-7.7 5.11-9.1 9.08-.35-1.2-.63-2.93-.63-5.4C6.07 14.9 14.62 6.14 24 6.14c9.38 0 17.93 8.76 17.93 18.38 0 2.47-.28 4.2-.64 5.4-1.4-3.97-4.96-9.08-9.1-9.08-3.73 0-5.63 4.06-5.63 12.07 0 8.02 1.9 12.08 5.64 12.08 4.33 0 8.05-5.6 9.29-9.63C42.88 34.17 45 31.2 45 24.53 45 13.05 35.19 3 24 3zm-8.2 21c1.24 0 2.57 2.34 2.57 8.92 0 6.59-1.33 8.93-2.57 8.93-2.8 0-5.63-6.12-5.63-8.93 0-2.8 2.83-8.92 5.63-8.92zm16.4 17.85c-1.24 0-2.57-2.34-2.57-8.93 0-6.58 1.33-8.92 2.57-8.92 2.8 0 5.63 6.12 5.63 8.92S35 41.85 32.2 41.85z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="content">
+                        <div class="items">
+                          <div class="item baidu-item">
+                            <div class="recommend-placeholder-item">
+                              <span class="recommend-placeholder-title"
+                                >数据模拟区域</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab">
+                        <div class="tab-items">
+                          <div
+                            :class="[
+                              i === 0 ? 'active' : '',
+                              i === 2 ? 'center' : '',
+                              'item',
+                            ]"
+                            v-for="(el, i) in barList[activeIndex - 1].content
+                              .bottomTab"
+                            :key="i"
+                          >
+                            <svg
+                              viewBox="0 0 64 64"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              :class="i === 2 ? 'icon-btn' : 'icon'"
+                              v-html="el.icon"
+                            ></svg>
+                            <div class="label">{{ el.name }}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 凤凰 -->
+                    <div class="baidu-app" v-if="activeIndex == 4">
+                      <div class="header"></div>
+                      <div class="nav"></div>
+                      <div class="content"></div>
+                      <div class="tab"></div>
+                    </div>
+                    <!-- 一点 -->
+                    <div class="baidu-app" v-if="activeIndex == 5">
+                      <div class="header"></div>
+                      <div class="nav"></div>
+                      <div class="content"></div>
+                      <div class="tab"></div>
+                    </div>
+                    <!-- 搜狐 -->
+                    <div class="baidu-app" v-if="activeIndex == 6">
+                      <div class="header"></div>
+                      <div class="nav"></div>
+                      <div class="content"></div>
+                      <div class="tab"></div>
+                    </div>
+                    <!-- 腾讯 -->
+                    <div class="baidu-app" v-if="activeIndex == 7">
+                      <div class="header"></div>
+                      <div class="nav"></div>
+                      <div class="content"></div>
+                      <div class="tab"></div>
+                    </div>
+                    <!-- 看点 -->
+                    <div class="baidu-app" v-if="activeIndex == 8">
+                      <div class="header"></div>
+                      <div class="nav"></div>
+                      <div class="content"></div>
+                      <div class="tab"></div>
+                    </div>
+                    <!-- UC -->
+                    <div class="baidu-app" v-if="activeIndex == 9">
+                      <div class="header"></div>
+                      <div class="nav"></div>
+                      <div class="content"></div>
+                      <div class="tab"></div>
+                    </div>
+                    <!-- 新浪 -->
+                    <div class="baidu-app" v-if="activeIndex == 10">
+                      <div class="header"></div>
+                      <div class="nav"></div>
+                      <div class="content"></div>
+                      <div class="tab"></div>
+                    </div>
+                    <!-- 简书 -->
+                    <div class="baidu-app" v-if="activeIndex == 11">
+                      <div class="header"></div>
+                      <div class="nav"></div>
+                      <div class="content"></div>
+                      <div class="tab"></div>
+                    </div>
+                    <!-- 趣头条 -->
+                    <div class="baidu-app" v-if="activeIndex == 12">
+                      <div class="header"></div>
+                      <div class="nav"></div>
+                      <div class="content"></div>
+                      <div class="tab"></div>
+                    </div>
                   </div>
                 </el-scrollbar>
               </div>
@@ -975,14 +1281,16 @@ export default {
         },
       ],
       toggleVideoType: 1,
-      activeIndex: "1",
+      activeIndex: 1,
       editorStatus: false,
       status: 1,
       barList: recommendNav,
     };
   },
   methods: {
-    handleSelect(key, keyPath) {},
+    handleSelect(key, keyPath) {
+      this.activeIndex = key;
+    },
     editor() {
       //编辑
       this.editorStatus = !this.editorStatus;
@@ -1119,6 +1427,24 @@ export default {
       display: inline-block;
       color: inherit;
       height: 28px;
+    }
+    .wangyi-app .header .logo,
+    .wangyi-app .header {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+    .wangyi-app .nav .nav-items,
+    .wangyi-app .nav {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
     }
     .toutiao-app {
       background-color: #fff;
@@ -1342,6 +1668,402 @@ export default {
             color: #f04143;
           }
         }
+      }
+    }
+    .wangyi-app {
+      .header {
+        padding: 36px 16px 8px 16px;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        background-image: -webkit-gradient(
+          linear,
+          left top,
+          left bottom,
+          from(#ef4848),
+          to(#ef3536)
+        );
+        background-image: linear-gradient(180deg, #ef4848, #ef3536);
+        .logo {
+          -ms-flex-negative: 0;
+          flex-shrink: 0;
+          width: 46px;
+          img {
+            width: 100%;
+            height: auto;
+            display: block;
+          }
+        }
+        .input {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          background-color: rgba(0, 0, 0, 0.09);
+          border-radius: 50em;
+          height: 38px;
+          -webkit-box-flex: 1;
+          -ms-flex-positive: 1;
+          flex-grow: 1;
+          margin: 0 16px;
+          .icon {
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            width: 16.5px;
+            height: 16.5px;
+            margin-left: 14px;
+            margin-right: 10px;
+          }
+          .text {
+            margin-right: 14px;
+            color: hsla(0, 0%, 100%, 0.9);
+            font-size: 16.5px;
+            letter-spacing: 0.6px;
+            font-weight: 350;
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+          }
+        }
+        .g {
+          flex-shrink: 0;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          .icon {
+            width: 38px;
+            height: 38px;
+            padding: 6px;
+            display: block;
+            background-color: rgba(0, 0, 0, 0.09);
+            border-radius: 50em;
+          }
+        }
+      }
+      .nav {
+        padding: 0 16px;
+        height: 40px;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        .nav-items {
+          position: relative;
+          overflow: hidden;
+          -webkit-box-flex: 1;
+          -ms-flex-positive: 1;
+          flex-grow: 1;
+          .item {
+            position: relative;
+            min-width: 2em;
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            font-size: 18px;
+            color: #5a5a5a;
+            & + .item {
+              margin-left: 20px;
+            }
+          }
+          .active {
+            font-weight: 500;
+            color: #171717;
+            &::after {
+              content: "";
+              position: absolute;
+              right: -8px;
+              top: 0;
+              width: 8px;
+              height: 8px;
+              border: 2.4px solid #e3262a;
+              border-radius: 50em;
+            }
+          }
+        }
+        .menu {
+          margin-left: 8px;
+          -ms-flex-negative: 0;
+          flex-shrink: 0;
+          .icon {
+            width: 16.5px;
+            height: 16.5px;
+            display: block;
+            color: #545556;
+          }
+        }
+      }
+      .content {
+        .items {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          .item {
+            padding: 0 16px;
+          }
+        }
+      }
+      .tab {
+        position: absolute;
+        z-index: 2;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 58px;
+        background-color: #fff;
+        .tab-items {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          height: 100%;
+          -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+          justify-content: space-between;
+          .item {
+            width: 25%;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            color: #595959;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            .icon {
+              width: 26px;
+            }
+          }
+          .active {
+            color: #ee1b19;
+          }
+        }
+      }
+    }
+    .baidu-app {
+      .header {
+        padding: 38px 20px 4px 20px;
+        background-color: #fff;
+        .search-input {
+          border: 1px solid #848586;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+          justify-content: space-between;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          height: 42px;
+          border-radius: 12px;
+          padding: 0 12px;
+          .logo {
+            display: block;
+            width: 22px;
+            line-height: 42px;
+            color: #3488ff;
+          }
+          .text {
+            margin: 0 8px;
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            font-size: 17px;
+            line-height: 42px;
+            color: #929292;
+            letter-spacing: 1px;
+          }
+          .camera {
+            width: 22px;
+            color: #656667;
+          }
+        }
+      }
+      .nav {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 0 20px;
+        -webkit-box-shadow: 0 1px 1px -1px #cecece;
+        box-shadow: 0 1px 1px -1px #cecece;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        .nav-items {
+          position: relative;
+          -webkit-box-flex: 1;
+          -ms-flex-positive: 1;
+          flex-grow: 1;
+          overflow-x: hidden;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          .item {
+            position: relative;
+            padding: 8px 0;
+            font-size: 16px;
+            color: #5f5f5f;
+            white-space: nowrap;
+            &::after {
+              content: "";
+              position: absolute;
+              bottom: 0;
+              left: 50%;
+              height: 4px;
+              width: 56%;
+              -webkit-transform: translateX(-50%);
+              transform: translateX(-50%);
+              border-radius: 6px;
+            }
+            & + .item {
+              margin-left: 22px;
+            }
+          }
+          .active {
+            color: #000;
+            font-weight: 600;
+            &::after {
+              background-color: #2c7def;
+            }
+          }
+        }
+        .menu {
+          margin-right: 12px;
+          margin-left: 12px;
+          -ms-flex-negative: 0;
+          flex-shrink: 0;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          .icon {
+            width: 20px;
+            display: block;
+            color: #717273;
+          }
+        }
+        .earphone {
+          padding-left: 12px;
+          -webkit-box-shadow: -1px 0 1px -1px #949494;
+          box-shadow: -1px 0 1px -1px #949494;
+          -ms-flex-negative: 0;
+          flex-shrink: 0;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          .icon {
+            width: 20px;
+            color: #666;
+            display: block;
+          }
+        }
+      }
+
+      .content {
+        .items {
+          padding: 0 20px;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+          flex-direction: column;
+        }
+      }
+      .tab {
+        position: absolute;
+        z-index: 2;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #fff;
+        -webkit-box-shadow: 0 -1px 1px -1px #cecece;
+        box-shadow: 0 -1px 1px -1px #cecece;
+        padding: 5px 0 4px 0;
+        .tab-items {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+          justify-content: space-between;
+          .item {
+            width: 20%;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            color: #a0a0a0;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            .icon {
+              width: 26px;
+            }
+          }
+          .center {
+            .icon-btn {
+              border-radius: 8px;
+              background-color: #4a6cf8;
+              padding: 6px 6px;
+              width: 46px;
+              height: 40px;
+            }
+          }
+          .active {
+            color: #323334;
+          }
+        }
+      }
+    }
+    .baidu-app {
+      .header {
+      }
+      .nav {
+      }
+      .content {
+      }
+      .tab {
       }
     }
     svg,
