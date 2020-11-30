@@ -120,7 +120,7 @@
         <div class="d2-container-full__body">
           <div class="app-recommend-wrap by-card-block h-100 front">
             <div id="recommend-canvas-wrap-front" class="canvas-wrap">
-              <div class="device-wrap">
+              <div id="phone-data" class="device-wrap">
                 <el-scrollbar style="height: 96%">
                   <div class="device" style="width: 432px; height: 768px">
                     <!-- 头部 -->
@@ -1206,6 +1206,40 @@
                   </div>
                 </div>
               </div>
+              <!-- 导出图片 -->
+              <div
+                class="export-module"
+                @mouseover="exportImgStatus = true"
+                @mouseleave="exportImgStatus = false"
+              >
+                <div class="by-consume-button">
+                  <div class="consume-wallet">
+                    <div class="tip-msg">
+                      <div>
+                        智能推荐兑换劵不足
+                        <span class="route">立即充值</span>
+                      </div>
+                    </div>
+                    <div
+                      :class="[exportImgStatus ? 'show' : '', 'consume-choose']"
+                    >
+                      <div class="option coin-option">
+                        <div class="num din-font">0</div>
+                        <div class="label">账号积分</div>
+                      </div>
+                      <div class="option exchange-option active">
+                        <div class="num din-font">50</div>
+                        <div class="label">智能推荐兑换劵</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="button">
+                    <el-button type="primary" class="w-100" @click="exportJPEG"
+                      >导出图片</el-button
+                    >
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1215,7 +1249,10 @@
 </template>
 
 <script>
+import { generateRandomNum } from "@/utils/index";
 import { mapGetters } from "vuex";
+import { saveAs } from "filesaver.js-npm";
+import html2canvas from "html2canvas";
 import draggable from "vuedraggable";
 import { recommendNav } from "@/utils/staticData";
 
@@ -1285,6 +1322,7 @@ export default {
       editorStatus: false,
       status: 1,
       barList: recommendNav,
+      exportImgStatus: false,
     };
   },
   methods: {
@@ -1294,6 +1332,7 @@ export default {
     editor() {
       //编辑
       this.editorStatus = !this.editorStatus;
+      document.getElementById("phone-data").contentEditable = this.editorStatus+'';
     },
     toggle(val) {
       this.status = val;
@@ -1303,6 +1342,35 @@ export default {
     },
     handleRemove() {
       //删除
+    },
+    // 导出图片
+    exportJPEG() {
+      console.log("导出图片——————————————————————");
+      // html2canvas(document.getElementById("phone-data"), {
+      //   onrendered: function (canvas) {
+      //     $("#phone-data").html(canvas); // 容器
+      //   },
+      //   width: 547,
+      //   height: 398,
+      // });
+      let element = document.getElementById("phone-data");
+      let filename = generateRandomNum() + ".png";
+      // let { height } = getComputedStyle(element, false);
+      // let { width } = getComputedStyle(element, false);
+      let height = 300;
+      let width = 300;
+      let canvas = document.createElement("canvas");
+      canvas.width = parseInt(width, 10);
+      canvas.height = parseInt(height, 10);
+      let context = canvas.getContext("2d");
+      context.scale(2, 2);
+      html2canvas(element, {
+        useCORS: true,
+      }).then((canvas) => {
+        canvas.toBlob((blob) => {
+          saveAs(blob, `${filename}`);
+        });
+      });
     },
   },
 };
@@ -1371,6 +1439,97 @@ export default {
   position: relative;
   ::v-deep .el-scrollbar__wrap {
     overflow-x: hidden;
+  }
+  // 导出图片
+  .export-module {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 0.75em;
+  }
+  .by-consume-button {
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    .consume-wallet {
+      position: absolute;
+      z-index: 1;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      font-size: 14px;
+    }
+    .tip-msg {
+      display: none;
+      background-color: #ff4d4f;
+      color: #fff;
+      padding: 0.5em 0.75em;
+      border-radius: 8px;
+      margin-bottom: 0.5em;
+      .route {
+        cursor: pointer;
+        padding-bottom: 2px;
+        border-bottom: 1px solid #fff;
+      }
+    }
+    .consume-choose.show {
+      height: auto;
+      opacity: 1;
+      overflow: visible;
+      padding-bottom: 36px;
+    }
+    .consume-choose {
+      background-color: #fff;
+      border: 3px solid #3370ff;
+      border-bottom-width: 8px;
+      border-radius: 8px;
+      padding: 0.5em;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      cursor: pointer;
+      -webkit-transition: all 0.15s ease-in-out;
+      transition: all 0.15s ease-in-out;
+      opacity: 0;
+      height: 36px;
+      overflow: hidden;
+      .option.active {
+        color: #fff;
+        background-color: #3370ff;
+      }
+      .option {
+        width: 50%;
+        height: 70px;
+        border-radius: 6px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        .num {
+          font-size: 24px;
+          margin-bottom: 0.25em;
+        }
+      }
+    }
+    .button {
+      position: relative;
+      z-index: 2;
+    }
   }
   // 手机内容
   .device {
@@ -2381,5 +2540,8 @@ export default {
   padding: 1px 2px;
   border-radius: 4px;
   height: 14px;
+}
+.din-font {
+  font-family: suite-admin-din-font !important;
 }
 </style>
