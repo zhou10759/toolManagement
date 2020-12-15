@@ -116,10 +116,24 @@ export function param2Obj(url) {
   return obj
 }
 
-export function generateRandomNum(length=6) {
+export function generateRandomNum(length = 6) {
   let str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let result = '';
-  for (let i = length; i > 0; --i) 
+  for (let i = length; i > 0; --i)
     result += str[Math.floor(Math.random() * str.length)];
-  return new Date().toLocaleDateString().replace(/\//g,'-') +'/'+ result;
+  return new Date().toLocaleDateString().replace(/\//g, '-') + '/' + result;
 }
+
+export function randomNum(minNum, maxNum) {
+  switch (arguments.length) {
+    case 1:
+      return parseInt(Math.random() * minNum + 1, 10);
+      break;
+    case 2:
+      return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+      break;
+    default:
+      return 0;
+      break;
+  }
+} 

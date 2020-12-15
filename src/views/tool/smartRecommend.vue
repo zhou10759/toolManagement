@@ -400,12 +400,90 @@
                       </div>
                       <!-- 内容 -->
                       <div class="content">
-                        <div class="item toutiao-item">
-                          <div class="recommend-placeholder-item">
-                            <span class="recommend-placeholder-title"
-                              >数据模拟区域</span
-                            >
+                        <div class="items">
+                          <div class="item toutiao-item">
+                            <div class="recommend-placeholder-item">
+                              <span class="recommend-placeholder-title"
+                                >数据模拟区域</span
+                              >
+                            </div>
                           </div>
+                          <template
+                            v-if="recommendPhoneForm.recommendList.length > 0"
+                          >
+                            <div
+                              class=""
+                              v-for="(
+                                el, i
+                              ) in recommendPhoneForm.recommendList"
+                              :key="i"
+                            >
+                              <template v-if="el.has_video">
+                                <div class="toutiao-video-a">
+                                  <p class="title">{{ el.abstract }}</p>
+                                  <div class="video">
+                                    <div class="icon">
+                                      <svg
+                                        t="1608021142883"
+                                        class="icon video-play"
+                                        viewBox="0 0 1024 1024"
+                                        version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        p-id="3153"
+                                        width="32"
+                                        height="32"
+                                      >
+                                        <path
+                                          d="M264.900046 16.846187l606.765887 387.380928c75.069986 47.869991 75.069986 167.674969 0 215.54596l-606.702887 387.379928c-75.133986 47.870991-168.954969-12.029998-168.954969-107.83598V124.683167c0-95.869982 93.820983-155.706971 168.890969-107.83698z"
+                                          p-id="3154"
+                                          fill="#ffffff"
+                                        ></path>
+                                      </svg>
+                                    </div>
+                                    <div v-loading="loading">
+                                      <img
+                                        :src="el.has_mp4_video"
+                                        alt=""
+                                        style="display: block"
+                                      />
+                                    </div>
+                                    <div class="duration">
+                                      {{ el.has_mp4_video }}
+                                    </div>
+                                  </div>
+                                  <div class="other">
+                                    <div class="l">
+                                      <div class="user">{{ el.source }}</div>
+                                      <div class="comment">
+                                        {{ el.comment_count }}评论
+                                      </div>
+                                      <div class="time">
+                                        {{ el.publish_time }}
+                                      </div>
+                                    </div>
+                                    <div>
+                                      <svg
+                                        t="1608021653919"
+                                        class="icon close-btn"
+                                        viewBox="0 0 1024 1024"
+                                        version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        p-id="4116"
+                                        width="32"
+                                        height="32"
+                                      >
+                                        <path
+                                          d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
+                                          fill="#cdcdcd"
+                                          p-id="4117"
+                                        ></path>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                              </template>
+                            </div>
+                          </template>
                         </div>
                       </div>
                       <!-- 底部导航 -->
@@ -764,13 +842,13 @@
                 </div>
                 <div class="block_main">
                   <el-form
-                    :model="equipmentForm"
+                    :model="recommendPhoneAdd"
                     label-width="80px"
                     label-position="top"
                   >
                     <el-form-item label="设备类型">
                       <el-select
-                        v-model="equipmentForm.equipmentType"
+                        v-model="recommendPhoneForm.equipmentType"
                         placeholder="请选择"
                         style="width: 300px"
                       >
@@ -790,7 +868,7 @@
                     <el-form-item label="设备电量">
                       <div class="flex">
                         <el-input-number
-                          v-model="equipmentForm.equipmentElectricity"
+                          v-model="recommendPhoneForm.equipmentElectricity"
                           controls-position="right"
                           :min="1"
                           :max="100"
@@ -806,7 +884,7 @@
                       <div class="flex">
                         <el-input
                           type="text"
-                          v-model="equipmentForm.equipmentTime"
+                          v-model="recommendPhoneForm.equipmentTime"
                           style="width: 300px"
                         ></el-input>
                         <el-button
@@ -818,7 +896,7 @@
                     <el-form-item label="文件名称">
                       <div class="flex">
                         <el-input
-                          v-model="equipmentForm.fileName"
+                          v-model="recommendPhoneForm.fileName"
                           style="width: 300px"
                           clearable
                         >
@@ -832,6 +910,7 @@
                     <el-form-item label="快速操作">
                       <div class="flex">
                         <el-button type="primary" style="width: 49%"
+                        @click="generateData()"
                           >一键填充/刷新</el-button
                         >
                         <el-button type="danger" style="width: 49%" plain
@@ -876,14 +955,14 @@
                     <el-row>
                       <el-col :span="12">
                         <el-form
-                          :model="lenovoSearchForm"
+                          :model="recommendPhoneForm"
                           label-width="80px"
                           label-position="top"
                         >
                           <el-form-item label="猜你想搜">
                             <div class="flex">
                               <el-input
-                                v-model="lenovoSearchForm.searchVal"
+                                v-model="recommendPhoneForm.searchVal"
                                 style="width: 310px"
                                 clearable
                               >
@@ -898,13 +977,13 @@
                       </el-col>
                       <el-col :span="12">
                         <el-form
-                          :model="addDataForm"
+                          :model="recommendPhoneForm"
                           label-width="80px"
                           label-position="top"
                         >
                           <el-form-item label="添加数据">
                             <el-select
-                              v-model="addDataForm.addVal"
+                              v-model="recommendPhoneForm.addVal"
                               placeholder="请选择"
                               style="width: 310px"
                             >
@@ -957,7 +1036,7 @@
                       <div class="flex">
                         <el-input
                           placeholder="输入文章链接 (自动分析)"
-                          v-model="articleForm.searchArticle"
+                          v-model="recommendPhoneForm.searchArticle"
                           clearable
                         >
                         </el-input>
@@ -993,7 +1072,7 @@
                             </div>
                             <div class="editor-wrap m-t-xs">
                               <el-input
-                                v-model="input"
+                                v-model="recommendPhoneAdd.abstract"
                                 placeholder="标题"
                               ></el-input>
                               <el-row
@@ -1008,7 +1087,7 @@
                                     <div class="label">媒体名称</div>
                                     <div class="b">
                                       <el-input
-                                        v-model="input"
+                                        v-model="recommendPhoneAdd.source"
                                         placeholder="媒体"
                                         clearable
                                       ></el-input>
@@ -1022,7 +1101,9 @@
                                     <div class="label">评论数</div>
                                     <div class="b">
                                       <el-input
-                                        v-model="input"
+                                        v-model="
+                                          recommendPhoneAdd.comment_count
+                                        "
                                         placeholder="评论数"
                                         clearable
                                       ></el-input>
@@ -1035,7 +1116,7 @@
                                     <div class="label">发布时间</div>
                                     <div class="b">
                                       <el-input
-                                        v-model="input"
+                                        v-model="recommendPhoneAdd.publish_time"
                                         placeholder="例：2020-09-12 12:00:00"
                                         clearable
                                       ></el-input>
@@ -1065,6 +1146,7 @@
                                               : '',
                                             'item',
                                           ]"
+                                          @click="toggleVideoType = 1"
                                         >
                                           文章（单图）
                                         </div>
@@ -1075,6 +1157,7 @@
                                               : '',
                                             'item',
                                           ]"
+                                          @click="toggleVideoType = 2"
                                         >
                                           文章（多图）
                                         </div>
@@ -1085,6 +1168,7 @@
                                               : '',
                                             'item',
                                           ]"
+                                          @click="toggleVideoType = 3"
                                         >
                                           视频 / 文章无图
                                         </div>
@@ -1109,12 +1193,17 @@
                                           <i class="el-icon-plus"></i>
                                         </el-upload>
                                       </div>
-                                      <div class="video-duration m-l-xs">
+                                      <div
+                                        class="video-duration m-l-xs"
+                                        v-if="toggleVideoType === 3"
+                                      >
                                         <div class="label">视频时长</div>
                                         <div class="b">
                                           <el-input
                                             placeholder="例：12:24"
-                                            v-model="articleForm.searchArticle"
+                                            v-model="
+                                              recommendPhoneAdd.video_time
+                                            "
                                             clearable
                                           >
                                           </el-input>
@@ -1126,7 +1215,7 @@
                               </div>
                             </div>
                           </div>
-                          <block v-for="(el, i) in list" :key="i">
+                          <div v-for="(el, i) in list" :key="i">
                             <div
                               class="feed-item normal"
                               v-if="el.default !== 1"
@@ -1199,7 +1288,7 @@
                                 </div>
                               </div>
                             </div>
-                          </block>
+                          </div>
                         </draggable>
                       </div>
                     </div>
@@ -1249,12 +1338,13 @@
 </template>
 
 <script>
-import { generateRandomNum } from "@/utils/index";
+import { generateRandomNum ,randomNum } from "@/utils/index";
 import { mapGetters } from "vuex";
 import { saveAs } from "filesaver.js-npm";
 import html2canvas from "html2canvas";
 import draggable from "vuedraggable";
-import { recommendNav } from "@/utils/staticData";
+import { recommendNav  } from "@/utils/staticData";
+import { getTouTiaoData, getTouTiaoRecommend } from "@/api/data";
 
 export default {
   name: "smartRecommend",
@@ -1285,22 +1375,43 @@ export default {
         "小米5C",
         "小米 play",
       ],
-      equipmentForm: {
+      recommendPhoneForm: {
         equipmentType: "小米 6",
         equipmentElectricity: 45,
         equipmentTime: "",
         fileName: "",
-      }, //设备变量
-      lenovoSearchForm: {
         searchVal: "",
-      }, //猜你想搜
-      addDataForm: {
         addVal: "",
-      }, //添加数据
-      addFormList: ["任意类型", "文档 (单图)", "文章 (多图)", "视频"],
-      articleForm: {
         searchArticle: "",
-      }, //智能分析
+        recommendList: [],
+        recommendData: [],
+      },
+      recommendPhoneAdd: {
+        abstract: "",
+        source: "",
+        comment_count: "",
+        publish_time: "",
+        styleType: 1,
+        video_list: [],
+        video_time: "",
+        imgList: [],
+      },
+      // equipmentForm: {
+      //   equipmentType: "小米 6",
+      //   equipmentElectricity: 45,
+      //   equipmentTime: "",
+      //   fileName: "",
+      // }, //设备变量
+      // lenovoSearchForm: {
+      //   searchVal: "",
+      // }, //猜你想搜
+      // addDataForm: {
+      //   addVal: "",
+      // }, //添加数据
+      addFormList: ["任意类型", "文档 (单图)", "文章 (多图)", "视频"],
+      // articleForm: {
+      //   searchArticle: "",
+      // }, //智能分析
       list: [
         {
           default: 1,
@@ -1323,16 +1434,56 @@ export default {
       status: 1,
       barList: recommendNav,
       exportImgStatus: false,
+      loading: false,
+      indexList: new Array(5).fill()
     };
   },
+  created() {
+    this.init();
+  },
   methods: {
+    generateData(){
+      if(Array.from(new Set(this.indexList)).length===5){
+        console.log("indexList",this.indexList)
+         this.indexList = new Array(5).fill();
+        return;
+      }
+      this.indexList = this.indexList.map(el=>randomNum(0,20))
+      this.indexList =  Array.from(new Set(this.indexList))
+      console.log("11111——————————————",this.indexList)
+      if(this.indexList.length<5){
+        this.indexList = new Array(5).fill();
+        this.generateData()
+      }else{
+        this.indexList = new Array(5).fill();
+        return;
+      }
+      console.log("22222——————————————",this.indexList)
+      // if(indexList.length===)
+    },
+    init() {
+      this.fileData()
+      getTouTiaoRecommend().then((res) => {
+        console.log("搜索数据2", res);
+      });
+    },
+    fileData(){
+        this.loading = true;
+       getTouTiaoData().then((res) => {
+         console.log("搜索数据2————————————————————",res.data.data)
+        this.loading = false;
+        this.recommendPhoneForm.recommendData = res.data.data.map(el=>JSON.parse(el.content))
+         console.log("搜索数据3————————————————————",res.data.data)
+      });
+    },
     handleSelect(key, keyPath) {
       this.activeIndex = key;
     },
     editor() {
       //编辑
       this.editorStatus = !this.editorStatus;
-      document.getElementById("phone-data").contentEditable = this.editorStatus+'';
+      document.getElementById("phone-data").contentEditable =
+        this.editorStatus + "";
     },
     toggle(val) {
       this.status = val;
@@ -1605,6 +1756,72 @@ export default {
       -ms-flex-align: center;
       align-items: center;
     }
+    .close-btn {
+    color: #ccc;
+    padding: 1px 2px;
+    border-radius: 4px;
+    height: 14px;
+}
+    .toutiao-video-a {
+      padding: 17px 0;
+      .title {
+        font-size: 19.5px;
+        line-height: 30px;
+        margin: 0 0 10px 0;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      .video {
+        position: relative;
+      }
+    }
+    .toutiao-item .other, .toutiao-item .other .l {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+    .toutiao-item .other {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 13px;
+    margin-top: 10px;
+    .l {
+    color: #a2a3a4;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    margin-right: 2em;
+    .user{
+      display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    }
+    .comment,.time{
+      flex-shrink: 0;
+    }
+    *+*{
+      margin-left: 10px;
+    }
+}
+    .r {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    margin-left: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+}
     .toutiao-app {
       background-color: #fff;
       height: 100%;
