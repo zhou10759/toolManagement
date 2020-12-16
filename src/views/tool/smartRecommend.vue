@@ -412,7 +412,7 @@
                             v-if="recommendPhoneForm.recommendList.length > 0"
                           >
                             <div
-                              class=""
+                              class="item toutiao-item"
                               v-for="(
                                 el, i
                               ) in recommendPhoneForm.recommendList"
@@ -420,7 +420,7 @@
                             >
                               <template v-if="el.has_video">
                                 <div class="toutiao-video-a">
-                                  <p class="title">{{ el.abstract }}</p>
+                                  <p class="title">{{ el.title }}</p>
                                   <div class="video">
                                     <div class="icon">
                                       <svg
@@ -442,13 +442,107 @@
                                     </div>
                                     <div v-loading="loading">
                                       <img
-                                        :src="el.has_mp4_video"
+                                        :src="
+                                          el.video_detail_info
+                                            .detail_video_large_image.url
+                                        "
                                         alt=""
                                         style="display: block"
                                       />
                                     </div>
                                     <div class="duration">
-                                      {{ el.has_mp4_video }}
+                                      {{ el.video_duration }}
+                                    </div>
+                                  </div>
+                                  <div class="other">
+                                    <div class="l">
+                                      <div class="user">{{ el.source }}</div>
+                                      <div class="comment">
+                                        {{ el.comment_count }}评论
+                                      </div>
+                                      <div class="time">
+                                        {{ el.publish_time }}
+                                      </div>
+                                    </div>
+                                    <div>
+                                      <svg
+                                        t="1608021653919"
+                                        class="icon close-btn"
+                                        viewBox="0 0 1024 1024"
+                                        version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        p-id="4116"
+                                        width="32"
+                                        height="32"
+                                      >
+                                        <path
+                                          d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
+                                          fill="#cdcdcd"
+                                          p-id="4117"
+                                        ></path>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                              </template>
+                              <template v-if="el.has_image && el.image_list">
+                                <div class="toutiao-article-b">
+                                  <p class="title">{{ el.title }}</p>
+                                  <div class="pics">
+                                    <div
+                                      v-loading="loading"
+                                      class="img"
+                                      v-for="(c_el, c_i) in el.image_list"
+                                      :key="c_i"
+                                    >
+                                      <img
+                                        :src="c_el.url"
+                                        alt=""
+                                        style="display: block"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="other">
+                                    <div class="l">
+                                      <div class="user">{{ el.source }}</div>
+                                      <div class="comment">
+                                        {{ el.comment_count }}评论
+                                      </div>
+                                      <div class="time">
+                                        {{ el.publish_time }}
+                                      </div>
+                                    </div>
+                                    <div>
+                                      <svg
+                                        t="1608021653919"
+                                        class="icon close-btn"
+                                        viewBox="0 0 1024 1024"
+                                        version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        p-id="4116"
+                                        width="32"
+                                        height="32"
+                                      >
+                                        <path
+                                          d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
+                                          fill="#cdcdcd"
+                                          p-id="4117"
+                                        ></path>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                              </template>
+                              <template v-if="el.has_image && !el.image_list">
+                                <div class="toutiao-article-a two">
+                                  <div class="info">
+                                    <p class="title">{{ el.title }}</p>
+                                    <div v-loading="loading" class="pic">
+                                      <img
+                                        :src="el.middle_image.url"
+                                        alt=""
+                                        style="display: block"
+                                      />
                                     </div>
                                   </div>
                                   <div class="other">
@@ -909,8 +1003,10 @@
                     </el-form-item>
                     <el-form-item label="快速操作">
                       <div class="flex">
-                        <el-button type="primary" style="width: 49%"
-                        @click="generateData()"
+                        <el-button
+                          type="primary"
+                          style="width: 49%"
+                          @click="generateData()"
                           >一键填充/刷新</el-button
                         >
                         <el-button type="danger" style="width: 49%" plain
@@ -1072,7 +1168,7 @@
                             </div>
                             <div class="editor-wrap m-t-xs">
                               <el-input
-                                v-model="recommendPhoneAdd.abstract"
+                                v-model="recommendPhoneAdd.title"
                                 placeholder="标题"
                               ></el-input>
                               <el-row
@@ -1215,11 +1311,11 @@
                               </div>
                             </div>
                           </div>
-                          <div v-for="(el, i) in list" :key="i">
-                            <div
-                              class="feed-item normal"
-                              v-if="el.default !== 1"
-                            >
+                          <div
+                            v-for="(el, i) in recommendPhoneForm.recommendList"
+                            :key="i"
+                          >
+                            <div class="feed-item normal">
                               <div class="l">
                                 <svg
                                   t="1605685614022"
@@ -1237,7 +1333,7 @@
                                     p-id="7209"
                                   ></path>
                                 </svg>
-                                <span class="title">{{ el.list }}</span>
+                                <span class="title">{{ el.title }}</span>
                               </div>
                               <div class="r flex">
                                 <div class="button-link">
@@ -1338,12 +1434,12 @@
 </template>
 
 <script>
-import { generateRandomNum ,randomNum } from "@/utils/index";
+import { generateRandomNum, randomNum } from "@/utils/index";
 import { mapGetters } from "vuex";
 import { saveAs } from "filesaver.js-npm";
 import html2canvas from "html2canvas";
 import draggable from "vuedraggable";
-import { recommendNav  } from "@/utils/staticData";
+import { recommendNav } from "@/utils/staticData";
 import { getTouTiaoData, getTouTiaoRecommend } from "@/api/data";
 
 export default {
@@ -1385,9 +1481,10 @@ export default {
         searchArticle: "",
         recommendList: [],
         recommendData: [],
+        searchData: {},
       },
       recommendPhoneAdd: {
-        abstract: "",
+        title: "",
         source: "",
         comment_count: "",
         publish_time: "",
@@ -1435,45 +1532,83 @@ export default {
       barList: recommendNav,
       exportImgStatus: false,
       loading: false,
-      indexList: new Array(5).fill()
+      indexList: new Array(5).fill(),
     };
   },
   created() {
-    this.init();
+    // this.init();
   },
   methods: {
-    generateData(){
-      if(Array.from(new Set(this.indexList)).length===5){
-        console.log("indexList",this.indexList)
-         this.indexList = new Array(5).fill();
-        return;
-      }
-      this.indexList = this.indexList.map(el=>randomNum(0,20))
-      this.indexList =  Array.from(new Set(this.indexList))
-      console.log("11111——————————————",this.indexList)
-      if(this.indexList.length<5){
-        this.indexList = new Array(5).fill();
-        this.generateData()
-      }else{
-        this.indexList = new Array(5).fill();
-        return;
-      }
-      console.log("22222——————————————",this.indexList)
-      // if(indexList.length===)
+    async generateData() {
+      // debugger
+      console.log(
+        "this.recommendPhoneForm.searchData——————————————————————————————————1",
+        this.recommendPhoneForm.searchData
+      );
+      this.loading = true;
+      let fillData = await this.getFileData();
+      let searchData = await this.getSearchData();
+      this.loading = false;
+      console.log(
+        "this.recommendPhoneForm.searchData————————————————————————————————————2",
+        this.recommendPhoneForm.searchData
+      );
+      this.formatFillData();
+      this.recommendPhoneForm.searchVal = this.recommendPhoneForm.searchData.homepage_search_suggest;
     },
-    init() {
-      this.fileData()
-      getTouTiaoRecommend().then((res) => {
-        console.log("搜索数据2", res);
+    formatFillData() {
+      if (Array.from(new Set(this.indexList)).length === 5) {
+        this.recommendPhoneForm.recommendList = this.indexList.map(
+          (el) => this.recommendPhoneForm.recommendData[el]
+        );
+        this.indexList = new Array(5).fill();
+        return;
+      }
+      this.indexList = this.indexList.map((el) => randomNum(0, 20));
+      this.indexList = Array.from(new Set(this.indexList));
+      if (this.indexList.length < 5) {
+        this.indexList = new Array(5).fill();
+        this.formatFillData();
+      } else {
+        this.recommendPhoneForm.recommendList = this.indexList.map(
+          (el) => this.recommendPhoneForm.recommendData[el]
+        );
+        this.indexList = new Array(5).fill();
+        return;
+      }
+    },
+    // async init() {
+    //   this.loading = true;
+    //   await this.fileData();
+    //   await this.searchData();
+    //   this.loading = false;
+    // },
+    getFileData() {
+      let that = this;
+      return new Promise(function (resolve, reject) {
+        getTouTiaoData().then((res) => {
+          if (res.data.message === "success") {
+            that.recommendPhoneForm.recommendData = res.data.data.map((el) =>
+              JSON.parse(el.content)
+            );
+            resolve(res);
+          } else {
+            reject("请求错误");
+          }
+        });
       });
     },
-    fileData(){
-        this.loading = true;
-       getTouTiaoData().then((res) => {
-         console.log("搜索数据2————————————————————",res.data.data)
-        this.loading = false;
-        this.recommendPhoneForm.recommendData = res.data.data.map(el=>JSON.parse(el.content))
-         console.log("搜索数据3————————————————————",res.data.data)
+    getSearchData() {
+      let that = this;
+      return new Promise(function (resolve, reject) {
+        getTouTiaoRecommend().then((res) => {
+          if (res.data.message === "success") {
+            that.recommendPhoneForm.searchData = res.data.data;
+            resolve(res);
+          } else {
+            reject("请求错误");
+          }
+        });
       });
     },
     handleSelect(key, keyPath) {
@@ -1757,11 +1892,11 @@ export default {
       align-items: center;
     }
     .close-btn {
-    color: #ccc;
-    padding: 1px 2px;
-    border-radius: 4px;
-    height: 14px;
-}
+      color: #ccc;
+      padding: 1px 2px;
+      border-radius: 4px;
+      height: 14px;
+    }
     .toutiao-video-a {
       padding: 17px 0;
       .title {
@@ -1775,53 +1910,73 @@ export default {
       }
       .video {
         position: relative;
+        .icon {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          z-index: 1;
+          -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          width: 30px;
+          height: 30px;
+          color: #fff;
+        }
+        .duration {
+          position: absolute;
+          right: 14px;
+          bottom: 8px;
+          font-size: 13px;
+          color: #fff;
+        }
       }
     }
-    .toutiao-item .other, .toutiao-item .other .l {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-}
-    .toutiao-item .other {
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    font-size: 13px;
-    margin-top: 10px;
-    .l {
-    color: #a2a3a4;
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    margin-right: 2em;
-    .user{
+    .toutiao-item .other,
+    .toutiao-item .other .l {
       display: -webkit-box;
-    overflow: hidden;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
+      display: -ms-flexbox;
+      display: flex;
     }
-    .comment,.time{
-      flex-shrink: 0;
+    .toutiao-item .other {
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      font-size: 13px;
+      margin-top: 10px;
+      .l {
+        color: #a2a3a4;
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        margin-right: 2em;
+        .user {
+          display: -webkit-box;
+          overflow: hidden;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+        }
+        .comment,
+        .time {
+          flex-shrink: 0;
+        }
+        * + * {
+          margin-left: 10px;
+        }
+      }
+      .r {
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        margin-left: 10px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
     }
-    *+*{
-      margin-left: 10px;
-    }
-}
-    .r {
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-    margin-left: 10px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-}
-}
     .toutiao-app {
       background-color: #fff;
       height: 100%;
@@ -2749,6 +2904,36 @@ export default {
       -webkit-box-align: center;
       -ms-flex-align: center;
       align-items: center;
+    }
+  }
+}
+.toutiao-article-a {
+  padding: 17px 0;
+  .info {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 2px;
+  }
+  .title {
+    font-size: 19.5px;
+    line-height: 30px;
+    margin: 0 8px 0 0;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    -ms-flex-item-align: start;
+    align-self: start;
+  }
+  .pic {
+    width: 100%;
+    img {
+      width: 100%;
+      height: 90px;
+      display: block;
+      border-radius: 6px;
+      -o-object-fit: cover;
+      object-fit: cover;
     }
   }
 }
