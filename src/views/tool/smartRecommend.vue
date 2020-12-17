@@ -350,7 +350,9 @@
                                 fill="currentColor"
                               ></path>
                             </svg>
-                            <div class="text"></div>
+                            <div class="text">
+                              {{ searchVal || "" }}
+                            </div>
                           </div>
                           <div class="put-button">
                             <svg
@@ -401,181 +403,175 @@
                       <!-- 内容 -->
                       <div class="content">
                         <div class="items">
-                          <div class="item toutiao-item">
-                            <div class="recommend-placeholder-item">
-                              <span class="recommend-placeholder-title"
-                                >数据模拟区域</span
-                              >
-                            </div>
-                          </div>
-                          <template
-                            v-if="recommendPhoneForm.recommendList.length > 0"
-                          >
-                            <div
-                              class="item toutiao-item"
-                              v-for="(
-                                el, i
-                              ) in recommendPhoneForm.recommendList"
-                              :key="i"
-                            >
-                              <template v-if="el.has_video">
-                                <div class="toutiao-video-a">
-                                  <p class="title">{{ el.title }}</p>
-                                  <div class="video">
-                                    <div class="icon">
-                                      <svg
-                                        t="1608021142883"
-                                        class="icon video-play"
-                                        viewBox="0 0 1024 1024"
-                                        version="1.1"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        p-id="3153"
-                                        width="32"
-                                        height="32"
-                                      >
-                                        <path
-                                          d="M264.900046 16.846187l606.765887 387.380928c75.069986 47.869991 75.069986 167.674969 0 215.54596l-606.702887 387.379928c-75.133986 47.870991-168.954969-12.029998-168.954969-107.83598V124.683167c0-95.869982 93.820983-155.706971 168.890969-107.83698z"
-                                          p-id="3154"
-                                          fill="#ffffff"
-                                        ></path>
-                                      </svg>
-                                    </div>
-                                    <div v-loading="loading">
-                                      <img
-                                        :src="
-                                          el.video_detail_info
-                                            .detail_video_large_image.url
-                                        "
-                                        alt=""
-                                        style="display: block"
-                                      />
-                                    </div>
-                                    <div class="duration">
-                                      {{ el.video_duration }}
-                                    </div>
-                                  </div>
-                                  <div class="other">
-                                    <div class="l">
-                                      <div class="user">{{ el.source }}</div>
-                                      <div class="comment">
-                                        {{ el.comment_count }}评论
-                                      </div>
-                                      <div class="time">
-                                        {{ el.publish_time }}
-                                      </div>
-                                    </div>
-                                    <div>
-                                      <svg
-                                        t="1608021653919"
-                                        class="icon close-btn"
-                                        viewBox="0 0 1024 1024"
-                                        version="1.1"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        p-id="4116"
-                                        width="32"
-                                        height="32"
-                                      >
-                                        <path
-                                          d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
-                                          fill="#cdcdcd"
-                                          p-id="4117"
-                                        ></path>
-                                      </svg>
-                                    </div>
-                                  </div>
+                          <template v-if="recommendList.length > 0">
+                            <div v-for="(el, i) in recommendList" :key="i">
+                              <div class="item toutiao-item" v-if="el.defalte">
+                                <div class="recommend-placeholder-item">
+                                  <span class="recommend-placeholder-title"
+                                    >数据模拟区域</span
+                                  >
                                 </div>
-                              </template>
-                              <template v-if="el.has_image && el.image_list">
-                                <div class="toutiao-article-b">
-                                  <p class="title">{{ el.title }}</p>
-                                  <div class="pics">
-                                    <div
-                                      v-loading="loading"
-                                      class="img"
-                                      v-for="(c_el, c_i) in el.image_list"
-                                      :key="c_i"
-                                    >
-                                      <img
-                                        :src="c_el.url"
-                                        alt=""
-                                        style="display: block"
-                                      />
-                                    </div>
-                                  </div>
-                                  <div class="other">
-                                    <div class="l">
-                                      <div class="user">{{ el.source }}</div>
-                                      <div class="comment">
-                                        {{ el.comment_count }}评论
-                                      </div>
-                                      <div class="time">
-                                        {{ el.publish_time }}
-                                      </div>
-                                    </div>
-                                    <div>
-                                      <svg
-                                        t="1608021653919"
-                                        class="icon close-btn"
-                                        viewBox="0 0 1024 1024"
-                                        version="1.1"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        p-id="4116"
-                                        width="32"
-                                        height="32"
-                                      >
-                                        <path
-                                          d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
-                                          fill="#cdcdcd"
-                                          p-id="4117"
-                                        ></path>
-                                      </svg>
-                                    </div>
-                                  </div>
-                                </div>
-                              </template>
-                              <template v-if="el.has_image && !el.image_list">
-                                <div class="toutiao-article-a two">
-                                  <div class="info">
+                              </div>
+                              <div class="item toutiao-item" v-else>
+                                <template v-if="el.has_video">
+                                  <div class="toutiao-video-a">
                                     <p class="title">{{ el.title }}</p>
-                                    <div v-loading="loading" class="pic">
-                                      <img
-                                        :src="el.middle_image.url"
-                                        alt=""
-                                        style="display: block"
-                                      />
+                                    <div class="video">
+                                      <div class="icon">
+                                        <svg
+                                          t="1608021142883"
+                                          class="icon video-play"
+                                          viewBox="0 0 1024 1024"
+                                          version="1.1"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          p-id="3153"
+                                          width="32"
+                                          height="32"
+                                        >
+                                          <path
+                                            d="M264.900046 16.846187l606.765887 387.380928c75.069986 47.869991 75.069986 167.674969 0 215.54596l-606.702887 387.379928c-75.133986 47.870991-168.954969-12.029998-168.954969-107.83598V124.683167c0-95.869982 93.820983-155.706971 168.890969-107.83698z"
+                                            p-id="3154"
+                                            fill="#ffffff"
+                                          ></path>
+                                        </svg>
+                                      </div>
+                                      <div v-loading="loading">
+                                        <img
+                                          :src="
+                                            el.video_detail_info
+                                              .detail_video_large_image.url
+                                          "
+                                          alt=""
+                                          style="display: block"
+                                        />
+                                      </div>
+                                      <div class="duration">
+                                        {{ el.video_duration }}
+                                      </div>
+                                    </div>
+                                    <div class="other">
+                                      <div class="l">
+                                        <div class="user">{{ el.source }}</div>
+                                        <div class="comment">
+                                          {{ el.comment_count }}评论
+                                        </div>
+                                        <div class="time">
+                                          {{ el.publish_time }}
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <svg
+                                          t="1608021653919"
+                                          class="icon close-btn"
+                                          viewBox="0 0 1024 1024"
+                                          version="1.1"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          p-id="4116"
+                                          width="32"
+                                          height="32"
+                                        >
+                                          <path
+                                            d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
+                                            fill="#cdcdcd"
+                                            p-id="4117"
+                                          ></path>
+                                        </svg>
+                                      </div>
                                     </div>
                                   </div>
-                                  <div class="other">
-                                    <div class="l">
-                                      <div class="user">{{ el.source }}</div>
-                                      <div class="comment">
-                                        {{ el.comment_count }}评论
-                                      </div>
-                                      <div class="time">
-                                        {{ el.publish_time }}
-                                      </div>
-                                    </div>
-                                    <div>
-                                      <svg
-                                        t="1608021653919"
-                                        class="icon close-btn"
-                                        viewBox="0 0 1024 1024"
-                                        version="1.1"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        p-id="4116"
-                                        width="32"
-                                        height="32"
+                                </template>
+                                <template v-if="el.has_image && el.image_list">
+                                  <div class="toutiao-article-b">
+                                    <p class="title">{{ el.title }}</p>
+                                    <div class="pics">
+                                      <div
+                                        v-loading="loading"
+                                        class="img"
+                                        v-for="(c_el, c_i) in el.image_list"
+                                        :key="c_i"
                                       >
-                                        <path
-                                          d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
-                                          fill="#cdcdcd"
-                                          p-id="4117"
-                                        ></path>
-                                      </svg>
+                                        <img
+                                          :src="c_el.url"
+                                          alt=""
+                                          style="display: block"
+                                        />
+                                      </div>
+                                    </div>
+                                    <div class="other">
+                                      <div class="l">
+                                        <div class="user">{{ el.source }}</div>
+                                        <div class="comment">
+                                          {{ el.comment_count }}评论
+                                        </div>
+                                        <div class="time">
+                                          {{ el.publish_time }}
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <svg
+                                          t="1608021653919"
+                                          class="icon close-btn"
+                                          viewBox="0 0 1024 1024"
+                                          version="1.1"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          p-id="4116"
+                                          width="32"
+                                          height="32"
+                                        >
+                                          <path
+                                            d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
+                                            fill="#cdcdcd"
+                                            p-id="4117"
+                                          ></path>
+                                        </svg>
+                                      </div>
                                     </div>
                                   </div>
-                                </div>
-                              </template>
+                                </template>
+                                <template v-if="el.has_image && !el.image_list">
+                                  <div class="toutiao-article-a two">
+                                    <div class="info">
+                                      <p class="title">{{ el.title }}</p>
+                                      <div v-loading="loading" class="pic">
+                                        <img
+                                          :src="el.middle_image.url"
+                                          alt=""
+                                          style="display: block"
+                                        />
+                                      </div>
+                                    </div>
+                                    <div class="other">
+                                      <div class="l">
+                                        <div class="user">{{ el.source }}</div>
+                                        <div class="comment">
+                                          {{ el.comment_count }}评论
+                                        </div>
+                                        <div class="time">
+                                          {{ el.publish_time }}
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <svg
+                                          t="1608021653919"
+                                          class="icon close-btn"
+                                          viewBox="0 0 1024 1024"
+                                          version="1.1"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          p-id="4116"
+                                          width="32"
+                                          height="32"
+                                        >
+                                          <path
+                                            d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
+                                            fill="#cdcdcd"
+                                            p-id="4117"
+                                          ></path>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </template>
+                              </div>
                             </div>
                           </template>
                         </div>
@@ -942,7 +938,7 @@
                   >
                     <el-form-item label="设备类型">
                       <el-select
-                        v-model="recommendPhoneForm.equipmentType"
+                        v-model="equipmentType"
                         placeholder="请选择"
                         style="width: 300px"
                       >
@@ -962,7 +958,7 @@
                     <el-form-item label="设备电量">
                       <div class="flex">
                         <el-input-number
-                          v-model="recommendPhoneForm.equipmentElectricity"
+                          v-model="equipmentElectricity"
                           controls-position="right"
                           :min="1"
                           :max="100"
@@ -978,7 +974,7 @@
                       <div class="flex">
                         <el-input
                           type="text"
-                          v-model="recommendPhoneForm.equipmentTime"
+                          v-model="equipmentTime"
                           style="width: 300px"
                         ></el-input>
                         <el-button
@@ -990,7 +986,7 @@
                     <el-form-item label="文件名称">
                       <div class="flex">
                         <el-input
-                          v-model="recommendPhoneForm.fileName"
+                          v-model="fileName"
                           style="width: 300px"
                           clearable
                         >
@@ -1050,36 +1046,30 @@
                   <div class="mock-form toutiao-mock-form">
                     <el-row>
                       <el-col :span="12">
-                        <el-form
-                          :model="recommendPhoneForm"
-                          label-width="80px"
-                          label-position="top"
-                        >
+                        <el-form label-width="80px" label-position="top">
                           <el-form-item label="猜你想搜">
                             <div class="flex">
                               <el-input
-                                v-model="recommendPhoneForm.searchVal"
+                                v-model="searchVal"
                                 style="width: 310px"
                                 clearable
+                                @clear="searchVal = ''"
                               >
                               </el-input>
                               <el-button
                                 icon="el-icon-refresh"
                                 class="m-l-sm"
+                                @click="getSearchData()"
                               ></el-button>
                             </div>
                           </el-form-item>
                         </el-form>
                       </el-col>
                       <el-col :span="12">
-                        <el-form
-                          :model="recommendPhoneForm"
-                          label-width="80px"
-                          label-position="top"
-                        >
+                        <el-form label-width="80px" label-position="top">
                           <el-form-item label="添加数据">
                             <el-select
-                              v-model="recommendPhoneForm.addVal"
+                              v-model="addVal"
                               placeholder="请选择"
                               style="width: 310px"
                             >
@@ -1132,7 +1122,7 @@
                       <div class="flex">
                         <el-input
                           placeholder="输入文章链接 (自动分析)"
-                          v-model="recommendPhoneForm.searchArticle"
+                          v-model="searchArticle"
                           clearable
                         >
                         </el-input>
@@ -1144,178 +1134,188 @@
                     <div class="items-form m-t-md">
                       <div class="label-title">列表设置</div>
                       <div class="feed-items">
-                        <draggable v-model="list">
-                          <div class="feed-item editor">
-                            <div class="header">
-                              <svg
-                                t="1605685614022"
-                                class="icon handle"
-                                viewBox="0 0 1024 1024"
-                                version="1.1"
-                                xmlns="http://www.w3.org/2000/svg"
-                                p-id="7208"
-                                width="16"
-                                height="16"
-                              >
-                                <path
-                                  d="M720 960c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74s64.3-5.6 87.2 17.2c22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-384c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74s64.3-5.6 87.2 17.2c22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-352c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4zM336 960c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-384c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-352c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z"
-                                  fill="#4A4C5B"
-                                  p-id="7209"
-                                ></path>
-                              </svg>
-                              <span class="title">自定义数据设置</span>
-                              <span class="feed-edit-clean">清空</span>
-                            </div>
-                            <div class="editor-wrap m-t-xs">
-                              <el-input
-                                v-model="recommendPhoneAdd.title"
-                                placeholder="标题"
-                              ></el-input>
-                              <el-row
-                                class="m-t-sm"
-                                style="margin-left: -5px; margin-right: -5px"
-                              >
-                                <el-col
-                                  :span="8"
-                                  style="padding-left: 5px; padding-right: 5px"
+                        <vuedraggable v-model="recommendList">
+                          <div v-for="(el, i) in recommendList" :key="i">
+                            <div class="feed-item editor" v-if="el.defalte">
+                              <div class="header">
+                                <svg
+                                  t="1605685614022"
+                                  class="icon handle"
+                                  viewBox="0 0 1024 1024"
+                                  version="1.1"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  p-id="7208"
+                                  width="16"
+                                  height="16"
                                 >
-                                  <div class="form-item">
-                                    <div class="label">媒体名称</div>
-                                    <div class="b">
-                                      <el-input
-                                        v-model="recommendPhoneAdd.source"
-                                        placeholder="媒体"
-                                        clearable
-                                      ></el-input>
-                                    </div>
-                                  </div>
-                                </el-col>
-                                <el-col
-                                  :span="8"
-                                  style="padding-left: 5px; padding-right: 5px"
-                                  ><div class="form-item">
-                                    <div class="label">评论数</div>
-                                    <div class="b">
-                                      <el-input
-                                        v-model="
-                                          recommendPhoneAdd.comment_count
-                                        "
-                                        placeholder="评论数"
-                                        clearable
-                                      ></el-input>
-                                    </div></div
-                                ></el-col>
-                                <el-col
-                                  :span="8"
-                                  style="padding-left: 5px; padding-right: 5px"
-                                  ><div class="form-item">
-                                    <div class="label">发布时间</div>
-                                    <div class="b">
-                                      <el-input
-                                        v-model="recommendPhoneAdd.publish_time"
-                                        placeholder="例：2020-09-12 12:00:00"
-                                        clearable
-                                      ></el-input>
-                                    </div></div
-                                ></el-col>
-                              </el-row>
-                              <div class="type-select m-t-sm">
+                                  <path
+                                    d="M720 960c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74s64.3-5.6 87.2 17.2c22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-384c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74s64.3-5.6 87.2 17.2c22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-352c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4zM336 960c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-384c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-352c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z"
+                                    fill="#4A4C5B"
+                                    p-id="7209"
+                                  ></path>
+                                </svg>
+                                <span class="title">自定义数据设置</span>
+                                <span class="feed-edit-clean">清空</span>
+                              </div>
+                              <div class="editor-wrap m-t-xs">
+                                <el-input
+                                  v-model="recommendPhoneAdd.title"
+                                  placeholder="标题"
+                                ></el-input>
                                 <el-row
-                                  style="
-                                    margin-left: -7.5px;
-                                    margin-right: -7.5px;
-                                  "
+                                  class="m-t-sm"
+                                  style="margin-left: -5px; margin-right: -5px"
                                 >
                                   <el-col
-                                    :span="5"
+                                    :span="8"
                                     style="
-                                      padding-left: 7.5px;
-                                      padding-right: 7.5px;
+                                      padding-left: 5px;
+                                      padding-right: 5px;
                                     "
                                   >
-                                    <div class="options-wrap">
-                                      <div class="side-menu">
-                                        <div
-                                          :class="[
-                                            toggleVideoType === 1
-                                              ? 'active'
-                                              : '',
-                                            'item',
-                                          ]"
-                                          @click="toggleVideoType = 1"
-                                        >
-                                          文章（单图）
-                                        </div>
-                                        <div
-                                          :class="[
-                                            toggleVideoType === 2
-                                              ? 'active'
-                                              : '',
-                                            'item',
-                                          ]"
-                                          @click="toggleVideoType = 2"
-                                        >
-                                          文章（多图）
-                                        </div>
-                                        <div
-                                          :class="[
-                                            toggleVideoType === 3
-                                              ? 'active'
-                                              : '',
-                                            'item',
-                                          ]"
-                                          @click="toggleVideoType = 3"
-                                        >
-                                          视频 / 文章无图
-                                        </div>
+                                    <div class="form-item">
+                                      <div class="label">媒体名称</div>
+                                      <div class="b">
+                                        <el-input
+                                          v-model="recommendPhoneAdd.source"
+                                          placeholder="媒体"
+                                          clearable
+                                        ></el-input>
                                       </div>
                                     </div>
                                   </el-col>
                                   <el-col
-                                    :span="19"
+                                    :span="8"
                                     style="
-                                      padding-left: 7.5px;
-                                      padding-right: 7.5px;
+                                      padding-left: 5px;
+                                      padding-right: 5px;
+                                    "
+                                    ><div class="form-item">
+                                      <div class="label">评论数</div>
+                                      <div class="b">
+                                        <el-input
+                                          v-model="
+                                            recommendPhoneAdd.comment_count
+                                          "
+                                          placeholder="评论数"
+                                          clearable
+                                        ></el-input>
+                                      </div></div
+                                  ></el-col>
+                                  <el-col
+                                    :span="8"
+                                    style="
+                                      padding-left: 5px;
+                                      padding-right: 5px;
+                                    "
+                                    ><div class="form-item">
+                                      <div class="label">发布时间</div>
+                                      <div class="b">
+                                        <el-input
+                                          v-model="
+                                            recommendPhoneAdd.publish_time
+                                          "
+                                          placeholder="例：2020-09-12 12:00:00"
+                                          clearable
+                                        ></el-input>
+                                      </div></div
+                                  ></el-col>
+                                </el-row>
+                                <div class="type-select m-t-sm">
+                                  <el-row
+                                    style="
+                                      margin-left: -7.5px;
+                                      margin-right: -7.5px;
                                     "
                                   >
-                                    <div class="flex">
-                                      <div>
-                                        <el-upload
-                                          action="https://jsonplaceholder.typicode.com/posts/"
-                                          list-type="picture-card"
-                                          :on-preview="handlePictureCardPreview"
-                                          :on-remove="handleRemove"
-                                        >
-                                          <i class="el-icon-plus"></i>
-                                        </el-upload>
-                                      </div>
-                                      <div
-                                        class="video-duration m-l-xs"
-                                        v-if="toggleVideoType === 3"
-                                      >
-                                        <div class="label">视频时长</div>
-                                        <div class="b">
-                                          <el-input
-                                            placeholder="例：12:24"
-                                            v-model="
-                                              recommendPhoneAdd.video_time
-                                            "
-                                            clearable
+                                    <el-col
+                                      :span="5"
+                                      style="
+                                        padding-left: 7.5px;
+                                        padding-right: 7.5px;
+                                      "
+                                    >
+                                      <div class="options-wrap">
+                                        <div class="side-menu">
+                                          <div
+                                            :class="[
+                                              toggleVideoType === 1
+                                                ? 'active'
+                                                : '',
+                                              'item',
+                                            ]"
+                                            @click="toggleVideoType = 1"
                                           >
-                                          </el-input>
+                                            文章（单图）
+                                          </div>
+                                          <div
+                                            :class="[
+                                              toggleVideoType === 2
+                                                ? 'active'
+                                                : '',
+                                              'item',
+                                            ]"
+                                            @click="toggleVideoType = 2"
+                                          >
+                                            文章（多图）
+                                          </div>
+                                          <div
+                                            :class="[
+                                              toggleVideoType === 3
+                                                ? 'active'
+                                                : '',
+                                              'item',
+                                            ]"
+                                            @click="toggleVideoType = 3"
+                                          >
+                                            视频 / 文章无图
+                                          </div>
                                         </div>
                                       </div>
-                                    </div>
-                                  </el-col>
-                                </el-row>
+                                    </el-col>
+                                    <el-col
+                                      :span="19"
+                                      style="
+                                        padding-left: 7.5px;
+                                        padding-right: 7.5px;
+                                      "
+                                    >
+                                      <div class="flex">
+                                        <div>
+                                          <el-upload
+                                            action="https://jsonplaceholder.typicode.com/posts/"
+                                            list-type="picture-card"
+                                            :on-preview="
+                                              handlePictureCardPreview
+                                            "
+                                            :on-remove="handleRemove"
+                                          >
+                                            <i class="el-icon-plus"></i>
+                                          </el-upload>
+                                        </div>
+                                        <div
+                                          class="video-duration m-l-xs"
+                                          v-if="toggleVideoType === 3"
+                                        >
+                                          <div class="label">视频时长</div>
+                                          <div class="b">
+                                            <el-input
+                                              placeholder="例：12:24"
+                                              v-model="
+                                                recommendPhoneAdd.video_time
+                                              "
+                                              clearable
+                                            >
+                                            </el-input>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </el-col>
+                                  </el-row>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div
-                            v-for="(el, i) in recommendPhoneForm.recommendList"
-                            :key="i"
-                          >
-                            <div class="feed-item normal">
+                            <div class="feed-item normal" v-else>
                               <div class="l">
                                 <svg
                                   t="1605685614022"
@@ -1336,7 +1336,10 @@
                                 <span class="title">{{ el.title }}</span>
                               </div>
                               <div class="r flex">
-                                <div class="button-link">
+                                <div
+                                  class="button-link"
+                                  @click="refreshRecommendItem(i)"
+                                >
                                   <svg
                                     t="1605685679082"
                                     class="icon"
@@ -1359,7 +1362,10 @@
                                     ></path>
                                   </svg>
                                 </div>
-                                <div class="button-link">
+                                <div
+                                  class="button-link"
+                                  @click="deleteRecommendItem(i)"
+                                >
                                   <svg
                                     t="1605685700299"
                                     class="icon"
@@ -1385,7 +1391,7 @@
                               </div>
                             </div>
                           </div>
-                        </draggable>
+                        </vuedraggable>
                       </div>
                     </div>
                   </div>
@@ -1438,7 +1444,7 @@ import { generateRandomNum, randomNum } from "@/utils/index";
 import { mapGetters } from "vuex";
 import { saveAs } from "filesaver.js-npm";
 import html2canvas from "html2canvas";
-import draggable from "vuedraggable";
+import vuedraggable from "vuedraggable";
 import { recommendNav } from "@/utils/staticData";
 import { getTouTiaoData, getTouTiaoRecommend } from "@/api/data";
 
@@ -1448,7 +1454,7 @@ export default {
     ...mapGetters(["name"]),
   },
   components: {
-    draggable,
+    vuedraggable,
   },
   data() {
     return {
@@ -1471,18 +1477,24 @@ export default {
         "小米5C",
         "小米 play",
       ],
-      recommendPhoneForm: {
-        equipmentType: "小米 6",
-        equipmentElectricity: 45,
-        equipmentTime: "",
-        fileName: "",
-        searchVal: "",
-        addVal: "",
-        searchArticle: "",
-        recommendList: [],
-        recommendData: [],
-        searchData: {},
-      },
+      equipmentType: "小米 6",
+      equipmentElectricity: 45,
+      equipmentTime: "",
+      fileName: "",
+      searchVal: "",
+      addVal: "",
+      searchArticle: "",
+      recommendList: [
+        {
+          defalte: true,
+          title: "",
+          source: "",
+          comment_count: "",
+          publish_time: "",
+        }
+      ],
+      recommendData: [],
+      searchData: {},
       recommendPhoneAdd: {
         title: "",
         source: "",
@@ -1509,22 +1521,6 @@ export default {
       // articleForm: {
       //   searchArticle: "",
       // }, //智能分析
-      list: [
-        {
-          default: 1,
-          title: "",
-          mediaName: "",
-          comments: null,
-          releaseTime: "",
-          mediaType: 1,
-          imgList: [
-            "https://cdn.biio.cn/platform/app/never/recommend/record/2020-11-18/20201118152438_TAoI2.png",
-          ],
-          video:
-            "https://cdn.biio.cn/platform/app/never/recommend/record/2020-11-18/20201118152438_TAoI2.png",
-          videoTime: "",
-        },
-      ],
       toggleVideoType: 1,
       activeIndex: 1,
       editorStatus: false,
@@ -1533,34 +1529,60 @@ export default {
       exportImgStatus: false,
       loading: false,
       indexList: new Array(5).fill(),
+      firstNum: 0,
     };
   },
   created() {
     // this.init();
   },
   methods: {
+    // 刷新推荐数据（某一个）
+    async refreshRecommendItem(i) {
+      let fillData = await this.getFileData();
+      // 数据类型 1=视频，2=多图，3=单图
+      let dataType = null;
+      // 数据项
+      let item = this.recommendList[i];
+      if (item.has_video) {
+        dataType = 1;
+      } else if (item.has_image && item.image_list) {
+        dataType = 2;
+      } else if (item.has_image && !item.image_list) {
+        dataType = 3;
+      }
+      let list = this.recommendData.filter((el) => {
+        if (dataType === 1 && el.has_video) {
+          return el;
+        } else if (dataType === 2 && el.has_image && el.image_list) {
+          return el;
+        } else if (dataType === 3 && el.has_image && !el.image_list) {
+          return el;
+        }
+      });
+      console.log("刷新之后的data——————————————1", list);
+      this.$set(this.recommendList, i, list[0]);
+      // this.recommendList[i] = list[0]
+    },
+    // 删除推荐数据（某一个）
+    deleteRecommendItem(i) {
+      this.recommendList.splice(i, 1);
+    },
     async generateData() {
       // debugger
-      console.log(
-        "this.recommendPhoneForm.searchData——————————————————————————————————1",
-        this.recommendPhoneForm.searchData
-      );
       this.loading = true;
       let fillData = await this.getFileData();
       let searchData = await this.getSearchData();
       this.loading = false;
-      console.log(
-        "this.recommendPhoneForm.searchData————————————————————————————————————2",
-        this.recommendPhoneForm.searchData
-      );
-      this.formatFillData();
-      this.recommendPhoneForm.searchVal = this.recommendPhoneForm.searchData.homepage_search_suggest;
+      if(this.firstNum===0){
+         this.recommendList.push(...this.recommendData.slice(10, 15));
+      }else{
+         this.recommendList.splice(1,6,...this.recommendData.slice(10, 15));
+      }
+      this.firstNum++;
     },
     formatFillData() {
       if (Array.from(new Set(this.indexList)).length === 5) {
-        this.recommendPhoneForm.recommendList = this.indexList.map(
-          (el) => this.recommendPhoneForm.recommendData[el]
-        );
+        this.recommendList = this.indexList.map((el) => this.recommendData[el]);
         this.indexList = new Array(5).fill();
         return;
       }
@@ -1570,9 +1592,7 @@ export default {
         this.indexList = new Array(5).fill();
         this.formatFillData();
       } else {
-        this.recommendPhoneForm.recommendList = this.indexList.map(
-          (el) => this.recommendPhoneForm.recommendData[el]
-        );
+        this.recommendList = this.indexList.map((el) => this.recommendData[el]);
         this.indexList = new Array(5).fill();
         return;
       }
@@ -1588,9 +1608,10 @@ export default {
       return new Promise(function (resolve, reject) {
         getTouTiaoData().then((res) => {
           if (res.data.message === "success") {
-            that.recommendPhoneForm.recommendData = res.data.data.map((el) =>
-              JSON.parse(el.content)
-            );
+            that.recommendData = res.data.data
+              .map((el) => JSON.parse(el.content))
+              .slice(2);
+            that.recommendData.unshift();
             resolve(res);
           } else {
             reject("请求错误");
@@ -1603,7 +1624,8 @@ export default {
       return new Promise(function (resolve, reject) {
         getTouTiaoRecommend().then((res) => {
           if (res.data.message === "success") {
-            that.recommendPhoneForm.searchData = res.data.data;
+            that.searchData = res.data.data;
+            that.searchVal = that.searchData.homepage_search_suggest;
             resolve(res);
           } else {
             reject("请求错误");
