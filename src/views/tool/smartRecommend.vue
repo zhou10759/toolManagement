@@ -446,7 +446,7 @@
                                         />
                                       </div>
                                       <div class="duration">
-                                        {{ el.video_duration }}
+                                        {{ el.video_duration | parseVideoTime }}
                                       </div>
                                     </div>
                                     <div class="other">
@@ -456,7 +456,7 @@
                                           {{ el.comment_count }}评论
                                         </div>
                                         <div class="time">
-                                          {{ el.publish_time }}
+                                          {{ el.publish_time | formatReleaseTime }}
                                         </div>
                                       </div>
                                       <div>
@@ -1005,7 +1005,11 @@
                           @click="generateData()"
                           >一键填充/刷新</el-button
                         >
-                        <el-button type="danger" style="width: 49%" plain
+                        <el-button
+                          type="danger"
+                          style="width: 49%"
+                          plain
+                          @click="deleteRecommendData()"
                           >清空所有</el-button
                         >
                       </div>
@@ -1075,13 +1079,16 @@
                             >
                               <el-option
                                 v-for="item in addFormList"
-                                :key="item"
-                                :label="item"
-                                :value="item"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value"
                               >
                               </el-option>
                             </el-select>
-                            <el-button type="primary" class="m-l-sm"
+                            <el-button
+                              type="primary"
+                              class="m-l-sm"
+                              @click="addRecommendData()"
                               >添加</el-button
                             >
                           </el-form-item>
@@ -1440,7 +1447,7 @@
 </template>
 
 <script>
-import { generateRandomNum, randomNum } from "@/utils/index";
+import { generateRandomNum, randomNum ,formatVideoTime,handlePublishTimeDesc} from "@/utils/index";
 import { mapGetters } from "vuex";
 import { saveAs } from "filesaver.js-npm";
 import html2canvas from "html2canvas";
@@ -1482,7 +1489,7 @@ export default {
       equipmentTime: "",
       fileName: "",
       searchVal: "",
-      addVal: "",
+      addVal: 0,
       searchArticle: "",
       recommendList: [
         {
@@ -1491,7 +1498,7 @@ export default {
           source: "",
           comment_count: "",
           publish_time: "",
-        }
+        },
       ],
       recommendData: [],
       searchData: {},
@@ -1517,7 +1524,12 @@ export default {
       // addDataForm: {
       //   addVal: "",
       // }, //添加数据
-      addFormList: ["任意类型", "文档 (单图)", "文章 (多图)", "视频"],
+      addFormList: [
+        { label: "任意类型", value: 0 },
+        { label: "文档 (单图)", value: 1 },
+        { label: "文章 (多图)", value: 2 },
+        { label: "视频", value: 3 },
+      ],
       // articleForm: {
       //   searchArticle: "",
       // }, //智能分析
@@ -1532,10 +1544,42 @@ export default {
       firstNum: 0,
     };
   },
+  filters:{
+    parseVideoTime(val){
+      return formatVideoTime(val)
+    },
+    formatReleaseTime(val){
+      return handlePublishTimeDesc(new Date()-new Date(val))
+    }
+  },
   created() {
     // this.init();
   },
   methods: {
+    //添加推荐数据 单条
+    async addRecommendData() {
+      let fillData = await this.getFileData();
+      let list = this.recommendData.filter((el) => {
+        if (this.addVal === 3 && el.has_video) {
+          return el;
+        } else if (this.addVal === 2 && el.has_image && el.image_list) {
+          return el;
+        } else if (this.addVal === 1 && el.has_image && !el.image_list) {
+          return el;
+        }else if(this.addVal === 0){
+          return this.recommendData[0]
+        }
+      });
+      this.recommendList.push(list[0])
+      //  this.$set(this.recommendList, i, list[0]);
+    },
+    //删除所有推荐数据
+    deleteRecommendData() {
+      if (this.recommendList.length > 1) {
+        this.recommendList.splice(1, this.recommendList.length);
+        this.searchVal = "";
+      }
+    },
     // 刷新推荐数据（某一个）
     async refreshRecommendItem(i) {
       let fillData = await this.getFileData();
@@ -1559,9 +1603,7 @@ export default {
           return el;
         }
       });
-      console.log("刷新之后的data——————————————1", list);
       this.$set(this.recommendList, i, list[0]);
-      // this.recommendList[i] = list[0]
     },
     // 删除推荐数据（某一个）
     deleteRecommendItem(i) {
@@ -1573,10 +1615,10 @@ export default {
       let fillData = await this.getFileData();
       let searchData = await this.getSearchData();
       this.loading = false;
-      if(this.firstNum===0){
-         this.recommendList.push(...this.recommendData.slice(10, 15));
-      }else{
-         this.recommendList.splice(1,6,...this.recommendData.slice(10, 15));
+      if (this.firstNum === 0) {
+        this.recommendList.push(...this.recommendData.slice(10, 15));
+      } else {
+        this.recommendList.splice(1, 6, ...this.recommendData.slice(10, 15));
       }
       this.firstNum++;
     },
