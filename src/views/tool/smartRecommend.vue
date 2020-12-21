@@ -504,7 +504,7 @@
                                           {{ el.comment_count }}评论
                                         </div>
                                         <div class="time">
-                                          {{ el.publish_time }}
+                                           {{ el.publish_time | formatReleaseTime }}
                                         </div>
                                       </div>
                                       <div>
@@ -547,7 +547,7 @@
                                           {{ el.comment_count }}评论
                                         </div>
                                         <div class="time">
-                                          {{ el.publish_time }}
+                                          {{ el.publish_time | formatReleaseTime }}
                                         </div>
                                       </div>
                                       <div>
