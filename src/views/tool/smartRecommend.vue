@@ -310,7 +310,7 @@
                             <rect
                               x="5"
                               y="22"
-                              width="19.35"
+                              :width="equipmentElectricity / 2"
                               height="20"
                               rx="1"
                               fill="currentColor"
@@ -324,9 +324,13 @@
                               rx="2"
                               fill="currentColor"
                             ></rect>
-                            <text x="20" y="38" fill="currentColor">45</text>
+                            <text x="20" y="38" fill="currentColor">
+                              {{ equipmentElectricity }}
+                            </text>
                           </svg>
-                          <div class="icon-text"><span>14:11</span></div>
+                          <div class="icon-text">
+                            <span>{{ equipmentTime }}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -406,10 +410,190 @@
                           <template v-if="recommendList.length > 0">
                             <div v-for="(el, i) in recommendList" :key="i">
                               <div class="item toutiao-item" v-if="el.defalte">
-                                <div class="recommend-placeholder-item">
+                                <div
+                                  class="recommend-placeholder-item"
+                                  v-if="!recommendPhoneAdd.title"
+                                >
                                   <span class="recommend-placeholder-title"
                                     >数据模拟区域</span
                                   >
+                                </div>
+                                <div v-else>
+                                  <template v-if="toggleVideoType===3">
+                                    <div class="toutiao-video-a">
+                                      <p class="title">{{ recommendPhoneAdd.title }}</p>
+                                      <div class="video">
+                                        <div class="icon">
+                                          <svg
+                                            t="1608021142883"
+                                            class="icon video-play"
+                                            viewBox="0 0 1024 1024"
+                                            version="1.1"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            p-id="3153"
+                                            width="32"
+                                            height="32"
+                                          >
+                                            <path
+                                              d="M264.900046 16.846187l606.765887 387.380928c75.069986 47.869991 75.069986 167.674969 0 215.54596l-606.702887 387.379928c-75.133986 47.870991-168.954969-12.029998-168.954969-107.83598V124.683167c0-95.869982 93.820983-155.706971 168.890969-107.83698z"
+                                              p-id="3154"
+                                              fill="#ffffff"
+                                            ></path>
+                                          </svg>
+                                        </div>
+                                        <div v-loading="loading">
+                                          <img
+                                            :src="
+                                              recommendPhoneAdd.source_list[0]
+                                            "
+                                            alt=""
+                                            style="display: block"
+                                          />
+                                        </div>
+                                        <div class="duration">
+                                          {{
+                                            recommendPhoneAdd.video_duration
+                                          }}
+                                        </div>
+                                      </div>
+                                      <div class="other">
+                                        <div class="l">
+                                          <div class="user">
+                                            {{ recommendPhoneAdd.source }}
+                                          </div>
+                                          <div class="comment">
+                                            {{ recommendPhoneAdd.comment_count }}评论
+                                          </div>
+                                          <div class="time">
+                                            {{
+                                              recommendPhoneAdd.publish_time | addFormatReleaseTime
+                                            }}
+                                          </div>
+                                        </div>
+                                        <div>
+                                          <svg
+                                            t="1608021653919"
+                                            class="icon close-btn"
+                                            viewBox="0 0 1024 1024"
+                                            version="1.1"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            p-id="4116"
+                                            width="32"
+                                            height="32"
+                                          >
+                                            <path
+                                              d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
+                                              fill="#cdcdcd"
+                                              p-id="4117"
+                                            ></path>
+                                          </svg>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </template>
+                                  <template
+                                    v-if="toggleVideoType===2"
+                                  >
+                                    <div class="toutiao-article-b">
+                                      <p class="title">{{ recommendPhoneAdd.title }}</p>
+                                      <div class="pics">
+                                        <div
+                                          v-loading="loading"
+                                          class="img"
+                                          v-for="(c_el, c_i) in recommendPhoneAdd.source_list"
+                                          :key="c_i"
+                                        >
+                                          <img
+                                            :src="c_el.url"
+                                            alt=""
+                                            style="display: block"
+                                          />
+                                        </div>
+                                      </div>
+                                      <div class="other">
+                                        <div class="l">
+                                          <div class="user">
+                                            {{ recommendPhoneAdd.source }}
+                                          </div>
+                                          <div class="comment">
+                                            {{ recommendPhoneAdd.comment_count }}评论
+                                          </div>
+                                          <div class="time">
+                                            {{
+                                              recommendPhoneAdd.publish_time | addFormatReleaseTime
+                                            }}
+                                          </div>
+                                        </div>
+                                        <div>
+                                          <svg
+                                            t="1608021653919"
+                                            class="icon close-btn"
+                                            viewBox="0 0 1024 1024"
+                                            version="1.1"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            p-id="4116"
+                                            width="32"
+                                            height="32"
+                                          >
+                                            <path
+                                              d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
+                                              fill="#cdcdcd"
+                                              p-id="4117"
+                                            ></path>
+                                          </svg>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </template>
+                                  <template
+                                    v-if="toggleVideoType===1"
+                                  >
+                                    <div class="toutiao-article-a two">
+                                      <div class="info">
+                                        <p class="title">{{ recommendPhoneAdd.title }}</p>
+                                        <div v-loading="loading" class="pic">
+                                          <img
+                                            :src="recommendPhoneAdd.source_list[0]"
+                                            alt=""
+                                            style="display: block"
+                                          />
+                                        </div>
+                                      </div>
+                                      <div class="other">
+                                        <div class="l">
+                                          <div class="user">
+                                            {{ recommendPhoneAdd.source }}
+                                          </div>
+                                          <div class="comment">
+                                            {{ recommendPhoneAdd.comment_count }}评论
+                                          </div>
+                                          <div class="time">
+                                            {{
+                                              recommendPhoneAdd.publish_time | addFormatReleaseTime
+                                            }}
+                                          </div>
+                                        </div>
+                                        <div>
+                                          <svg
+                                            t="1608021653919"
+                                            class="icon close-btn"
+                                            viewBox="0 0 1024 1024"
+                                            version="1.1"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            p-id="4116"
+                                            width="32"
+                                            height="32"
+                                          >
+                                            <path
+                                              d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
+                                              fill="#cdcdcd"
+                                              p-id="4117"
+                                            ></path>
+                                          </svg>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </template>
                                 </div>
                               </div>
                               <div class="item toutiao-item" v-else>
@@ -456,7 +640,9 @@
                                           {{ el.comment_count }}评论
                                         </div>
                                         <div class="time">
-                                          {{ el.publish_time | formatReleaseTime }}
+                                          {{
+                                            el.publish_time | formatReleaseTime
+                                          }}
                                         </div>
                                       </div>
                                       <div>
@@ -504,7 +690,9 @@
                                           {{ el.comment_count }}评论
                                         </div>
                                         <div class="time">
-                                           {{ el.publish_time | formatReleaseTime }}
+                                          {{
+                                            el.publish_time | formatReleaseTime
+                                          }}
                                         </div>
                                       </div>
                                       <div>
@@ -547,7 +735,9 @@
                                           {{ el.comment_count }}评论
                                         </div>
                                         <div class="time">
-                                          {{ el.publish_time | formatReleaseTime }}
+                                          {{
+                                            el.publish_time | formatReleaseTime
+                                          }}
                                         </div>
                                       </div>
                                       <div>
@@ -1251,7 +1441,7 @@
                                                 : '',
                                               'item',
                                             ]"
-                                            @click="toggleVideoType = 1"
+                                            @click="toggleVideoType = 1;recommendPhoneAdd.source_list=[]"
                                           >
                                             文章（单图）
                                           </div>
@@ -1262,7 +1452,7 @@
                                                 : '',
                                               'item',
                                             ]"
-                                            @click="toggleVideoType = 2"
+                                            @click="toggleVideoType = 2;recommendPhoneAdd.source_list=[]"
                                           >
                                             文章（多图）
                                           </div>
@@ -1273,7 +1463,7 @@
                                                 : '',
                                               'item',
                                             ]"
-                                            @click="toggleVideoType = 3"
+                                            @click="toggleVideoType = 3;recommendPhoneAdd.source_list=[]"
                                           >
                                             视频 / 文章无图
                                           </div>
@@ -1447,7 +1637,12 @@
 </template>
 
 <script>
-import { generateRandomNum, randomNum ,formatVideoTime,handlePublishTimeDesc} from "@/utils/index";
+import {
+  generateRandomNum,
+  randomNum,
+  formatVideoTime,
+  handlePublishTimeDesc,
+} from "@/utils/index";
 import { mapGetters } from "vuex";
 import { saveAs } from "filesaver.js-npm";
 import html2canvas from "html2canvas";
@@ -1486,7 +1681,7 @@ export default {
       ],
       equipmentType: "小米 6",
       equipmentElectricity: 45,
-      equipmentTime: "",
+      equipmentTime: "16:01",
       fileName: "",
       searchVal: "",
       addVal: 0,
@@ -1496,8 +1691,9 @@ export default {
           defalte: true,
           title: "",
           source: "",
-          comment_count: "",
-          publish_time: "",
+          comment_count: 0,
+          publish_time: "2020-09-12 12:00:00",
+          video_duration: '01:00'
         },
       ],
       recommendData: [],
@@ -1505,12 +1701,11 @@ export default {
       recommendPhoneAdd: {
         title: "",
         source: "",
-        comment_count: "",
-        publish_time: "",
+        comment_count: 0,
+        publish_time: "2020-09-12 12:00:00",
         styleType: 1,
-        video_list: [],
-        video_time: "",
-        imgList: [],
+        source_list: [],
+        video_time: ""
       },
       // equipmentForm: {
       //   equipmentType: "小米 6",
@@ -1544,13 +1739,19 @@ export default {
       firstNum: 0,
     };
   },
-  filters:{
-    parseVideoTime(val){
-      return formatVideoTime(val)
+  watch: {
+    "recommendPhoneAdd.title": function (val, oldval) {},
+  },
+  filters: {
+    parseVideoTime(val) {
+      return formatVideoTime(val);
     },
-    formatReleaseTime(val){
-      return handlePublishTimeDesc(new Date()-new Date(val))
-    }
+    formatReleaseTime(val) {
+      return handlePublishTimeDesc(new Date() - new Date(val));
+    },
+    addFormatReleaseTime(val) {
+      return handlePublishTimeDesc(new Date(val));
+    },
   },
   created() {
     // this.init();
@@ -1566,11 +1767,11 @@ export default {
           return el;
         } else if (this.addVal === 1 && el.has_image && !el.image_list) {
           return el;
-        }else if(this.addVal === 0){
-          return this.recommendData[0]
+        } else if (this.addVal === 0) {
+          return this.recommendData[0];
         }
       });
-      this.recommendList.push(list[0])
+      this.recommendList.push(list[0]);
       //  this.$set(this.recommendList, i, list[0]);
     },
     //删除所有推荐数据
@@ -1687,8 +1888,9 @@ export default {
     toggle(val) {
       this.status = val;
     },
-    handlePictureCardPreview() {
-      //上传
+    handlePictureCardPreview(file) {
+      //上传 
+        this.recommendPhoneAdd.source_list.push(file.url);
     },
     handleRemove() {
       //删除

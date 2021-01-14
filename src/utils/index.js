@@ -182,10 +182,10 @@ export function handlePublishTimeDesc(post_modified) {
     return exceedyear + '年前';
   } else {
     if (exceedmonth < 12 && exceedmonth > 0) {
-      return exceedmonth + '月前';
+      return exceedmonth + '个月前';
     } else {
       if (exceedWeek < 4 && exceedWeek > 0) {
-        return exceedWeek + '星期前';
+        return exceedWeek + '个星期前';
       } else {
         if (exceedDay < 7 && exceedDay > 0) {
           return exceedDay + '天前';
