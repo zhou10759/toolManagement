@@ -23,20 +23,17 @@
             </div>
             <div class="main">
               <!-- 账号登录 -->
-              <div
-                v-if="type !=3"
-                class="from-block"
-              >
+              <div v-if="type != 3" class="from-block">
                 <div class="title text-center" v-if="type === 1 || type === 2">
                   用户登录
                 </div>
                 <div class="title text-center m-b-md" v-else-if="type === 4">
                   用户注册
                 </div>
-                 <div class="title text-center m-b-md" v-else-if="type === 5">
+                <div class="title text-center m-b-md" v-else-if="type === 5">
                   重置密码
                 </div>
-                 <div class="title text-center m-b-md" v-else-if="type === 6">
+                <div class="title text-center m-b-md" v-else-if="type === 6">
                   管理员登录
                 </div>
                 <div class="switch-bar" v-if="type === 1 || type === 2">
@@ -64,7 +61,7 @@
                   label-position="left"
                   v-if="type !== 3"
                 >
-                   <el-form-item prop="phone" >
+                  <el-form-item prop="phone">
                     <span class="svg-container">
                       <svg-icon icon-class="user" />
                     </span>
@@ -78,7 +75,10 @@
                       auto-complete="on"
                     />
                   </el-form-item>
-                  <el-form-item prop="password" v-if="type===1||type===4||type===5">
+                  <el-form-item
+                    prop="password"
+                    v-if="type === 1 || type === 4 || type === 5"
+                  >
                     <span class="svg-container">
                       <svg-icon icon-class="password" />
                     </span>
@@ -87,7 +87,7 @@
                       ref="password"
                       v-model="loginForm.password"
                       :type="passwordType"
-                      :placeholder="type===5?'新密码': '密码'"
+                      :placeholder="type === 5 ? '新密码' : '密码'"
                       name="password"
                       tabindex="2"
                       auto-complete="on"
@@ -101,7 +101,10 @@
                       />
                     </span>
                   </el-form-item>
-                  <el-form-item prop="uPassword" v-if="type===4||type===5">
+                  <el-form-item
+                    prop="uPassword"
+                    v-if="type === 4 || type === 5"
+                  >
                     <span class="svg-container">
                       <svg-icon icon-class="password" />
                     </span>
@@ -124,7 +127,7 @@
                       />
                     </span>
                   </el-form-item>
-                  <el-form-item prop="code" v-if="type!==1">
+                  <el-form-item prop="code" v-if="type !== 1">
                     <span class="svg-container">
                       <svg-icon icon-class="password" />
                     </span>
@@ -145,17 +148,24 @@
                       }}</el-button>
                     </span>
                   </el-form-item>
-                  <p class="agreement text-center" v-if="type===1||type===2||type===4">
-                    <span v-if="type===4">注册即表示同意</span>
+                  <p
+                    class="agreement text-center"
+                    v-if="type === 1 || type === 2 || type === 4"
+                  >
+                    <span v-if="type === 4">注册即表示同意</span>
                     <span v-else>登录即表示同意</span
-                    ><a href="https://www.biio.cn/protocol.html" class="link m-l-xxxs">用户协议</a>
+                    ><a
+                      href="https://www.biio.cn/protocol.html"
+                      class="link m-l-xxxs"
+                      >用户协议</a
+                    >
                   </p>
                   <el-button
                     :loading="loading"
                     type="primary"
                     style="width: 100%; margin-top: 3.25em"
                     @click.native.prevent="handleLogin"
-                    >{{type===4?'注册':'登录'}}</el-button
+                    >{{ type === 4 ? "注册" : "登录" }}</el-button
                   >
                 </el-form>
               </div>
@@ -192,9 +202,16 @@
                 </div>
               </div>
             </div>
-            <div class="footer" v-if="type === 1 || type === 2 || type === 4||type === 5">
+            <div
+              class="footer"
+              v-if="type === 1 || type === 2 || type === 4 || type === 5"
+            >
               <!---->
-              <div class="link active" @click="type = 1" v-if="type === 4||type === 5">
+              <div
+                class="link active"
+                @click="type = 1"
+                v-if="type === 4 || type === 5"
+              >
                 立即登录
               </div>
               <div class="link active" @click="type = 4" v-else>立即注册</div>
@@ -203,7 +220,7 @@
               </div>
               <div
                 class="link"
-                v-if="type === 2 || type === 4|| type === 5"
+                v-if="type === 2 || type === 4 || type === 5"
                 @click="dialogVisible = true"
               >
                 收不到验证码?
@@ -255,12 +272,12 @@
 
 <script>
 import { validUsername } from "@/utils/validate";
-
+import { register, sendMessage } from "@/api/user";
 export default {
   name: "Login",
   data() {
     const validatePhone = (rule, value, callback) => {
-      if (!( /^[1][3,4,5,7,8,9][0-9]{9}$/.test(value))) {
+      if (!/^[1][3,4,5,7,8,9][0-9]{9}$/.test(value)) {
         callback(new Error("未知的手机号格式"));
       } else {
         callback();
@@ -275,9 +292,9 @@ export default {
     };
     return {
       loginForm: {
-        phone: "18268186295",
-        username: "admin",
-        password: "111111",
+        phone: "17612714215",
+        username: "17612714215",
+        password: "123456",
         uPassword: "",
         code: "",
       },
@@ -351,29 +368,49 @@ export default {
     getCode() {
       let that = this;
       if (this.timer) return;
-      that.timer = setInterval(() => {
-        that.seconds = --that.seconds;
-        if (that.seconds === 0) {
-          clearInterval(that.timer);
-          that.timer = null;
-          that.seconds = 60;
-          return;
-        }
-      }, 1000);
+      sendMessage({
+        phoneNumber: that.loginForm.phone,
+      }).then((res) => {
+        console.log("发送验证码返回的数据————————————", res);
+        that.timer = setInterval(() => {
+          that.seconds = --that.seconds;
+          if (that.seconds === 0) {
+            clearInterval(that.timer);
+            that.timer = null;
+            that.seconds = 60;
+            return;
+          }
+        }, 1000);
+      });
     },
     handleLogin() {
+      let that = this;
       this.$refs.loginForm.validate((valid) => {
         if (valid) {
-          this.loading = true;
-          this.$store
-            .dispatch("user/login", this.loginForm)
-            .then(() => {
-              this.$router.push({ path: this.redirect || "/" });
-              this.loading = false;
-            })
-            .catch(() => {
-              this.loading = false;
+          if (that.type === 4) {
+            //注册
+            register({
+              userPhone: that.loginForm.phone,
+              password: that.loginForm.password,
+              confirmPassword: that.loginForm.uPassword,
+              phoneCode: that.loginForm.code,
+              userRole: 0,
+            }).then((res) => {
+              console.log("注册时候返回的数据————————————", res);
             });
+          } else if (that.type === 1) {
+            //账号登录
+            that.loading = true;
+            that.$store
+              .dispatch("user/login", that.loginForm)
+              .then(() => {
+                that.$router.push({ path: that.redirect || "/" });
+                that.loading = false;
+              })
+              .catch(() => {
+                that.loading = false;
+              });
+          }
         } else {
           console.log("error submit!!");
           return false;

@@ -36,8 +36,12 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    before: require('./mock/mock-server.js'),
+    // before: require('./mock/mock-server.js'),
     proxy: {  //配置跨域
+      '/biio': {
+        target: 'http://8.210.129.23:8080',  //这里后台的地址模拟的;应该填写你们真实的后台接口
+        changOrigin: true,  //允许跨域
+      },
       '/api': {
         target: 'https://api5-normal-c-lf.snssdk.com/',  //这里后台的地址模拟的;应该填写你们真实的后台接口
         changOrigin: true,  //允许跨域

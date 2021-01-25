@@ -1,9 +1,26 @@
 import request from '@/utils/request'
+// import qs from "qs"
+
+export function register(data) {
+  return request({
+    url: '/biio/user/register',
+    method: 'POST',
+    data
+  })
+}
+
+export function sendMessage(data) {
+  return request({
+    url: '/biio/user/sendMessage',
+    method: 'POST',
+    data
+  })
+}
 
 export function login(data) {
   return request({
-    url: '/vue-admin-template/user/login',
-    method: 'post',
+    url: '/biio/user/login',
+    method: 'POST',
     data
   })
 }
