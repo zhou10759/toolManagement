@@ -371,7 +371,7 @@ export default {
       sendMessage({
         phoneNumber: that.loginForm.phone,
       }).then((res) => {
-        console.log("发送验证码返回的数据————————————", res);
+        that.$message.success("发送成功");
         that.timer = setInterval(() => {
           that.seconds = --that.seconds;
           if (that.seconds === 0) {
@@ -396,11 +396,20 @@ export default {
               phoneCode: that.loginForm.code,
               userRole: 0,
             }).then((res) => {
-              console.log("注册时候返回的数据————————————", res);
+              that.$message.success("注册成功");
+              that.loginForm = {
+                phone: "",
+                username: "",
+                password: "",
+                uPassword: "",
+                code: "",
+              };
+              that.type = 1;
             });
-          } else if (that.type === 1) {
+          } else if (that.type === 1||that.type === 2) {
             //账号登录
             that.loading = true;
+            that.loginForm.type = that.type === 1?that.type: 0;
             that.$store
               .dispatch("user/login", that.loginForm)
               .then(() => {

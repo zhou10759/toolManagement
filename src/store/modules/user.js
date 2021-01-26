@@ -30,12 +30,22 @@ const mutations = {
 const actions = {
   // user login
   login({ commit }, userInfo) {
-    const { username, password } = userInfo
+    const { phone,username, password,type,code } = userInfo
+    let query  = {
+      phoneNumber: phone.trim(),
+      "userRole": 0,
+      type: type
+    }
+    if(type===0){
+      query.code = code
+    }else if(type===1){
+      query.password = password
+    }
     return new Promise((resolve, reject) => {
-      login({ phoneNumber: username.trim(), code: password,"type": 0,"userRole": 0 }).then(response => {
+      login(query).then(response => {
         const { data } = response
-        commit('SET_TOKEN', data.token)
-        setToken(data.token)
+        commit('SET_TOKEN', data.token||'')
+        setToken(data.token||'')
         resolve()
       }).catch(error => {
         reject(error)
