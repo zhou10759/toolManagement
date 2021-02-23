@@ -15,7 +15,7 @@
                   :index="i + 1 + ''"
                   v-for="(el, i) in barList"
                   :key="el.name"
-                  >{{ el.name }}</el-menu-item
+                  >{{ el.name }}1</el-menu-item
                 >
               </el-menu>
             </div>
@@ -120,7 +120,7 @@
         <div class="d2-container-full__body">
           <div class="app-recommend-wrap by-card-block h-100 front">
             <div id="recommend-canvas-wrap-front" class="canvas-wrap">
-              <div id="phone-data" class="device-wrap">
+              <div id="phone-data" class="device-wrap" v-if="status === 1">
                 <el-scrollbar style="height: 96%">
                   <div class="device" style="width: 432px; height: 768px">
                     <!-- 头部 -->
@@ -1135,7 +1135,7 @@
                     </div>
                     <!-- vivo 5 -->
                     <div
-                     v-if="equipmentType === 'vivo 5'"
+                      v-if="equipmentType === 'vivo 5'"
                       class="status-bar"
                       style="--icon-height: 26px; --icon-text-size: 14px"
                     >
@@ -1144,7 +1144,9 @@
                         style="padding: 4px 6px; color: white"
                       >
                         <div class="block left">
-                          <div class="icon-text"><span>{{ equipmentTime }}</span></div>
+                          <div class="icon-text">
+                            <span>{{ equipmentTime }}</span>
+                          </div>
                         </div>
                         <div class="block right">
                           <div class="icon-text m-r-xxs">
@@ -1270,13 +1272,15 @@
                             <rect
                               x="7"
                               y="22"
-                              :width="equipmentElectricity / 1.7"
+                              :width="equipmentElectricity / 1.7"
                               height="20"
                               rx="8.5"
                               fill="currentColor"
                               fill-opacity="0.5"
                             ></rect>
-                            <text x="26" y="38" fill="currentColor">{{ equipmentElectricity }}</text>
+                            <text x="26" y="38" fill="currentColor">
+                              {{ equipmentElectricity }}
+                            </text>
                           </svg>
                         </div>
                       </div>
@@ -2057,546 +2061,577 @@
                   </div>
                 </el-scrollbar>
               </div>
+              <div class="view-wrap" v-else-if="status === 2">
+                <el-scrollbar style="height: 100%">
+                  <div class="view">
+                    <div class="toutiao-app-back">
+                      <div class="header">
+                        <svg viewBox="0 0 77 27" xmlns="http://www.w3.org/2000/svg" class="logo"><path d="M57.63 7.27h13.5V5.13h-13.5v2.14zm-3.96 3.42V1.7h21.42v8.98H53.67zm-1.44 2.02h24.3v3.15h-16.6l-.57 2.03h16.27v1.84L74 27H57.63v-3.42H70.8l.5-2.27H54.94V19.6l1.03-3.74h-3.73v-3.15zM10.85 2.94v3.82l-8.6-1.23V1.7l8.6 1.23zm0 6.46v3.82l-8.6-1.23V8.17l8.6 1.23zm25.4 4.52h3.95v1.94h10.2v3.42H40.2V27h-3.96v-7.72H26.1v-3.42h10.14v-1.94zM17.56.86c-.1 7.28-.23 11.64-1.29 15h8.02v3.42h-9.6c-1.54 2.4-3.93 4.6-7.66 7.72H.94l.77-.63c3.75-3.07 6.34-5.18 8.09-7.09H0v-3.42h12.14c1.36-3.03 1.46-7.36 1.56-15h3.87zm-1.7 20.13h4.67L24.3 27h-4.67l-3.76-6zm26.1 0h4.68L50.4 27h-4.67l-3.75-6zM26.1 27l3.75-6h4.67l-3.75 6H26.1zm6.25-21.87c1.35.88 3.2 1.9 5.92 2.91a26.86 26.86 0 005.85-2.91H32.35zm18.05 9.62a75.48 75.48 0 01-12.24-2.93 72.21 72.21 0 01-12.06 2.92V11.1c2.63-.45 4.91-.93 6.9-1.44a30.5 30.5 0 01-4.6-2.91l-1.62-1.26L30.45 0l3.66 1.71h14.94v3.98c-1.1 1-2.78 2.43-5.69 3.93 2.02.52 4.34 1.02 7.04 1.48v3.65z" fill="#FF373C" fill-rule="evenodd"></path></svg>
+                        <div class="flex items-center">
+                          <div class="message flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon"><g fill="none"><path d="M0 0h20v20H0z"></path><path fill="currentColor" d="M18.75 2.5c.69 0 1.25.56 1.25 1.25v12.5c0 .69-.56 1.25-1.25 1.25H1.25C.56 17.5 0 16.94 0 16.25V3.75C0 3.06.56 2.5 1.25 2.5h17.5zm-.63 3.2l-7.46 7.46a.94.94 0 01-1.22.1l-.1-.1L1.88 5.7v9.93h16.25V5.7zM16.8 4.37H3.2l6.8 6.8 6.8-6.8z"></path></g></svg>
+                            <div class="test">消息</div>
+                            <div class="num"> 99+ </div>
+                          </div>
+                          <div class="user-info flex items-center">
+                            <div class="avatar" v-loading="">
+                              <img src="" alt="">
+                            </div>
+                            <div class="name"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="main"></div>
+                    </div>
+                  </div>
+                </el-scrollbar>
+              </div>
             </div>
-            <div class="tool-setting-wrap">
-              <div class="block block-device">
-                <div class="block_header">
-                  <div class="title">
-                    <svg
-                      t="1605598082965"
-                      class="icon"
-                      viewBox="0 0 1024 1024"
-                      version="1.1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      p-id="1884"
-                      width="16"
-                      height="16"
-                    >
-                      <path
-                        d="M351.988168 131.844817c-22.174022 0-45.686529 23.411199-45.686529 45.686529l0 639.606283c0 22.37459 24.00267 45.686529 45.686529 45.686529l319.803653 0c20.455891 0 45.685505-23.433712 45.685505-45.686529L717.477326 177.530322c0-22.397103-23.556509-45.686529-45.685505-45.686529M466.203466 177.530322l114.216321 0c12.625552 0 22.596647 5.097088 22.596647 11.432377 0 6.312776-11.912307 11.409864-22.596647 11.409864L443.360202 200.372563c-11.45489 0-22.508643-5.097088-22.508643-11.409864 0-6.335289 11.165294-11.432377 22.508643-11.432377L466.203466 177.530322zM512.06805 817.260425c-12.224416 0-23.155373-10.151197-23.155373-22.954805 0-12.805654 10.930957-23.010063 23.155373-23.010063 12.893658 0 22.833031 10.205433 22.833031 23.010063C534.901081 807.109228 524.961708 817.260425 512.06805 817.260425L512.06805 817.260425zM671.791821 725.764572l-319.803653 0L351.988168 246.059092l319.803653 0L671.791821 725.764572z"
-                        p-id="1885"
-                      ></path>
-                    </svg>
-                    <span>设备变量</span>
-                  </div>
-                </div>
-                <div class="block_main">
-                  <el-form
-                    :model="recommendPhoneAdd"
-                    label-width="80px"
-                    label-position="top"
-                  >
-                    <el-form-item label="设备类型">
-                      <el-select
-                        v-model="equipmentType"
-                        placeholder="请选择"
-                        style="width: 300px"
+            <div class="tool-setting-wrap" >
+              <template v-if="status === 1">
+                <div class="block block-device">
+                  <div class="block_header">
+                    <div class="title">
+                      <svg
+                        t="1605598082965"
+                        class="icon"
+                        viewBox="0 0 1024 1024"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        p-id="1884"
+                        width="16"
+                        height="16"
                       >
-                        <el-option
-                          v-for="item in equipmentTypeList"
-                          :key="item"
-                          :label="item"
-                          :value="item"
-                        >
-                        </el-option>
-                      </el-select>
-                      <el-button
-                        icon="el-icon-refresh"
-                        class="m-l-sm"
-                      ></el-button>
-                    </el-form-item>
-                    <el-form-item label="设备电量">
-                      <div class="flex">
-                        <el-input-number
-                          v-model="equipmentElectricity"
-                          controls-position="right"
-                          :min="1"
-                          :max="100"
-                          style="width: 300px; text-align: left"
-                        ></el-input-number>
-                        <el-button
-                          icon="el-icon-refresh"
-                          class="m-l-sm"
-                        ></el-button>
-                      </div>
-                    </el-form-item>
-                    <el-form-item label="设备时间">
-                      <div class="flex">
-                        <el-input
-                          type="text"
-                          v-model="equipmentTime"
-                          style="width: 300px"
-                        ></el-input>
-                        <el-button
-                          icon="el-icon-refresh"
-                          class="m-l-sm"
-                        ></el-button>
-                      </div>
-                    </el-form-item>
-                    <el-form-item label="文件名称">
-                      <div class="flex">
-                        <el-input
-                          v-model="fileName"
-                          style="width: 300px"
-                          clearable
-                        >
-                        </el-input>
-                        <el-button
-                          icon="el-icon-refresh"
-                          class="m-l-sm"
-                        ></el-button>
-                      </div>
-                    </el-form-item>
-                    <el-form-item label="快速操作">
-                      <div class="flex">
-                        <el-button
-                          type="primary"
-                          style="width: 49%"
-                          @click="generateData()"
-                          >一键填充/刷新</el-button
-                        >
-                        <el-button
-                          type="danger"
-                          style="width: 49%"
-                          plain
-                          @click="deleteRecommendData()"
-                          >清空所有</el-button
-                        >
-                      </div>
-                    </el-form-item>
-                  </el-form>
-                </div>
-              </div>
-              <div class="block block-data">
-                <div class="block_header">
-                  <div class="title">
-                    <svg
-                      t="1605604112096"
-                      class="icon"
-                      viewBox="0 0 1049 1024"
-                      version="1.1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      p-id="2764"
-                      width="16"
-                      height="16"
-                    >
-                      <path
-                        d="M954.313334 328.487676a44.569917 44.569917 0 0 0-44.569917 44.446796V824.912829A109.701094 109.701094 0 0 1 800.288566 934.983287H198.717807A109.824215 109.824215 0 0 1 88.893591 824.912829V221.618372a107.361789 107.361789 0 0 1 107.238668-107.238668h581.255741a44.446796 44.446796 0 0 0 0-88.893591H196.132259A196.255381 196.255381 0 0 0 0 221.618372v603.294457a198.96405 198.96405 0 0 0 198.717807 199.087171H800.288566A198.96405 198.96405 0 0 0 998.76013 824.912829V372.934472a44.446796 44.446796 0 0 0-44.446796-44.446796z"
-                        fill="#4D4D4D"
-                        p-id="2765"
-                      ></path>
-                      <path
-                        d="M1036.435253 13.173981a44.569917 44.569917 0 0 0-62.914993 0L571.036672 411.717687a44.446796 44.446796 0 0 0 62.668751 63.161236l402.360466-398.91307a43.338704 43.338704 0 0 0 13.173981-31.272815 44.077432 44.077432 0 0 0-12.804617-31.519057zM169.414933 775.664302A42.353733 42.353733 0 0 0 209.30624 819.864855h609.696766a44.693038 44.693038 0 0 0 0-88.893591H209.30624A42.353733 42.353733 0 0 0 169.414933 775.664302zM548.012985 519.571961H209.30624a44.693038 44.693038 0 0 0 0 88.893591h338.706745a44.693038 44.693038 0 0 0 0-88.893591z"
-                        fill="#4D4D4D"
-                        p-id="2766"
-                      ></path>
-                    </svg>
-                    <span>数据填充</span>
+                        <path
+                          d="M351.988168 131.844817c-22.174022 0-45.686529 23.411199-45.686529 45.686529l0 639.606283c0 22.37459 24.00267 45.686529 45.686529 45.686529l319.803653 0c20.455891 0 45.685505-23.433712 45.685505-45.686529L717.477326 177.530322c0-22.397103-23.556509-45.686529-45.685505-45.686529M466.203466 177.530322l114.216321 0c12.625552 0 22.596647 5.097088 22.596647 11.432377 0 6.312776-11.912307 11.409864-22.596647 11.409864L443.360202 200.372563c-11.45489 0-22.508643-5.097088-22.508643-11.409864 0-6.335289 11.165294-11.432377 22.508643-11.432377L466.203466 177.530322zM512.06805 817.260425c-12.224416 0-23.155373-10.151197-23.155373-22.954805 0-12.805654 10.930957-23.010063 23.155373-23.010063 12.893658 0 22.833031 10.205433 22.833031 23.010063C534.901081 807.109228 524.961708 817.260425 512.06805 817.260425L512.06805 817.260425zM671.791821 725.764572l-319.803653 0L351.988168 246.059092l319.803653 0L671.791821 725.764572z"
+                          p-id="1885"
+                        ></path>
+                      </svg>
+                      <span>设备变量</span>
+                    </div>
                   </div>
-                </div>
-                <div class="block_main">
-                  <!-- 动态表单 -->
-                  <!-- 头条 -->
-                  <div class="mock-form toutiao-mock-form">
-                    <el-row>
-                      <el-col :span="12">
-                        <el-form label-width="80px" label-position="top">
-                          <el-form-item label="猜你想搜">
-                            <div class="flex">
-                              <el-input
-                                v-model="searchVal"
-                                style="width: 310px"
-                                clearable
-                                @clear="searchVal = ''"
-                              >
-                              </el-input>
-                              <el-button
-                                icon="el-icon-refresh"
-                                class="m-l-sm"
-                                @click="getSearchData()"
-                              ></el-button>
-                            </div>
-                          </el-form-item>
-                        </el-form>
-                      </el-col>
-                      <el-col :span="12">
-                        <el-form label-width="80px" label-position="top">
-                          <el-form-item label="添加数据">
-                            <el-select
-                              v-model="addVal"
-                              placeholder="请选择"
-                              style="width: 310px"
-                            >
-                              <el-option
-                                v-for="item in addFormList"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value"
-                              >
-                              </el-option>
-                            </el-select>
-                            <el-button
-                              type="primary"
-                              class="m-l-sm"
-                              @click="addRecommendData()"
-                              >添加</el-button
-                            >
-                          </el-form-item>
-                        </el-form>
-                      </el-col>
-                    </el-row>
-                    <div class="analysis-form">
-                      <div class="label-title text-icon">
-                        智能分析(仅支持文章链接)
-                        <el-popover
-                          placement="top"
-                          trigger="hover"
-                          popper-class="popover-view"
+                  <div class="block_main">
+                    <el-form
+                      :model="recommendPhoneAdd"
+                      label-width="80px"
+                      label-position="top"
+                    >
+                      <el-form-item label="设备类型">
+                        <el-select
+                          v-model="equipmentType"
+                          placeholder="请选择"
+                          style="width: 300px"
                         >
-                          <div class="popover-view-child">
-                            <div>https://www.toutiao.com</div>
-                            <div>https://m.toutiaocdn.com</div>
-                            <div>https://www.toutiao.com/item</div>
-                          </div>
-                          <svg
-                            t="1605605030423"
-                            class="icon"
-                            viewBox="0 0 1024 1024"
-                            version="1.1"
-                            xmlns="http://www.w3.org/2000/svg"
-                            p-id="3648"
-                            width="16"
-                            height="16"
-                            slot="reference"
+                          <el-option
+                            v-for="item in equipmentTypeList"
+                            :key="item"
+                            :label="item"
+                            :value="item"
                           >
-                            <path
-                              d="M502.757 960.219c-60.5 0-119.201-11.854-174.474-35.231-53.377-22.576-101.31-54.894-142.466-96.05-41.156-41.153-73.472-89.088-96.049-142.465C66.39 631.201 54.537 572.5 54.537 512S66.39 392.799 89.768 337.526c22.576-53.376 54.893-101.309 96.049-142.465 41.156-41.157 89.089-73.473 142.466-96.049 55.271-23.378 113.973-35.231 174.474-35.231 60.499 0 119.2 11.853 174.474 35.231 53.377 22.577 101.31 54.893 142.466 96.05 41.157 41.155 73.472 89.088 96.048 142.465 23.379 55.27 35.231 113.972 35.231 174.474s-11.854 119.204-35.232 174.473c-22.577 53.38-54.892 101.312-96.047 142.466-41.156 41.155-89.09 73.473-142.465 96.049C621.956 948.365 563.256 960.219 502.757 960.219zM502.757 94.48c-56.369 0-111.047 11.038-162.515 32.806-49.717 21.029-94.369 51.136-132.716 89.482-38.348 38.348-68.453 83-89.482 132.717C96.275 400.952 85.237 455.63 85.237 512c0 56.368 11.038 111.047 32.807 162.512 21.03 49.722 51.135 94.373 89.482 132.717 38.347 38.351 82.999 68.455 132.716 89.482 51.469 21.77 106.146 32.809 162.515 32.809s111.046-11.036 162.516-32.809c49.717-21.029 94.368-51.135 132.715-89.482 38.348-38.344 68.453-82.996 89.48-132.715 21.771-51.465 32.809-106.145 32.809-162.514 0-56.371-11.037-111.049-32.809-162.515-21.028-49.718-51.135-94.371-89.48-132.718-38.348-38.347-82.999-68.453-132.717-89.482C613.804 105.518 559.125 94.48 502.757 94.48zM446.479 719.294l0 74.638 89.476 0 0-74.638L446.479 719.294zM677.814 461.148c13.094-19.66 19.645-41.14 19.645-64.442 0-40.29-18.628-74.642-55.87-103.039-37.253-28.397-87.159-42.599-149.72-42.599-59.074 0-106.578 13.231-142.51 39.685-35.942 26.461-57.545 64.57-64.816 114.325l80.75 8.01c6.979-37.134 21.674-64.443 44.081-81.917 22.407-17.479 50.34-26.216 83.806-26.216 34.628 0 63.873 9.647 87.736 28.943 23.858 19.299 35.795 41.69 35.795 67.178 0 14.08-4.082 27.068-12.226 38.956-8.149 11.897-25.823 27.854-53.032 47.879-27.21 20.024-46.045 35.258-56.526 45.695-14.259 14.323-24.589 28.523-30.986 42.596-8.733 18.695-13.093 40.905-13.093 66.63 0 4.371 0.14 10.923 0.436 19.663l75.509 0c0.578-26.216 2.761-45.153 6.55-56.798 3.775-11.651 9.602-21.969 17.456-30.951 7.859-8.975 24.59-22.938 50.198-41.868C639.109 504.722 664.72 480.814 677.814 461.148L677.814 461.148z"
-                              p-id="3649"
-                            ></path>
-                          </svg>
-                        </el-popover>
-                      </div>
-                      <div class="flex">
-                        <el-input
-                          placeholder="输入文章链接 (自动分析)"
-                          v-model="searchArticle"
-                          clearable
-                        >
-                        </el-input>
-                        <el-button type="primary" class="m-l-sm"
-                          >分析</el-button
-                        >
-                      </div>
+                          </el-option>
+                        </el-select>
+                        <el-button
+                          icon="el-icon-refresh"
+                          class="m-l-sm"
+                        ></el-button>
+                      </el-form-item>
+                      <el-form-item label="设备电量">
+                        <div class="flex">
+                          <el-input-number
+                            v-model="equipmentElectricity"
+                            controls-position="right"
+                            :min="1"
+                            :max="100"
+                            style="width: 300px; text-align: left"
+                          ></el-input-number>
+                          <el-button
+                            icon="el-icon-refresh"
+                            class="m-l-sm"
+                          ></el-button>
+                        </div>
+                      </el-form-item>
+                      <el-form-item label="设备时间">
+                        <div class="flex">
+                          <el-input
+                            type="text"
+                            v-model="equipmentTime"
+                            style="width: 300px"
+                          ></el-input>
+                          <el-button
+                            icon="el-icon-refresh"
+                            class="m-l-sm"
+                          ></el-button>
+                        </div>
+                      </el-form-item>
+                      <el-form-item label="文件名称">
+                        <div class="flex">
+                          <el-input
+                            v-model="fileName"
+                            style="width: 300px"
+                            clearable
+                          >
+                          </el-input>
+                          <el-button
+                            icon="el-icon-refresh"
+                            class="m-l-sm"
+                          ></el-button>
+                        </div>
+                      </el-form-item>
+                      <el-form-item label="快速操作">
+                        <div class="flex">
+                          <el-button
+                            type="primary"
+                            style="width: 49%"
+                            @click="generateData()"
+                            >一键填充/刷新</el-button
+                          >
+                          <el-button
+                            type="danger"
+                            style="width: 49%"
+                            plain
+                            @click="deleteRecommendData()"
+                            >清空所有</el-button
+                          >
+                        </div>
+                      </el-form-item>
+                    </el-form>
+                  </div>
+                </div>
+                <div class="block block-data">
+                  <div class="block_header">
+                    <div class="title">
+                      <svg
+                        t="1605604112096"
+                        class="icon"
+                        viewBox="0 0 1049 1024"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        p-id="2764"
+                        width="16"
+                        height="16"
+                      >
+                        <path
+                          d="M954.313334 328.487676a44.569917 44.569917 0 0 0-44.569917 44.446796V824.912829A109.701094 109.701094 0 0 1 800.288566 934.983287H198.717807A109.824215 109.824215 0 0 1 88.893591 824.912829V221.618372a107.361789 107.361789 0 0 1 107.238668-107.238668h581.255741a44.446796 44.446796 0 0 0 0-88.893591H196.132259A196.255381 196.255381 0 0 0 0 221.618372v603.294457a198.96405 198.96405 0 0 0 198.717807 199.087171H800.288566A198.96405 198.96405 0 0 0 998.76013 824.912829V372.934472a44.446796 44.446796 0 0 0-44.446796-44.446796z"
+                          fill="#4D4D4D"
+                          p-id="2765"
+                        ></path>
+                        <path
+                          d="M1036.435253 13.173981a44.569917 44.569917 0 0 0-62.914993 0L571.036672 411.717687a44.446796 44.446796 0 0 0 62.668751 63.161236l402.360466-398.91307a43.338704 43.338704 0 0 0 13.173981-31.272815 44.077432 44.077432 0 0 0-12.804617-31.519057zM169.414933 775.664302A42.353733 42.353733 0 0 0 209.30624 819.864855h609.696766a44.693038 44.693038 0 0 0 0-88.893591H209.30624A42.353733 42.353733 0 0 0 169.414933 775.664302zM548.012985 519.571961H209.30624a44.693038 44.693038 0 0 0 0 88.893591h338.706745a44.693038 44.693038 0 0 0 0-88.893591z"
+                          fill="#4D4D4D"
+                          p-id="2766"
+                        ></path>
+                      </svg>
+                      <span>数据填充</span>
                     </div>
-                    <div class="items-form m-t-md">
-                      <div class="label-title">列表设置</div>
-                      <div class="feed-items">
-                        <vuedraggable v-model="recommendList">
-                          <div v-for="(el, i) in recommendList" :key="i">
-                            <div class="feed-item editor" v-if="el.defalte">
-                              <div class="header">
-                                <svg
-                                  t="1605685614022"
-                                  class="icon handle"
-                                  viewBox="0 0 1024 1024"
-                                  version="1.1"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  p-id="7208"
-                                  width="16"
-                                  height="16"
-                                >
-                                  <path
-                                    d="M720 960c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74s64.3-5.6 87.2 17.2c22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-384c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74s64.3-5.6 87.2 17.2c22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-352c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4zM336 960c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-384c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-352c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z"
-                                    fill="#4A4C5B"
-                                    p-id="7209"
-                                  ></path>
-                                </svg>
-                                <span class="title">自定义数据设置</span>
-                                <span class="feed-edit-clean">清空</span>
-                              </div>
-                              <div class="editor-wrap m-t-xs">
+                  </div>
+                  <div class="block_main">
+                    <!-- 动态表单 -->
+                    <!-- 头条 -->
+                    <div class="mock-form toutiao-mock-form">
+                      <el-row>
+                        <el-col :span="12">
+                          <el-form label-width="80px" label-position="top">
+                            <el-form-item label="猜你想搜">
+                              <div class="flex">
                                 <el-input
-                                  v-model="recommendPhoneAdd.title"
-                                  placeholder="标题"
-                                ></el-input>
-                                <el-row
-                                  class="m-t-sm"
-                                  style="margin-left: -5px; margin-right: -5px"
+                                  v-model="searchVal"
+                                  style="width: 310px"
+                                  clearable
+                                  @clear="searchVal = ''"
                                 >
-                                  <el-col
-                                    :span="8"
-                                    style="
-                                      padding-left: 5px;
-                                      padding-right: 5px;
-                                    "
+                                </el-input>
+                                <el-button
+                                  icon="el-icon-refresh"
+                                  class="m-l-sm"
+                                  @click="getSearchData()"
+                                ></el-button>
+                              </div>
+                            </el-form-item>
+                          </el-form>
+                        </el-col>
+                        <el-col :span="12">
+                          <el-form label-width="80px" label-position="top">
+                            <el-form-item label="添加数据">
+                              <el-select
+                                v-model="addVal"
+                                placeholder="请选择"
+                                style="width: 310px"
+                              >
+                                <el-option
+                                  v-for="item in addFormList"
+                                  :key="item.value"
+                                  :label="item.label"
+                                  :value="item.value"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-button
+                                type="primary"
+                                class="m-l-sm"
+                                @click="addRecommendData()"
+                                >添加</el-button
+                              >
+                            </el-form-item>
+                          </el-form>
+                        </el-col>
+                      </el-row>
+                      <div class="analysis-form">
+                        <div class="label-title text-icon">
+                          智能分析(仅支持文章链接)
+                          <el-popover
+                            placement="top"
+                            trigger="hover"
+                            popper-class="popover-view"
+                          >
+                            <div class="popover-view-child">
+                              <div>https://www.toutiao.com</div>
+                              <div>https://m.toutiaocdn.com</div>
+                              <div>https://www.toutiao.com/item</div>
+                            </div>
+                            <svg
+                              t="1605605030423"
+                              class="icon"
+                              viewBox="0 0 1024 1024"
+                              version="1.1"
+                              xmlns="http://www.w3.org/2000/svg"
+                              p-id="3648"
+                              width="16"
+                              height="16"
+                              slot="reference"
+                            >
+                              <path
+                                d="M502.757 960.219c-60.5 0-119.201-11.854-174.474-35.231-53.377-22.576-101.31-54.894-142.466-96.05-41.156-41.153-73.472-89.088-96.049-142.465C66.39 631.201 54.537 572.5 54.537 512S66.39 392.799 89.768 337.526c22.576-53.376 54.893-101.309 96.049-142.465 41.156-41.157 89.089-73.473 142.466-96.049 55.271-23.378 113.973-35.231 174.474-35.231 60.499 0 119.2 11.853 174.474 35.231 53.377 22.577 101.31 54.893 142.466 96.05 41.157 41.155 73.472 89.088 96.048 142.465 23.379 55.27 35.231 113.972 35.231 174.474s-11.854 119.204-35.232 174.473c-22.577 53.38-54.892 101.312-96.047 142.466-41.156 41.155-89.09 73.473-142.465 96.049C621.956 948.365 563.256 960.219 502.757 960.219zM502.757 94.48c-56.369 0-111.047 11.038-162.515 32.806-49.717 21.029-94.369 51.136-132.716 89.482-38.348 38.348-68.453 83-89.482 132.717C96.275 400.952 85.237 455.63 85.237 512c0 56.368 11.038 111.047 32.807 162.512 21.03 49.722 51.135 94.373 89.482 132.717 38.347 38.351 82.999 68.455 132.716 89.482 51.469 21.77 106.146 32.809 162.515 32.809s111.046-11.036 162.516-32.809c49.717-21.029 94.368-51.135 132.715-89.482 38.348-38.344 68.453-82.996 89.48-132.715 21.771-51.465 32.809-106.145 32.809-162.514 0-56.371-11.037-111.049-32.809-162.515-21.028-49.718-51.135-94.371-89.48-132.718-38.348-38.347-82.999-68.453-132.717-89.482C613.804 105.518 559.125 94.48 502.757 94.48zM446.479 719.294l0 74.638 89.476 0 0-74.638L446.479 719.294zM677.814 461.148c13.094-19.66 19.645-41.14 19.645-64.442 0-40.29-18.628-74.642-55.87-103.039-37.253-28.397-87.159-42.599-149.72-42.599-59.074 0-106.578 13.231-142.51 39.685-35.942 26.461-57.545 64.57-64.816 114.325l80.75 8.01c6.979-37.134 21.674-64.443 44.081-81.917 22.407-17.479 50.34-26.216 83.806-26.216 34.628 0 63.873 9.647 87.736 28.943 23.858 19.299 35.795 41.69 35.795 67.178 0 14.08-4.082 27.068-12.226 38.956-8.149 11.897-25.823 27.854-53.032 47.879-27.21 20.024-46.045 35.258-56.526 45.695-14.259 14.323-24.589 28.523-30.986 42.596-8.733 18.695-13.093 40.905-13.093 66.63 0 4.371 0.14 10.923 0.436 19.663l75.509 0c0.578-26.216 2.761-45.153 6.55-56.798 3.775-11.651 9.602-21.969 17.456-30.951 7.859-8.975 24.59-22.938 50.198-41.868C639.109 504.722 664.72 480.814 677.814 461.148L677.814 461.148z"
+                                p-id="3649"
+                              ></path>
+                            </svg>
+                          </el-popover>
+                        </div>
+                        <div class="flex">
+                          <el-input
+                            placeholder="输入文章链接 (自动分析)"
+                            v-model="searchArticle"
+                            clearable
+                          >
+                          </el-input>
+                          <el-button type="primary" class="m-l-sm"
+                            >分析</el-button
+                          >
+                        </div>
+                      </div>
+                      <div class="items-form m-t-md">
+                        <div class="label-title">列表设置</div>
+                        <div class="feed-items">
+                          <vuedraggable v-model="recommendList">
+                            <div v-for="(el, i) in recommendList" :key="i">
+                              <div class="feed-item editor" v-if="el.defalte">
+                                <div class="header">
+                                  <svg
+                                    t="1605685614022"
+                                    class="icon handle"
+                                    viewBox="0 0 1024 1024"
+                                    version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    p-id="7208"
+                                    width="16"
+                                    height="16"
                                   >
-                                    <div class="form-item">
-                                      <div class="label">媒体名称</div>
-                                      <div class="b">
-                                        <el-input
-                                          v-model="recommendPhoneAdd.source"
-                                          placeholder="媒体"
-                                          clearable
-                                        ></el-input>
-                                      </div>
-                                    </div>
-                                  </el-col>
-                                  <el-col
-                                    :span="8"
-                                    style="
-                                      padding-left: 5px;
-                                      padding-right: 5px;
-                                    "
-                                    ><div class="form-item">
-                                      <div class="label">评论数</div>
-                                      <div class="b">
-                                        <el-input
-                                          v-model="
-                                            recommendPhoneAdd.comment_count
-                                          "
-                                          placeholder="评论数"
-                                          clearable
-                                        ></el-input>
-                                      </div></div
-                                  ></el-col>
-                                  <el-col
-                                    :span="8"
-                                    style="
-                                      padding-left: 5px;
-                                      padding-right: 5px;
-                                    "
-                                    ><div class="form-item">
-                                      <div class="label">发布时间</div>
-                                      <div class="b">
-                                        <el-input
-                                          v-model="
-                                            recommendPhoneAdd.publish_time
-                                          "
-                                          placeholder="例：2020-09-12 12:00:00"
-                                          clearable
-                                        ></el-input>
-                                      </div></div
-                                  ></el-col>
-                                </el-row>
-                                <div class="type-select m-t-sm">
+                                    <path
+                                      d="M720 960c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74s64.3-5.6 87.2 17.2c22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-384c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74s64.3-5.6 87.2 17.2c22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-352c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4zM336 960c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-384c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-352c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z"
+                                      fill="#4A4C5B"
+                                      p-id="7209"
+                                    ></path>
+                                  </svg>
+                                  <span class="title">自定义数据设置</span>
+                                  <span class="feed-edit-clean">清空</span>
+                                </div>
+                                <div class="editor-wrap m-t-xs">
+                                  <el-input
+                                    v-model="recommendPhoneAdd.title"
+                                    placeholder="标题"
+                                  ></el-input>
                                   <el-row
-                                    style="
-                                      margin-left: -7.5px;
-                                      margin-right: -7.5px;
-                                    "
+                                    class="m-t-sm"
+                                    style="margin-left: -5px; margin-right: -5px"
                                   >
                                     <el-col
-                                      :span="5"
+                                      :span="8"
                                       style="
-                                        padding-left: 7.5px;
-                                        padding-right: 7.5px;
+                                        padding-left: 5px;
+                                        padding-right: 5px;
                                       "
                                     >
-                                      <div class="options-wrap">
-                                        <div class="side-menu">
-                                          <div
-                                            :class="[
-                                              toggleVideoType === 1
-                                                ? 'active'
-                                                : '',
-                                              'item',
-                                            ]"
-                                            @click="
-                                              toggleVideoType = 1;
-                                              recommendPhoneAdd.source_list = [];
-                                            "
-                                          >
-                                            文章（单图）
-                                          </div>
-                                          <div
-                                            :class="[
-                                              toggleVideoType === 2
-                                                ? 'active'
-                                                : '',
-                                              'item',
-                                            ]"
-                                            @click="
-                                              toggleVideoType = 2;
-                                              recommendPhoneAdd.source_list = [];
-                                            "
-                                          >
-                                            文章（多图）
-                                          </div>
-                                          <div
-                                            :class="[
-                                              toggleVideoType === 3
-                                                ? 'active'
-                                                : '',
-                                              'item',
-                                            ]"
-                                            @click="
-                                              toggleVideoType = 3;
-                                              recommendPhoneAdd.source_list = [];
-                                            "
-                                          >
-                                            视频 / 文章无图
-                                          </div>
+                                      <div class="form-item">
+                                        <div class="label">媒体名称</div>
+                                        <div class="b">
+                                          <el-input
+                                            v-model="recommendPhoneAdd.source"
+                                            placeholder="媒体"
+                                            clearable
+                                          ></el-input>
                                         </div>
                                       </div>
                                     </el-col>
                                     <el-col
-                                      :span="19"
+                                      :span="8"
                                       style="
-                                        padding-left: 7.5px;
-                                        padding-right: 7.5px;
+                                        padding-left: 5px;
+                                        padding-right: 5px;
                                       "
-                                    >
-                                      <div class="flex">
-                                        <div>
-                                          <el-upload
-                                            action="https://jsonplaceholder.typicode.com/posts/"
-                                            list-type="picture-card"
-                                            :on-preview="
-                                              handlePictureCardPreview
+                                      ><div class="form-item">
+                                        <div class="label">评论数</div>
+                                        <div class="b">
+                                          <el-input
+                                            v-model="
+                                              recommendPhoneAdd.comment_count
                                             "
-                                            :on-remove="handleRemove"
-                                          >
-                                            <i class="el-icon-plus"></i>
-                                          </el-upload>
-                                        </div>
-                                        <div
-                                          class="video-duration m-l-xs"
-                                          v-if="toggleVideoType === 3"
-                                        >
-                                          <div class="label">视频时长</div>
-                                          <div class="b">
-                                            <el-input
-                                              placeholder="例：12:24"
-                                              v-model="
-                                                recommendPhoneAdd.video_time
-                                              "
-                                              clearable
-                                            >
-                                            </el-input>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </el-col>
+                                            placeholder="评论数"
+                                            clearable
+                                          ></el-input>
+                                        </div></div
+                                    ></el-col>
+                                    <el-col
+                                      :span="8"
+                                      style="
+                                        padding-left: 5px;
+                                        padding-right: 5px;
+                                      "
+                                      ><div class="form-item">
+                                        <div class="label">发布时间</div>
+                                        <div class="b">
+                                          <el-input
+                                            v-model="
+                                              recommendPhoneAdd.publish_time
+                                            "
+                                            placeholder="例：2020-09-12 12:00:00"
+                                            clearable
+                                          ></el-input>
+                                        </div></div
+                                    ></el-col>
                                   </el-row>
+                                  <div class="type-select m-t-sm">
+                                    <el-row
+                                      style="
+                                        margin-left: -7.5px;
+                                        margin-right: -7.5px;
+                                      "
+                                    >
+                                      <el-col
+                                        :span="5"
+                                        style="
+                                          padding-left: 7.5px;
+                                          padding-right: 7.5px;
+                                        "
+                                      >
+                                        <div class="options-wrap">
+                                          <div class="side-menu">
+                                            <div
+                                              :class="[
+                                                toggleVideoType === 1
+                                                  ? 'active'
+                                                  : '',
+                                                'item',
+                                              ]"
+                                              @click="
+                                                toggleVideoType = 1;
+                                                recommendPhoneAdd.source_list = [];
+                                              "
+                                            >
+                                              文章（单图）
+                                            </div>
+                                            <div
+                                              :class="[
+                                                toggleVideoType === 2
+                                                  ? 'active'
+                                                  : '',
+                                                'item',
+                                              ]"
+                                              @click="
+                                                toggleVideoType = 2;
+                                                recommendPhoneAdd.source_list = [];
+                                              "
+                                            >
+                                              文章（多图）
+                                            </div>
+                                            <div
+                                              :class="[
+                                                toggleVideoType === 3
+                                                  ? 'active'
+                                                  : '',
+                                                'item',
+                                              ]"
+                                              @click="
+                                                toggleVideoType = 3;
+                                                recommendPhoneAdd.source_list = [];
+                                              "
+                                            >
+                                              视频 / 文章无图
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </el-col>
+                                      <el-col
+                                        :span="19"
+                                        style="
+                                          padding-left: 7.5px;
+                                          padding-right: 7.5px;
+                                        "
+                                      >
+                                        <div class="flex">
+                                          <div>
+                                            <el-upload
+                                              action="https://jsonplaceholder.typicode.com/posts/"
+                                              list-type="picture-card"
+                                              :on-preview="
+                                                handlePictureCardPreview
+                                              "
+                                              :on-remove="handleRemove"
+                                            >
+                                              <i class="el-icon-plus"></i>
+                                            </el-upload>
+                                          </div>
+                                          <div
+                                            class="video-duration m-l-xs"
+                                            v-if="toggleVideoType === 3"
+                                          >
+                                            <div class="label">视频时长</div>
+                                            <div class="b">
+                                              <el-input
+                                                placeholder="例：12:24"
+                                                v-model="
+                                                  recommendPhoneAdd.video_time
+                                                "
+                                                clearable
+                                              >
+                                              </el-input>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </el-col>
+                                    </el-row>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                            <div class="feed-item normal" v-else>
-                              <div class="l">
-                                <svg
-                                  t="1605685614022"
-                                  class="icon handle"
-                                  viewBox="0 0 1024 1024"
-                                  version="1.1"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  p-id="7208"
-                                  width="16"
-                                  height="16"
-                                >
-                                  <path
-                                    d="M720 960c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74s64.3-5.6 87.2 17.2c22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-384c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74s64.3-5.6 87.2 17.2c22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-352c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4zM336 960c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-384c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-352c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z"
-                                    fill="#4A4C5B"
-                                    p-id="7209"
-                                  ></path>
-                                </svg>
-                                <span class="title">{{ el.title }}</span>
-                              </div>
-                              <div class="r flex">
-                                <div
-                                  class="button-link"
-                                  @click="refreshRecommendItem(i)"
-                                >
+                              <div class="feed-item normal" v-else>
+                                <div class="l">
                                   <svg
-                                    t="1605685679082"
-                                    class="icon"
+                                    t="1605685614022"
+                                    class="icon handle"
                                     viewBox="0 0 1024 1024"
                                     version="1.1"
                                     xmlns="http://www.w3.org/2000/svg"
-                                    p-id="8053"
+                                    p-id="7208"
                                     width="16"
                                     height="16"
                                   >
                                     <path
-                                      d="M855.93673837 414.24955857c-3.62038672 3.62038672-14.48154688 7.24077344-18.1019336 10.86116016l-173.77856254 0c-14.48154688 0-25.34270704-10.86116016-25.34270704-25.34270704 0-14.48154688 10.86116016-25.34270704 25.34270704-25.34270704l152.05624222 0 0-152.05624222c0-14.48154688 10.86116016-25.34270704 25.34270704-25.34270704s25.34270704 10.86116016 25.34270704 25.34270704l0 173.77856254c-7.24077344 7.24077344-7.24077344 14.48154688-10.86116016 18.1019336z m-445.30756652 264.28823054c-3.62038672 3.62038672-14.48154688 7.24077344-18.1019336 10.86116015l-148.43585551-3.62038672 0 152.05624223c0 14.48154688-10.86116016 25.34270704-25.34270703 25.34270704-14.48154688 0-25.34270704-10.86116016-25.34270704-25.34270704l-3.62038672-177.39894926c0-14.48154688 10.86116016-25.34270704 25.34270704-25.34270704l177.39894926 3.62038672c14.48154688 0 25.34270704 10.86116016 25.34270704 25.34270704 3.62038672 3.62038672 0 7.24077344-7.24077344 14.48154688z"
-                                      fill="#2c2c2c"
-                                      p-id="8054"
-                                    ></path>
-                                    <path
-                                      d="M747.32513678 783.52900398c-61.54657423 61.54657423-148.43585551 97.75044143-235.32513678 97.75044143-130.33392191 0-249.80668366-76.02812111-304.11248445-195.50088287-7.24077344-7.24077344-3.62038672-25.34270704 10.86116016-32.58348047 10.86116016-3.62038672 28.96309376 0 36.20386719 14.48154688 47.06502736 97.75044143 148.43585551 162.91740239 257.0474571 162.91740238 126.71353519 3.62038672 238.9455235-79.64850783 275.1493907-202.7416563 3.62038672-10.86116016 18.1019336-18.1019336 32.58348047-18.1019336 10.86116016 3.62038672 18.1019336 18.1019336 18.1019336 32.58348048-21.72232032 57.92618751-50.68541408 101.37082815-90.50966799 141.19508207z m97.75044143-387.38137901L837.83480477 403.38839841c-14.48154688 7.24077344-28.96309376 0-32.58348048-10.86116016-47.06502736-97.75044143-148.43585551-162.91740239-257.04745709-162.91740238-123.09314847 0-238.9455235 79.64850783-275.1493907 202.7416563-3.62038672 10.86116016-18.1019336 18.1019336-32.58348048 18.1019336-14.48154688-14.48154688-21.72232032-28.96309376-18.10193359-39.82425392 39.82425392-141.19508207 173.77856254-238.9455235 325.83480477-238.9455235 130.33392191 0 246.18629694 79.64850783 304.11248445 195.50088286 0 7.24077344 0 21.72232032-7.24077344 28.96309376z"
-                                      fill="#2c2c2c"
-                                      p-id="8055"
+                                      d="M720 960c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74s64.3-5.6 87.2 17.2c22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-384c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74s64.3-5.6 87.2 17.2c22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-352c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4zM336 960c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-384c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z m0-352c-21.2 0-41.5-8.3-56.6-23.3-15-15-23.4-35.3-23.4-56.5-0.1-32.4 19.4-61.6 49.3-74 29.9-12.4 64.3-5.6 87.2 17.2 22.9 22.9 29.8 57.3 17.4 87.2-12.3 29.9-41.5 49.4-73.9 49.4z"
+                                      fill="#4A4C5B"
+                                      p-id="7209"
                                     ></path>
                                   </svg>
+                                  <span class="title">{{ el.title }}</span>
                                 </div>
-                                <div
-                                  class="button-link"
-                                  @click="deleteRecommendItem(i)"
-                                >
-                                  <svg
-                                    t="1605685700299"
-                                    class="icon"
-                                    viewBox="0 0 1024 1024"
-                                    version="1.1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    p-id="8856"
-                                    width="16"
-                                    height="16"
+                                <div class="r flex">
+                                  <div
+                                    class="button-link"
+                                    @click="refreshRecommendItem(i)"
                                   >
-                                    <path
-                                      d="M891.264 901.248a30.784 30.784 0 0 1-21.76-9.024L128.256 150.976a30.72 30.72 0 1 1 43.52-43.52l741.312 741.312a30.848 30.848 0 0 1-21.824 52.48"
-                                      fill="#c43a61"
-                                      p-id="8857"
-                                    ></path>
-                                    <path
-                                      d="M150.016 901.248a30.72 30.72 0 0 1-21.76-52.544l741.312-741.248a30.784 30.784 0 0 1 43.456 43.52L171.776 892.224a30.72 30.72 0 0 1-21.76 9.024"
-                                      fill="#c43a61"
-                                      p-id="8858"
-                                    ></path>
-                                  </svg>
+                                    <svg
+                                      t="1605685679082"
+                                      class="icon"
+                                      viewBox="0 0 1024 1024"
+                                      version="1.1"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      p-id="8053"
+                                      width="16"
+                                      height="16"
+                                    >
+                                      <path
+                                        d="M855.93673837 414.24955857c-3.62038672 3.62038672-14.48154688 7.24077344-18.1019336 10.86116016l-173.77856254 0c-14.48154688 0-25.34270704-10.86116016-25.34270704-25.34270704 0-14.48154688 10.86116016-25.34270704 25.34270704-25.34270704l152.05624222 0 0-152.05624222c0-14.48154688 10.86116016-25.34270704 25.34270704-25.34270704s25.34270704 10.86116016 25.34270704 25.34270704l0 173.77856254c-7.24077344 7.24077344-7.24077344 14.48154688-10.86116016 18.1019336z m-445.30756652 264.28823054c-3.62038672 3.62038672-14.48154688 7.24077344-18.1019336 10.86116015l-148.43585551-3.62038672 0 152.05624223c0 14.48154688-10.86116016 25.34270704-25.34270703 25.34270704-14.48154688 0-25.34270704-10.86116016-25.34270704-25.34270704l-3.62038672-177.39894926c0-14.48154688 10.86116016-25.34270704 25.34270704-25.34270704l177.39894926 3.62038672c14.48154688 0 25.34270704 10.86116016 25.34270704 25.34270704 3.62038672 3.62038672 0 7.24077344-7.24077344 14.48154688z"
+                                        fill="#2c2c2c"
+                                        p-id="8054"
+                                      ></path>
+                                      <path
+                                        d="M747.32513678 783.52900398c-61.54657423 61.54657423-148.43585551 97.75044143-235.32513678 97.75044143-130.33392191 0-249.80668366-76.02812111-304.11248445-195.50088287-7.24077344-7.24077344-3.62038672-25.34270704 10.86116016-32.58348047 10.86116016-3.62038672 28.96309376 0 36.20386719 14.48154688 47.06502736 97.75044143 148.43585551 162.91740239 257.0474571 162.91740238 126.71353519 3.62038672 238.9455235-79.64850783 275.1493907-202.7416563 3.62038672-10.86116016 18.1019336-18.1019336 32.58348047-18.1019336 10.86116016 3.62038672 18.1019336 18.1019336 18.1019336 32.58348048-21.72232032 57.92618751-50.68541408 101.37082815-90.50966799 141.19508207z m97.75044143-387.38137901L837.83480477 403.38839841c-14.48154688 7.24077344-28.96309376 0-32.58348048-10.86116016-47.06502736-97.75044143-148.43585551-162.91740239-257.04745709-162.91740238-123.09314847 0-238.9455235 79.64850783-275.1493907 202.7416563-3.62038672 10.86116016-18.1019336 18.1019336-32.58348048 18.1019336-14.48154688-14.48154688-21.72232032-28.96309376-18.10193359-39.82425392 39.82425392-141.19508207 173.77856254-238.9455235 325.83480477-238.9455235 130.33392191 0 246.18629694 79.64850783 304.11248445 195.50088286 0 7.24077344 0 21.72232032-7.24077344 28.96309376z"
+                                        fill="#2c2c2c"
+                                        p-id="8055"
+                                      ></path>
+                                    </svg>
+                                  </div>
+                                  <div
+                                    class="button-link"
+                                    @click="deleteRecommendItem(i)"
+                                  >
+                                    <svg
+                                      t="1605685700299"
+                                      class="icon"
+                                      viewBox="0 0 1024 1024"
+                                      version="1.1"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      p-id="8856"
+                                      width="16"
+                                      height="16"
+                                    >
+                                      <path
+                                        d="M891.264 901.248a30.784 30.784 0 0 1-21.76-9.024L128.256 150.976a30.72 30.72 0 1 1 43.52-43.52l741.312 741.312a30.848 30.848 0 0 1-21.824 52.48"
+                                        fill="#c43a61"
+                                        p-id="8857"
+                                      ></path>
+                                      <path
+                                        d="M150.016 901.248a30.72 30.72 0 0 1-21.76-52.544l741.312-741.248a30.784 30.784 0 0 1 43.456 43.52L171.776 892.224a30.72 30.72 0 0 1-21.76 9.024"
+                                        fill="#c43a61"
+                                        p-id="8858"
+                                      ></path>
+                                    </svg>
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </vuedraggable>
+                          </vuedraggable>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <!-- 导出图片 -->
-              <div
-                class="export-module"
-                @mouseover="exportImgStatus = true"
-                @mouseleave="exportImgStatus = false"
-              >
-                <div class="by-consume-button">
-                  <div class="consume-wallet">
-                    <div class="tip-msg">
-                      <div>
-                        智能推荐兑换劵不足
-                        <span class="route">立即充值</span>
+                <!-- 导出图片 -->
+                <div
+                  class="export-module"
+                  @mouseover="exportImgStatus = true"
+                  @mouseleave="exportImgStatus = false"
+                >
+                  <div class="by-consume-button">
+                    <div class="consume-wallet">
+                      <div class="tip-msg">
+                        <div>
+                          智能推荐兑换劵不足
+                          <span class="route">立即充值</span>
+                        </div>
+                      </div>
+                      <div
+                        :class="[exportImgStatus ? 'show' : '', 'consume-choose']"
+                      >
+                        <div class="option coin-option">
+                          <div class="num din-font">0</div>
+                          <div class="label">账号积分</div>
+                        </div>
+                        <div class="option exchange-option active">
+                          <div class="num din-font">50</div>
+                          <div class="label">智能推荐兑换劵</div>
+                        </div>
                       </div>
                     </div>
-                    <div
-                      :class="[exportImgStatus ? 'show' : '', 'consume-choose']"
-                    >
-                      <div class="option coin-option">
-                        <div class="num din-font">0</div>
-                        <div class="label">账号积分</div>
-                      </div>
-                      <div class="option exchange-option active">
-                        <div class="num din-font">50</div>
-                        <div class="label">智能推荐兑换劵</div>
-                      </div>
+                    <div class="button">
+                      <el-button type="primary" class="w-100" @click="exportJPEG"
+                        >导出图片</el-button
+                      >
                     </div>
-                  </div>
-                  <div class="button">
-                    <el-button type="primary" class="w-100" @click="exportJPEG"
-                      >导出图片</el-button
-                    >
                   </div>
                 </div>
-              </div>
+              </template>
+              <template v-else-if="status === 2">
+                <div class="gen-history"></div>
+                <div class="mock-form"></div>
+              </template>
             </div>
           </div>
         </div>
@@ -2729,17 +2764,17 @@ export default {
     //添加推荐数据 单条
     async addRecommendData() {
       let fillData = await this.getFileData();
-      let list = this.recommendData.filter((el) => {
-        if (this.addVal === 3 && el.has_video) {
-          return el;
-        } else if (this.addVal === 2 && el.has_image && el.image_list) {
-          return el;
-        } else if (this.addVal === 1 && el.has_image && !el.image_list) {
-          return el;
-        } else if (this.addVal === 0) {
-          return this.recommendData[0];
-        }
-      });
+      // let list = this.recommendData.filter((el) => {
+      //   if (this.addVal === 3 && el.has_video) {
+      //     return el;
+      //   } else if (this.addVal === 2 && el.has_image && el.image_list) {
+      //     return el;
+      //   } else if (this.addVal === 1 && el.has_image && !el.image_list) {
+      //     return el;
+      //   } else if (this.addVal === 0) {
+      //     return this.recommendData[0];
+      //   }
+      // });
       this.recommendList.push(list[0]);
       //  this.$set(this.recommendList, i, list[0]);
     },
@@ -2781,6 +2816,7 @@ export default {
     },
     async generateData() {
       // debugger
+      this.toggleVideoType = 4;
       this.loading = true;
       let fillData = await this.getFileData();
       let searchData = await this.getSearchData();
@@ -2817,9 +2853,15 @@ export default {
     // },
     getFileData() {
       let that = this;
+      let query = {
+        type: this.toggleVideoType,
+        state: --this.activeIndex
+      };
+      
       return new Promise(function (resolve, reject) {
-        getTouTiaoData().then((res) => {
-          if (res.data.message === "success") {
+        getTouTiaoData(query).then((res) => {
+          console.log("***************",res)
+          if (res.code === "000000") {
             that.recommendData = res.data.data
               .map((el) => JSON.parse(el.content))
               .slice(2);
