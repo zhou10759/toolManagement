@@ -3271,13 +3271,132 @@
                       </div>
                       <div class="content">
                         <div class="items">
-                          <div class="item wangyi-item">
-                            <div class="recommend-placeholder-item">
-                              <span class="recommend-placeholder-title"
-                                >数据模拟区域</span
-                              >
+                          <template v-if="recommendList.length > 0">
+                            <div v-for="(el, i) in recommendList" :key="i">
+                              <div class="item wangyi-item" v-if="el.defalte">
+                                <div class="recommend-placeholder-item">
+                                  <span class="recommend-placeholder-title"
+                                    >数据模拟区域</span
+                                  >
+                                </div>
+                              </div>
+                              <div class="item wangyi-item" v-else>
+                                <template v-if="el.has_video">
+                                  <div class="wangyi-video-a">
+                                    <p class="title">{{ el.title }}</p>
+                                    <div class="video">
+                                     <div class="icon"><svg viewBox="0 0 138 138" fill="none" xmlns="http://www.w3.org/2000/svg" class="video-play"><path d="M93 67.62a2 2 0 010 3.47L57.75 91.44a2 2 0 01-3-1.73V49a2 2 0 013-1.74L93 67.62z" fill="#fff"></path></svg></div>
+                                      <div v-loading="loading">
+                                        <img
+                                          :src="
+                                            el.video_detail_info
+                                              .detail_video_large_image.url
+                                          "
+                                          alt=""
+                                          style="display: block"
+                                        />
+                                      </div>
+                                      <div class="duration">
+                                        {{ el.video_duration | parseVideoTime }}
+                                      </div>
+                                    </div>
+                                    <div class="other">
+                                      <div class="l">
+                                        <div class="user">{{ el.source }}</div>
+                                        <div class="comment">
+                                          {{ el.comment_count }}跟帖
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <svg
+                                          t="1608021653919"
+                                          class="icon close-btn"
+                                          viewBox="0 0 1024 1024"
+                                          version="1.1"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          p-id="4116"
+                                          width="32"
+                                          height="32"
+                                        >
+                                          <path
+                                            d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
+                                            fill="#cdcdcd"
+                                            p-id="4117"
+                                          ></path>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </template>
+                                <template v-if="el.has_image && el.image_list">
+                                  <div class="wangyi-article-b">
+                                    <p class="title">{{ el.title }}</p>
+                                    <div class="pics">
+                                      <div
+                                        v-loading="loading"
+                                        class="img"
+                                        v-for="(c_el, c_i) in el.image_list"
+                                        :key="c_i"
+                                      >
+                                        <img
+                                          :src="c_el.url"
+                                          alt=""
+                                          style="display: block"
+                                        />
+                                      </div>
+                                    </div>
+                                    <div class="other">
+                                      <div class="l">
+                                        <div class="user">{{ el.source }} </div>
+                                        <div class="comment">
+                                           {{ el.comment_count }}跟帖
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <svg
+                                          t="1608021653919"
+                                          class="icon close-btn"
+                                          viewBox="0 0 1024 1024"
+                                          version="1.1"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          p-id="4116"
+                                          width="32"
+                                          height="32"
+                                        >
+                                          <path
+                                            d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
+                                            fill="#cdcdcd"
+                                            p-id="4117"
+                                          ></path>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </template>
+                                <template v-if="el.has_image && !el.image_list">
+                                  <div class="wangyi-article-a">
+                                    <div class="info">
+                                      <p class="title">{{ el.title }}</p>
+                                      <div class="other">
+                                        <div class="l">
+                                          <div class="user">
+                                            {{ el.source }} 
+                                          </div>
+                                          <div class="comment">
+                                            {{ el.comment_count }}跟帖
+                                          </div>
+                                        </div>
+                                        <div class="r"><svg data-v-55b9dd50="" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" class="close-btn"><path data-v-55b9dd50="" fill-rule="evenodd" clip-rule="evenodd" d="M23.06 23.06a1.5 1.5 0 01-2.12 0L3.06 5.18a1.5 1.5 0 112.12-2.12l17.88 17.88a1.5 1.5 0 010 2.12z" fill="currentColor"></path><path data-v-55b9dd50="" fill-rule="evenodd" clip-rule="evenodd" d="M23.06 3.06a1.5 1.5 0 010 2.12L5.18 23.06a1.5 1.5 0 01-2.12-2.12L20.94 3.06a1.5 1.5 0 012.12 0z" fill="currentColor"></path></svg></div>
+                                      </div>
+                                    </div>
+                                    <div class="pic" v-loading="loading">
+                                      <img :src="el.middle_image.url" alt="" v-loading="loading"> 
+                                    </div>
+                                  </div>
+                                </template>
+                              </div>
                             </div>
-                          </div>
+                          </template>
                         </div>
                       </div>
                       <div class="tab">
@@ -4700,6 +4819,73 @@ export default {
         }
       }
     }
+    .wangyi-article-a {
+      padding: 14px 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 10px;
+      .info {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        width: 100%;
+        .other {
+          margin-top: auto;
+          .user {
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+          }
+          .comment {
+            flex-shrink: 0;
+          }
+          .l {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            color: #b8b8b8;
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            margin-right: 2em;
+          }
+          .r {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+          }
+        }
+      }
+      .title {
+        font-size: 19.5px;
+        line-height: 26px;
+        margin: 0;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      .pic {
+        img {
+          width: 100%;
+          height: 82px;
+          display: block;
+          border-radius: 3px;
+          -o-object-fit: cover;
+          object-fit: cover;
+          -webkit-box-shadow: inset 0 -1px 1px -1px #c8c7cc;
+          box-shadow: inset 0 -1px 1px -1px #c8c7cc;
+        }
+      }
+    }
     .toutiao-item .other,
     .toutiao-item .other .l {
       display: -webkit-box;
@@ -4972,6 +5158,13 @@ export default {
       }
     }
     .wangyi-app {
+      position: relative;
+      background-color: #fff;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      font-family: Helvetica Neue, PingFang SC, Hiragino Sans GB,
+        Microsoft YaHei, SimSun, Arial, sans-serif;
       .header {
         padding: 36px 16px 8px 16px;
         -webkit-box-pack: justify;
@@ -5611,7 +5804,8 @@ export default {
     font-size: 20px;
   }
 }
-.toutiao-article-b {
+.toutiao-article-b,
+.wangyi-article-b {
   padding: 17px 0;
   .title {
     font-size: 19.5px;
@@ -5677,6 +5871,7 @@ export default {
     }
   }
 }
+.toutiao-article-a,
 .toutiao-article-a {
   padding: 17px 0;
   .info {
@@ -5715,5 +5910,113 @@ export default {
 }
 .din-font {
   font-family: suite-admin-din-font !important;
+}
+.wangyi-item .other {
+    margin-top: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 13px;
+}
+.wangyi-video-a {
+    padding: 14px 0;
+}
+.wangyi-video-a .title {
+    font-size: 19.5px;
+    line-height: 26px;
+    margin: 0 0 10px 0;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.wangyi-video-a .video {
+    position: relative;
+}
+.wangyi-item .other {
+    margin-top: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 13px;
+}
+.wangyi-item .other .l {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    color: #b8b8b8;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    margin-right: 2em;
+}
+.wangyi-item .other .comment.hot, .wangyi-item .other .r {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.wangyi-item .other .r {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    margin-left: 10px;
+}
+.wangyi-item .other .user {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.wangyi-item .other .comment, .wangyi-item .other .time {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
+.wangyi-item .other .l>*+* {
+    margin-left: 8px;
+}
+.wangyi-item .other .comment.hot, .wangyi-item .other .r {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.wangyi-item .other .r {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    margin-left: 10px;
+}
+.wangyi-video-a .video .duration {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    line-height: 1;
+    font-size: 13px;
+    color: #fff;
+}
+.wangyi-video-a .video .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 64px;
+    height: 64px;
 }
 </style>

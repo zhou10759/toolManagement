@@ -27,9 +27,15 @@ export function login(data) {
 
 export function getInfo(token) {
   return request({
-    url: '/vue-admin-template/user/info',
-    method: 'get',
-    params: { token }
+    url: '/biio/user/getUserInfo',
+    method: 'POST'
+  })
+}
+
+export function getCoupon(token) {
+  return request({
+    url: '/biio/coupon/getCouponCount',
+    method: 'POST'
   })
 }
 
