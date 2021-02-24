@@ -15,7 +15,7 @@
                   :index="i + 1 + ''"
                   v-for="(el, i) in barList"
                   :key="el.name"
-                  >{{ el.name }}1</el-menu-item
+                  >{{ el.name }}</el-menu-item
                 >
               </el-menu>
             </div>
@@ -1285,6 +1285,1423 @@
                         </div>
                       </div>
                     </div>
+                    <!-- 一加 5 -->
+                    <div
+                      v-if="equipmentType === '一加 5'"
+                      class="status-bar"
+                      style="--icon-height: 26px; --icon-text-size: 14px"
+                    >
+                      <div
+                        class="icons-wrap"
+                        style="padding: 4px 6px; color: white"
+                      >
+                        <div class="block left">
+                          <div class="icon-text m-r-xxs">
+                            <span>中国移动</span>
+                          </div>
+                          <svg
+                            viewBox="0 0 59 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              d="M6.98 21.35c-1.22 0-2.21.4-2.95 1.23a4.4 4.4 0 00-1.1 3.08h1.74c.03-.93.23-1.62.61-2.1.37-.5.91-.74 1.63-.74.67 0 1.2.16 1.55.48.36.32.53.8.53 1.44 0 .68-.27 1.3-.78 1.88-.32.33-.87.76-1.63 1.3A14.5 14.5 0 004 30.02 4.34 4.34 0 002.86 33h7.88v-1.54H5.02c.24-.62.98-1.34 2.21-2.16a15.95 15.95 0 002.37-1.84 3.96 3.96 0 001.12-2.7c0-1-.35-1.82-1.04-2.46a3.87 3.87 0 00-2.7-.95zm11.32 0c-1.68 0-3.03.58-4.02 1.76a6.27 6.27 0 00-1.4 4.23c0 1.7.46 3.08 1.4 4.16a5.33 5.33 0 004.24 1.72c1 0 1.9-.12 2.74-.38.78-.26 1.47-.6 2.06-1.07v-4.8h-4.9v1.49h3.16v2.48c-.39.24-.8.43-1.28.56-.5.12-1.03.2-1.59.2-1.42 0-2.48-.4-3.15-1.2-.64-.73-.94-1.79-.94-3.16 0-1.41.33-2.52 1.04-3.32a3.28 3.28 0 012.64-1.13c.9 0 1.63.19 2.17.59.55.38.9.96 1.06 1.73h1.76a4.34 4.34 0 00-1.54-2.87c-.84-.67-2-.99-3.45-.99z"
+                              fill="currentColor"
+                            ></path>
+                            <rect
+                              x="25"
+                              y="40"
+                              width="4"
+                              height="8"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="32"
+                              y="35"
+                              width="4"
+                              height="13"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="39"
+                              y="28"
+                              width="4"
+                              height="20"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="46"
+                              y="22"
+                              width="4"
+                              height="26"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="53"
+                              y="16"
+                              width="4"
+                              height="32"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect></svg
+                          ><svg
+                            viewBox="0 0 59 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              d="M7.95 21.58l-5.63 7.3v1.64h5.57V33h1.66v-2.48h1.73v-1.4H9.55v-7.54h-1.6zm-.11 2.2h.05v5.35H3.74l4.1-5.35zm10.46-2.43c-1.68 0-3.03.58-4.02 1.76a6.27 6.27 0 00-1.4 4.23c0 1.7.46 3.08 1.4 4.16a5.33 5.33 0 004.24 1.72c1 0 1.9-.12 2.74-.38.78-.26 1.47-.6 2.06-1.07v-4.8h-4.9v1.49h3.16v2.48c-.39.24-.8.43-1.28.56-.5.12-1.03.2-1.59.2-1.42 0-2.48-.4-3.15-1.2-.64-.73-.94-1.79-.94-3.16 0-1.41.33-2.52 1.04-3.32a3.28 3.28 0 012.64-1.13c.9 0 1.63.19 2.17.59.55.38.9.96 1.06 1.73h1.76a4.34 4.34 0 00-1.54-2.87c-.84-.67-2-.99-3.45-.99z"
+                              fill="currentColor"
+                            ></path>
+                            <rect
+                              x="25"
+                              y="40"
+                              width="4"
+                              height="8"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="32"
+                              y="35"
+                              width="4"
+                              height="13"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="39"
+                              y="28"
+                              width="4"
+                              height="20"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="46"
+                              y="22"
+                              width="4"
+                              height="26"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="53"
+                              y="16"
+                              width="4"
+                              height="32"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M11.75 43H14v4a1 1 0 102 0v-8a1 1 0 00-1-1h-.5a1 1 0 00-.8.4l-2.55 3.4a.75.75 0 00.6 1.2zM22.25 43H20v-4a1 1 0 10-2 0v8a1 1 0 001 1h.5a1 1 0 00.8-.4l2.55-3.4a.75.75 0 00-.6-1.2z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                          <div class="icon-text m-r-xxs">
+                            <span>13.68K/s</span>
+                          </div>
+                          <svg
+                            viewBox="0 0 41 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon"
+                          >
+                            <path
+                              d="M27.35 26.06c.18 0 .36 0 .53.02C26.76 20.9 21.44 17 15.04 17 7.85 17 2 21.98 2 28.11c0 3.58 2 6.76 5.1 8.8l-1.3 3.83 4.32-2.37c1.53.53 3.2.83 4.94.83.35 0 .67-.02 1-.04a8.65 8.65 0 01-.57-3.07c0-5.54 5.3-10.03 11.86-10.03zm-7.8-3.58a1.93 1.93 0 110 3.86 1.93 1.93 0 010-3.86zm-8.96 3.86a1.93 1.93 0 110-3.85 1.93 1.93 0 010 3.85z"
+                              fill="currentColor"
+                            ></path>
+                            <path
+                              d="M38.36 36.11c0-5.16-4.94-9.34-11.01-9.34-6.07 0-11.01 4.18-11.01 9.34s4.94 9.35 11 9.35c1.29 0 2.5-.19 3.64-.53L34.74 47l-1.1-3.23c2.87-1.7 4.72-4.5 4.72-7.66zM23.9 34.77a1.54 1.54 0 110-3.08 1.54 1.54 0 010 3.08zm7.19 0a1.54 1.54 0 110-3.08 1.54 1.54 0 010 3.08z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="block right">
+                          <svg
+                            viewBox="0 0 34 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M6 17a4 4 0 00-4 4v22a4 4 0 004 4h22a4 4 0 004-4V21a4 4 0 00-4-4H6zm-.74 21V25.15h1.96v5.42h6.73v-5.42h1.97V38h-1.97v-5.76H7.22V38H5.26zm13.36 0V25.15h4.68c2.07 0 3.64.57 4.72 1.74 1 1.08 1.51 2.65 1.51 4.68 0 2.02-.52 3.59-1.55 4.7C26.9 37.42 25.34 38 23.27 38h-4.65zm4.32-11.18H20.6v9.5h2.32c1.62 0 2.82-.39 3.58-1.16.74-.78 1.12-1.97 1.12-3.59 0-1.65-.38-2.84-1.1-3.6-.76-.77-1.95-1.15-3.57-1.15z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                          <div class="icon-text m-r-xxs">
+                            <span>{{ equipmentElectricity }}%</span>
+                          </div>
+                          <svg
+                            viewBox="0 0 64 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <rect
+                              x="4"
+                              y="19"
+                              width="50"
+                              height="26"
+                              rx="3"
+                              stroke="currentColor"
+                              stroke-width="2"
+                            ></rect>
+                            <rect
+                              x="7"
+                              y="22"
+                              :width="equipmentElectricity / 2.3"
+                              height="20"
+                              rx="1"
+                              fill="currentColor"
+                              opacity="0.6"
+                            ></rect>
+                            <rect
+                              x="57"
+                              y="23"
+                              width="4"
+                              height="18"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                          </svg>
+                          <div class="icon-text">
+                            <span>{{ equipmentTime }}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 锤子 t1 -->
+                    <div
+                      v-if="equipmentType === '锤子 t1'"
+                      class="status-bar"
+                      style="--icon-height: 24px; --icon-text-size: 13px"
+                    >
+                      <div
+                        class="icons-wrap"
+                        style="padding: 2px 6px; color: white"
+                      >
+                        <div class="block left">
+                          <svg
+                            viewBox="0 0 47 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <rect
+                              x="2"
+                              y="40"
+                              width="7"
+                              height="8"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="14"
+                              y="31"
+                              width="7"
+                              height="17"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="26"
+                              y="24"
+                              width="7"
+                              height="24"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="38"
+                              y="16"
+                              width="7"
+                              height="32"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                          </svg>
+                          <div class="icon-text m-r-xxs">
+                            <span>中国移动</span>
+                          </div>
+                          <svg
+                            viewBox="0 0 52 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M48.83 25.38c.4-.4.4-1.03-.02-1.41a33.88 33.88 0 00-23-8.97c-8.91 0-17.02 3.42-23.08 9.03a.98.98 0 00-.02 1.4l3.54 3.54c.39.4 1.01.4 1.42.03a26.9 26.9 0 0118.13-7 26.9 26.9 0 0118.08 6.94c.4.37 1.03.36 1.41-.02l3.54-3.54zm-8.49 8.5c.4-.4.4-1.05-.03-1.42A21.92 21.92 0 0025.81 27c-5.6 0-10.7 2.08-14.58 5.52a.97.97 0 00-.03 1.4l3.54 3.55c.39.38 1 .39 1.42.04C18.77 35.3 22.13 34 25.8 34c3.65 0 6.98 1.3 9.58 3.46.42.34 1.04.34 1.42-.05l3.54-3.54zm-7.8 7.79c.4-.4.4-1.06-.05-1.4a10.95 10.95 0 00-13.44.05.93.93 0 00-.06 1.4l6.05 6.04a1 1 0 001.41 0l6.1-6.1z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="block center">
+                          <div class="icon-text m-r-xxs">
+                            <span>{{ equipmentTime }}</span>
+                          </div>
+                        </div>
+                        <div class="block right">
+                          <svg
+                            viewBox="0 0 28 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M24.66 20.35c.34.35.43.89.24 1.34l-8.91 20.6c-.22.51-.74.8-1.26.69-.52-.1-.9-.57-.93-1.13l-.4-9.73-9.3-.41a1.16 1.16 0 01-1.08-.97c-.1-.54.17-1.1.65-1.32l19.71-9.31c.44-.2.95-.11 1.28.24zM9.01 29.53l5.55.24c.6.03 1.07.53 1.1 1.15l.23 5.8 5.67-13.12-12.55 5.93z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                          <div class="icon-text m-r-xxs">
+                            <span>{{ equipmentElectricity }}%</span>
+                          </div>
+                          <svg
+                            viewBox="0 0 67 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M52.05 19.59H8.9A4.32 4.32 0 004.6 23.9v15.54a4.32 4.32 0 004.31 4.31h43.15a4.32 4.32 0 004.32-4.31V23.9a4.32 4.32 0 00-4.32-4.31zM8.9 17A6.9 6.9 0 002 23.9v15.54a6.9 6.9 0 006.9 6.9h43.15a6.9 6.9 0 006.9-6.9V23.9a6.9 6.9 0 00-6.9-6.9H8.9z"
+                              fill="currentColor"
+                            ></path>
+                            <path
+                              d="M61.55 27.36h.1c1.85 0 3.35 1.5 3.35 3.35v1.82c0 1.91-1.55 3.46-3.45 3.46v-8.63z"
+                              fill="currentColor"
+                            ></path>
+                            <rect
+                              x="6.3"
+                              y="21.3"
+                              :width="equipmentElectricity / 2.2"
+                              height="21"
+                              rx="3"
+                              fill="currentColor"
+                            ></rect>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 华为 mate10pro -->
+                    <div
+                      v-if="equipmentType === '华为 mate10pro'"
+                      class="status-bar"
+                      style="--icon-height: 24px; --icon-text-size: 13px"
+                    >
+                      <div
+                        class="icons-wrap"
+                        style="padding: 2px 6px; color: white"
+                      >
+                        <div class="block left">
+                          <svg
+                            viewBox="0 0 47 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <rect
+                              x="2"
+                              y="40"
+                              width="7"
+                              height="8"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="14"
+                              y="31"
+                              width="7"
+                              height="17"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="26"
+                              y="24"
+                              width="7"
+                              height="24"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="38"
+                              y="16"
+                              width="7"
+                              height="32"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect></svg
+                          ><svg
+                            viewBox="0 0 52 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M48.83 25.38c.4-.4.4-1.03-.02-1.41a33.88 33.88 0 00-23-8.97c-8.91 0-17.02 3.42-23.08 9.03a.98.98 0 00-.02 1.4l3.54 3.54c.39.4 1.01.4 1.42.03a26.9 26.9 0 0118.13-7 26.9 26.9 0 0118.08 6.94c.4.37 1.03.36 1.41-.02l3.54-3.54zm-8.49 8.5c.4-.4.4-1.05-.03-1.42A21.92 21.92 0 0025.81 27c-5.6 0-10.7 2.08-14.58 5.52a.97.97 0 00-.03 1.4l3.54 3.55c.39.38 1 .39 1.42.04C18.77 35.3 22.13 34 25.8 34c3.65 0 6.98 1.3 9.58 3.46.42.34 1.04.34 1.42-.05l3.54-3.54zm-7.8 7.79c.4-.4.4-1.06-.05-1.4a10.95 10.95 0 00-13.44.05.93.93 0 00-.06 1.4l6.05 6.04a1 1 0 001.41 0l6.1-6.1z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="block center">
+                          <svg
+                            viewBox="0 0 30 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              d="M15 34.46c-1.32 0-2.4 1.1-2.4 2.46 0 .86.48 1.71 1.2 2.08v2.85c0 .73.48 1.23 1.2 1.23s1.2-.5 1.2-1.23V39a2.37 2.37 0 001.2-2.08 2.44 2.44 0 00-2.4-2.46zM15 16c3.99 0 7.2 3.3 7.2 7.38v4.93c2.64 0 4.8 2.21 4.8 4.92v9.85c0 2.7-2.16 4.92-4.8 4.92H7.8A4.88 4.88 0 013 43.08v-9.85c0-2.7 2.16-4.92 4.8-4.92h12v-4.93c0-2.8-2.07-4.92-4.8-4.92a4.76 4.76 0 00-4.8 4.92v1.24H7.8v-1.24C7.8 19.3 11.01 16 15 16z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                          <div class="icon-text m-r-xxs">
+                            <span>{{ equipmentTime }}</span>
+                          </div>
+                        </div>
+                        <div class="block right">
+                          <svg
+                            viewBox="0 0 28 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M24.66 20.35c.34.35.43.89.24 1.34l-8.91 20.6c-.22.51-.74.8-1.26.69-.52-.1-.9-.57-.93-1.13l-.4-9.73-9.3-.41a1.16 1.16 0 01-1.08-.97c-.1-.54.17-1.1.65-1.32l19.71-9.31c.44-.2.95-.11 1.28.24zM9.01 29.53l5.55.24c.6.03 1.07.53 1.1 1.15l.23 5.8 5.67-13.12-12.55 5.93z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                          <div class="icon-text m-r-xxs">
+                            <span>{{ equipmentElectricity }}%</span>
+                          </div>
+                          <svg
+                            viewBox="0 0 67 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M52.05 19.59H8.9A4.32 4.32 0 004.6 23.9v15.54a4.32 4.32 0 004.31 4.31h43.15a4.32 4.32 0 004.32-4.31V23.9a4.32 4.32 0 00-4.32-4.31zM8.9 17A6.9 6.9 0 002 23.9v15.54a6.9 6.9 0 006.9 6.9h43.15a6.9 6.9 0 006.9-6.9V23.9a6.9 6.9 0 00-6.9-6.9H8.9z"
+                              fill="currentColor"
+                            ></path>
+                            <path
+                              d="M61.55 27.36h.1c1.85 0 3.35 1.5 3.35 3.35v1.82c0 1.91-1.55 3.46-3.45 3.46v-8.63z"
+                              fill="currentColor"
+                            ></path>
+                            <rect
+                              x="6.3"
+                              y="21.3"
+                              :width="equipmentElectricity / 2.1"
+                              height="21"
+                              rx="3"
+                              fill="currentColor"
+                            ></rect>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 华为 麦芒6 -->
+                    <div
+                      v-if="equipmentType === '华为 麦芒6'"
+                      class="status-bar"
+                      style="--icon-height: 26px; --icon-text-size: 14px"
+                    >
+                      <div
+                        class="icons-wrap"
+                        style="padding: 4px 20px; color: white"
+                      >
+                        <div class="block left">
+                          <div class="icon-text m-r-xxs">
+                            <span>中国联通</span>
+                          </div>
+                          <svg
+                            viewBox="0 0 50 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M6 7a4 4 0 00-4 4v12a4 4 0 004 4h22a4 4 0 004-4V11a4 4 0 00-4-4H6zm.12 16V11.58h1.74v4.81h5.99v-4.81h1.74V23h-1.74v-5.12H7.86V23H6.12zm12.36 0V11.58h4.16c1.84 0 3.23.5 4.2 1.55.89.96 1.33 2.35 1.33 4.16 0 1.79-.46 3.18-1.37 4.17-.96 1.03-2.35 1.54-4.2 1.54h-4.12zm3.84-9.94h-2.1v8.45h2.07c1.44 0 2.5-.35 3.18-1.04.66-.69 1-1.74 1-3.18 0-1.47-.34-2.53-.98-3.2-.68-.69-1.73-1.03-3.17-1.03zM6 35a4 4 0 00-4 4v12a4 4 0 004 4h22a4 4 0 004-4V39a4 4 0 00-4-4H6zm.12 16V39.58h1.74v4.81h5.99v-4.81h1.74V51h-1.74v-5.12H7.86V51H6.12zm12.36 0V39.58h4.16c1.84 0 3.23.5 4.2 1.55.89.96 1.33 2.35 1.33 4.16 0 1.79-.46 3.18-1.37 4.17-.96 1.03-2.35 1.54-4.2 1.54h-4.12zm3.84-9.94h-2.1v8.45h2.07c1.44 0 2.5-.35 3.18-1.04.66-.69 1-1.74 1-3.18 0-1.47-.34-2.53-.98-3.2-.68-.69-1.73-1.03-3.17-1.03zM38 14a2 2 0 00-2 2v10c0 1.1.9 2 2 2h8a2 2 0 002-2v-7.54a2 2 0 00-.75-1.56l-3.07-2.46a2 2 0 00-1.25-.44H38zm2.85 3.64a5.4 5.4 0 001.17-.92h1.06V26h-1.41v-7.58c-.56.53-1.28.92-2.14 1.17v-1.4c.42-.1.85-.29 1.32-.55zM38 42a2 2 0 00-2 2v10c0 1.1.9 2 2 2h8a2 2 0 002-2v-7.54a2 2 0 00-.75-1.56l-3.07-2.46a2 2 0 00-1.25-.44H38zm1.65 3.54c.6-.68 1.4-1 2.4-1 .88 0 1.62.24 2.19.76.56.52.84 1.19.84 2s-.3 1.54-.9 2.2c-.37.38-1 .87-1.93 1.5-1 .66-1.6 1.24-1.8 1.75h4.65V54h-6.4c0-.92.3-1.73.92-2.43.34-.4 1.05-.96 2.1-1.7.62-.43 1.06-.78 1.32-1.06.42-.47.64-.97.64-1.52 0-.52-.14-.9-.43-1.17-.28-.26-.71-.39-1.26-.39-.58 0-1.03.2-1.33.6-.3.39-.46.95-.49 1.7h-1.42c.02-1.04.32-1.87.9-2.5z"
+                              fill="currentColor"
+                            ></path></svg
+                          ><svg
+                            viewBox="0 0 59 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              d="M7.95 21.58l-5.63 7.3v1.64h5.57V33h1.66v-2.48h1.73v-1.4H9.55v-7.54h-1.6zm-.11 2.2h.05v5.35H3.74l4.1-5.35zm10.46-2.43c-1.68 0-3.03.58-4.02 1.76a6.27 6.27 0 00-1.4 4.23c0 1.7.46 3.08 1.4 4.16a5.33 5.33 0 004.24 1.72c1 0 1.9-.12 2.74-.38.78-.26 1.47-.6 2.06-1.07v-4.8h-4.9v1.49h3.16v2.48c-.39.24-.8.43-1.28.56-.5.12-1.03.2-1.59.2-1.42 0-2.48-.4-3.15-1.2-.64-.73-.94-1.79-.94-3.16 0-1.41.33-2.52 1.04-3.32a3.28 3.28 0 012.64-1.13c.9 0 1.63.19 2.17.59.55.38.9.96 1.06 1.73h1.76a4.34 4.34 0 00-1.54-2.87c-.84-.67-2-.99-3.45-.99z"
+                              fill="currentColor"
+                            ></path>
+                            <rect
+                              x="25"
+                              y="40"
+                              width="4"
+                              height="8"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="32"
+                              y="35"
+                              width="4"
+                              height="13"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="39"
+                              y="28"
+                              width="4"
+                              height="20"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="46"
+                              y="22"
+                              width="4"
+                              height="26"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="53"
+                              y="16"
+                              width="4"
+                              height="32"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M6.75 43H9v4a1 1 0 102 0v-8a1 1 0 00-1-1h-.5a1 1 0 00-.8.4l-2.55 3.4a.75.75 0 00.6 1.2zM17.25 43H15v-4a1 1 0 10-2 0v8a1 1 0 001 1h.5a1 1 0 00.8-.4l2.55-3.4a.75.75 0 00-.6-1.2z"
+                              fill="currentColor"
+                              fill-opacity=".5"
+                            ></path></svg
+                          ><svg
+                            viewBox="0 0 59 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              d="M7.95 21.58l-5.63 7.3v1.64h5.57V33h1.66v-2.48h1.73v-1.4H9.55v-7.54h-1.6zm-.11 2.2h.05v5.35H3.74l4.1-5.35zm10.46-2.43c-1.68 0-3.03.58-4.02 1.76a6.27 6.27 0 00-1.4 4.23c0 1.7.46 3.08 1.4 4.16a5.33 5.33 0 004.24 1.72c1 0 1.9-.12 2.74-.38.78-.26 1.47-.6 2.06-1.07v-4.8h-4.9v1.49h3.16v2.48c-.39.24-.8.43-1.28.56-.5.12-1.03.2-1.59.2-1.42 0-2.48-.4-3.15-1.2-.64-.73-.94-1.79-.94-3.16 0-1.41.33-2.52 1.04-3.32a3.28 3.28 0 012.64-1.13c.9 0 1.63.19 2.17.59.55.38.9.96 1.06 1.73h1.76a4.34 4.34 0 00-1.54-2.87c-.84-.67-2-.99-3.45-.99z"
+                              fill="currentColor"
+                            ></path>
+                            <rect
+                              x="25"
+                              y="40"
+                              width="4"
+                              height="8"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="32"
+                              y="35"
+                              width="4"
+                              height="13"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="39"
+                              y="28"
+                              width="4"
+                              height="20"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="46"
+                              y="22"
+                              width="4"
+                              height="26"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="53"
+                              y="16"
+                              width="4"
+                              height="32"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect></svg
+                          ><svg
+                            viewBox="0 0 41 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M28.96 41.5h2.02v3.6a.9.9 0 101.8 0V37.9a.9.9 0 00-.95-.9h-.35a1 1 0 00-.8.4l-2.26 3.02a.68.68 0 00.54 1.08zM35.23 46h-.05a.9.9 0 01-.9-.9v-7.2a.9.9 0 011.8 0v3.6h2.03a.68.68 0 01.54 1.08l-2.27 3.02a1 1 0 01-.8.4h-.35z"
+                              fill="currentColor"
+                            ></path>
+                            <circle
+                              cx="20.28"
+                              cy="43"
+                              r="3"
+                              fill="currentColor"
+                            ></circle>
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M27.43 37.98c.77-.78.79-2.05-.1-2.7a11.95 11.95 0 00-14.04-.04c-.9.65-.88 1.93-.1 2.7.78.79 2.04.76 2.99.19a7.96 7.96 0 018.24.02c.95.58 2.22.61 3-.17z"
+                              fill="currentColor"
+                            ></path>
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M32.37 32.03c.78-.77.79-2.04-.06-2.74A18.92 18.92 0 0020.28 25c-4.54 0-8.7 1.6-11.97 4.25-.86.7-.85 1.97-.07 2.75s2.04.77 2.92.1a14.94 14.94 0 0118.29.03c.87.67 2.14.69 2.92-.1z"
+                              fill="currentColor"
+                            ></path>
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M38.03 26.38c.78-.78.78-2.05-.05-2.77A26.9 26.9 0 0020.28 17a26.9 26.9 0 00-17.65 6.57c-.83.72-.83 2-.05 2.77.78.78 2.05.77 2.9.06 4-3.37 9.16-5.4 14.8-5.4a22.9 22.9 0 0114.85 5.44c.85.71 2.11.72 2.9-.06z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="block right">
+                          <svg
+                            viewBox="0 0 38 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M19 44.83a10 10 0 100-20 10 10 0 000 20zm0 3a13 13 0 100-26 13 13 0 000 26z"
+                              fill="currentColor"
+                            ></path>
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M23.58 40.39a1.5 1.5 0 01-2.13 0l-3.51-3.52a1.5 1.5 0 01-.44-1.06v-5.98a1.5 1.5 0 113 0v5.36l3.08 3.08a1.5 1.5 0 010 2.12zM3.59 25.41a2 2 0 010-2.82l4.17-4.18a2 2 0 012.83 2.83L6.4 25.41a2 2 0 01-2.82 0zM27.41 18.41a2 2 0 012.83 0l4.17 4.18a2 2 0 11-2.82 2.82l-4.18-4.17a2 2 0 010-2.83z"
+                              fill="currentColor"
+                            ></path></svg
+                          ><svg
+                            viewBox="0 0 25 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M13.43 16.11a1.5 1.5 0 011.63.33l7.5 7.5a1.5 1.5 0 010 2.12l-6.44 6.44 5.94 5.94a1.5 1.5 0 010 2.12l-7 7a1.5 1.5 0 01-2.56-1.06V36.12l-7.44 7.44a1.5 1.5 0 11-2.12-2.12l8.94-8.94-8.94-8.94a1.5 1.5 0 112.12-2.12l7.44 7.44V17.5c0-.6.37-1.15.93-1.39zm2.07 20.01l3.38 3.38-3.38 3.38v-6.76zm0-7.24v-7.76L19.38 25l-3.88 3.88z"
+                              fill="currentColor"
+                            ></path></svg
+                          ><svg
+                            viewBox="0 0 48 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M44.94 19.6c.5.52.48 1.34-.04 1.84l-3.02 2.9 3.02 2.89a1.3 1.3 0 010 1.88L41.88 32l3.02 2.9a1.3 1.3 0 010 1.87l-3.02 2.9 3.02 2.9a1.3 1.3 0 11-1.8 1.87l-4-3.83a1.3 1.3 0 010-1.88l3.02-2.9-3.02-2.9a1.3 1.3 0 010-1.87l3.02-2.9-3.02-2.89a1.3 1.3 0 010-1.88l4-3.83a1.3 1.3 0 011.84.04zM3.06 44.4a1.3 1.3 0 01.04-1.84l3.02-2.9-3.02-2.89a1.3 1.3 0 010-1.88L6.12 32 3.1 29.1a1.3 1.3 0 010-1.87l3.02-2.9-3.02-2.9a1.3 1.3 0 011.8-1.87l4 3.83a1.3 1.3 0 010 1.88l-3.02 2.9 3.02 2.9a1.3 1.3 0 010 1.87l-3.02 2.9 3.02 2.89a1.3 1.3 0 010 1.88l-4 3.83a1.3 1.3 0 01-1.84-.04zM12.5 18.5A3.5 3.5 0 0116 15h16a3.5 3.5 0 013.5 3.5v26A3.5 3.5 0 0132 48H16a3.5 3.5 0 01-3.5-3.5v-26zM16 18a.5.5 0 00-.5.5v26c0 .28.22.5.5.5h16a.5.5 0 00.5-.5v-26a.5.5 0 00-.5-.5H16z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                          <div class="icon-text m-r-xxs">
+                            <span>{{ equipmentElectricity }}%</span>
+                          </div>
+                          <svg
+                            viewBox="0 0 62 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <rect
+                              x="3"
+                              y="19"
+                              width="50"
+                              height="26"
+                              rx="3"
+                              stroke="currentColor"
+                              stroke-width="2"
+                            ></rect>
+                            <rect
+                              x="6"
+                              y="22"
+                              :width="equipmentElectricity / 2.3"
+                              height="20"
+                              rx="1"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="56"
+                              y="23"
+                              width="4"
+                              height="18"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                          </svg>
+                          <div class="icon-text">
+                            <span>{{ equipmentTime }}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 华为 畅享7s -->
+                    <div
+                      v-if="equipmentType === '华为 畅享7s'"
+                      class="status-bar"
+                      style="--icon-height: 24px; --icon-text-size: 16px"
+                    >
+                      <div
+                        class="icons-wrap"
+                        style="padding: 8px 24px; color: white"
+                      >
+                        <div class="block left">
+                          <div class="icon-text m-r-xxs">
+                            <span>{{ equipmentTime }}</span>
+                          </div>
+                          <svg
+                            viewBox="0 0 35 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M31.67 19.94c.44.44.56 1.1.3 1.68L20.3 47.42a1.5 1.5 0 01-2.86-.55l-.51-12.2-12.2-.5a1.5 1.5 0 01-.55-2.87l25.8-11.67a1.5 1.5 0 011.69.3zm-20.5 11.5l7.26.3c.78.03 1.4.66 1.44 1.44l.3 7.26L27.6 24l-16.43 7.43z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="block right">
+                          <svg
+                            viewBox="0 0 55 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <rect
+                              x="2"
+                              y="36"
+                              width="8"
+                              height="12"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="16"
+                              y="30"
+                              width="8"
+                              height="18"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="30"
+                              y="23"
+                              width="8"
+                              height="25"
+                              rx="2"
+                              fill="currentColor"
+                              opacity="0.5"
+                            ></rect>
+                            <rect
+                              x="44"
+                              y="16"
+                              width="8"
+                              height="32"
+                              rx="2"
+                              fill="currentColor"
+                              opacity="0.5"
+                            ></rect></svg
+                          ><svg
+                            viewBox="0 0 52 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M49.03 25.38c.4-.4.39-1.03-.02-1.41A33.88 33.88 0 0026 15c-8.9 0-17.01 3.42-23.07 9.03a.98.98 0 00-.02 1.4l3.54 3.54c.39.4 1.01.4 1.42.03A26.9 26.9 0 0126 22a26.9 26.9 0 0118.08 6.94c.4.37 1.02.36 1.41-.02l3.54-3.54zm-8.5 8.5c.4-.4.4-1.05-.02-1.42A21.92 21.92 0 0026 27c-5.59 0-10.7 2.08-14.57 5.52a.97.97 0 00-.03 1.4l3.54 3.55c.39.38 1 .39 1.42.04C18.96 35.3 22.33 34 26 34c3.64 0 6.98 1.3 9.58 3.46.42.34 1.03.34 1.42-.05l3.54-3.54zm-7.79 7.79c.4-.4.4-1.06-.06-1.4a10.95 10.95 0 00-13.44.05.93.93 0 00-.05 1.4l6.04 6.04a1 1 0 001.42 0l6.1-6.1z"
+                              fill="currentColor"
+                            ></path></svg
+                          ><svg
+                            viewBox="0 0 78 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M61 18H11a5 5 0 00-5 5v18a5 5 0 005 5h50a5 5 0 005-5V23a5 5 0 00-5-5zm-50-3a8 8 0 00-8 8v18a8 8 0 008 8h50a8 8 0 008-8V23a8 8 0 00-8-8H11z"
+                              fill="currentColor"
+                            ></path>
+                            <rect
+                              x="9"
+                              y="21"
+                              :width="equipmentElectricity / 1.8"
+                              height="22"
+                              rx="4"
+                              fill="currentColor"
+                            ></rect>
+                            <path
+                              d="M72 27h.11A3.89 3.89 0 0176 30.89V33a4 4 0 01-4 4V27z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <!--  小米 10 -->
+                    <div
+                      v-if="equipmentType === '小米 10'"
+                      class="status-bar"
+                      style="--icon-height: 28px; --icon-text-size: 16px"
+                    >
+                      <div
+                        class="icons-wrap"
+                        style="padding: 4px 10px; color: white"
+                      >
+                        <div class="block left">
+                          <div class="icon-text m-r-xxs">
+                            <span>{{ equipmentTime }}</span>
+                          </div>
+                        </div>
+                        <div class="block right">
+                          <svg
+                            viewBox="0 0 42 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <circle
+                              cx="7.5"
+                              cy="31.5"
+                              r="4.5"
+                              fill="currentColor"
+                            ></circle>
+                            <circle
+                              cx="21"
+                              cy="31.5"
+                              r="4.5"
+                              fill="currentColor"
+                            ></circle>
+                            <circle
+                              cx="34.5"
+                              cy="31.5"
+                              r="4.5"
+                              fill="currentColor"
+                            ></circle></svg
+                          ><svg
+                            viewBox="0 0 50 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <rect
+                              x="2"
+                              y="39"
+                              width="7"
+                              height="7"
+                              rx="1"
+                              fill="currentColor"
+                              opacity="0.6"
+                            ></rect>
+                            <rect
+                              x="12"
+                              y="34"
+                              width="6"
+                              height="12"
+                              rx="1"
+                              fill="currentColor"
+                              opacity="0.6"
+                            ></rect>
+                            <rect
+                              x="22"
+                              y="28"
+                              width="6"
+                              height="18"
+                              rx="1"
+                              fill="currentColor"
+                              opacity="0.6"
+                            ></rect>
+                            <rect
+                              x="31"
+                              y="23"
+                              width="7"
+                              height="8"
+                              rx="1"
+                              fill="currentColor"
+                              opacity="0.6"
+                            ></rect>
+                            <rect
+                              x="41"
+                              y="18"
+                              width="7"
+                              height="13"
+                              rx="1"
+                              fill="currentColor"
+                              opacity="0.6"
+                            ></rect>
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M34.1 33.81a1.64 1.64 0 012.32.02l9.2 9.19c.63.64.64 1.68 0 2.31-.63.64-1.67.63-2.31 0l-9.2-9.2a1.64 1.64 0 010-2.32z"
+                              fill="currentColor"
+                              opacity="0.6"
+                            ></path>
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M45.62 33.81c.64.64.63 1.68 0 2.32l-9.2 9.2c-.64.63-1.68.64-2.32 0a1.64 1.64 0 01.02-2.31l9.19-9.2a1.64 1.64 0 012.31 0z"
+                              fill="currentColor"
+                              opacity="0.6"
+                            ></path></svg
+                          ><svg
+                            viewBox="0 0 47 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M35.3 43.31h-2.25a.75.75 0 01-.6-1.2L35 38.69a1 1 0 01.8-.4h.5a1 1 0 011 1v8.04a1 1 0 01-2 0V43.3zM41 43.31h2.25a.75.75 0 01.6 1.2l-2.56 3.42a1 1 0 01-.8.4h-.5a1 1 0 01-1-1v-8.04a1 1 0 012 0v4.02z"
+                              fill="currentColor"
+                            ></path>
+                            <circle
+                              cx="23.01"
+                              cy="44.65"
+                              r="3.67"
+                              fill="currentColor"
+                            ></circle>
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M31.35 39.38c.86-.86.87-2.28-.12-3a13.32 13.32 0 00-15.64-.04c-1 .71-.99 2.14-.12 3 .87.88 2.28.85 3.34.21a8.88 8.88 0 019.19.03c1.06.64 2.47.68 3.35-.2z"
+                              fill="currentColor"
+                            ></path>
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M36.85 32.76c.87-.87.88-2.28-.07-3.06a21.1 21.1 0 00-13.4-4.78 21.1 21.1 0 00-13.35 4.73c-.96.78-.95 2.2-.08 3.07.87.87 2.28.85 3.26.1a16.65 16.65 0 0110.17-3.44c3.84 0 7.39 1.3 10.21 3.48.98.76 2.39.77 3.26-.1z"
+                              fill="currentColor"
+                            ></path>
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M43.16 26.46a2.1 2.1 0 00-.05-3.1A29.98 29.98 0 0023.38 16c-7.52 0-14.4 2.76-19.68 7.32a2.1 2.1 0 00-.05 3.1c.87.86 2.28.86 3.22.06a25.54 25.54 0 0116.5-6.02c6.32 0 12.1 2.28 16.56 6.06.95.8 2.36.8 3.23-.06z"
+                              fill="currentColor"
+                            ></path></svg
+                          ><svg
+                            viewBox="0 0 74 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon"
+                          >
+                            <rect
+                              x="4.5"
+                              y="18.5"
+                              width="65"
+                              height="27"
+                              rx="10.5"
+                              stroke="currentColor"
+                              stroke-width="3"
+                            ></rect>
+                            <rect
+                              x="9"
+                              y="23.2"
+                              :width="equipmentElectricity / 1.8"
+                              height="18"
+                              rx="7"
+                              fill="currentColor"
+                              fill-opacity="0.5"
+                            ></rect>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 小米 9 -->
+                    <div
+                      v-if="equipmentType === '小米 9'"
+                      class="status-bar"
+                      style="--icon-height: 26px; --icon-text-size: 16px"
+                    >
+                      <div
+                        class="icons-wrap"
+                        style="padding: 6px 25px; color: white"
+                      >
+                        <div class="block left">
+                          <div class="icon-text">
+                            <span>{{ equipmentTime }}</span>
+                          </div>
+                        </div>
+                        <div class="block right">
+                          <svg
+                            viewBox="0 0 54 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <rect
+                              x="2"
+                              y="36"
+                              width="8"
+                              height="12"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="16"
+                              y="30"
+                              width="8"
+                              height="18"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="30"
+                              y="23"
+                              width="8"
+                              height="25"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="44"
+                              y="16"
+                              width="8"
+                              height="32"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                          </svg>
+                          <div class="icon-text m-r-xxs"><span>4G</span></div>
+                          <svg
+                            viewBox="0 0 78 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon"
+                          >
+                            <rect
+                              x="4.5"
+                              y="16.5"
+                              width="63"
+                              height="31"
+                              rx="6.5"
+                              stroke="currentColor"
+                              stroke-width="3"
+                            ></rect>
+                            <rect
+                              x="9"
+                              y="21"
+                              :width="equipmentElectricity / 1.8"
+                              height="22"
+                              rx="4"
+                              fill="currentColor"
+                            ></rect>
+                            <path
+                              d="M72 27h.11A3.89 3.89 0 0176 30.89V33a4 4 0 01-4 4V27z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 小米 CC9 Pro -->
+                    <div
+                      v-if="equipmentType === '小米 CC9 Pro'"
+                      class="status-bar"
+                      style="--icon-height: 24px; --icon-text-size: 16px"
+                    >
+                      <div
+                        class="icons-wrap"
+                        style="padding: 6px 18px; color: white"
+                      >
+                        <div class="block left">
+                          <div class="icon-text m-r-xxs">
+                            <span>{{ equipmentTime }}</span>
+                          </div>
+                          <svg
+                            viewBox="0 0 31 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M28.59 18.43c.41.43.53 1.08.29 1.63L17.94 45.14c-.27.62-.9.96-1.55.83a1.44 1.44 0 01-1.13-1.37l-.49-11.85-11.42-.5a1.42 1.42 0 01-1.32-1.18c-.13-.66.2-1.32.8-1.6l24.19-11.34a1.37 1.37 0 011.57.3zM9.38 29.6l6.8.3c.73.03 1.32.63 1.35 1.4l.29 7.05 6.96-15.97-15.4 7.22z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="block right">
+                          <svg
+                            viewBox="0 0 54 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <rect
+                              x="2"
+                              y="36"
+                              width="8"
+                              height="12"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="16"
+                              y="30"
+                              width="8"
+                              height="18"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="30"
+                              y="23"
+                              width="8"
+                              height="25"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="44"
+                              y="16"
+                              width="8"
+                              height="32"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect></svg
+                          ><svg
+                            viewBox="0 0 52 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M48.83 25.38c.4-.4.4-1.03-.02-1.41a33.88 33.88 0 00-23-8.97c-8.91 0-17.02 3.42-23.08 9.03a.98.98 0 00-.02 1.4l3.54 3.54c.39.4 1.01.4 1.42.03a26.9 26.9 0 0118.13-7 26.9 26.9 0 0118.08 6.94c.4.37 1.03.36 1.41-.02l3.54-3.54zm-8.49 8.5c.4-.4.4-1.05-.03-1.42A21.92 21.92 0 0025.81 27c-5.6 0-10.7 2.08-14.58 5.52a.97.97 0 00-.03 1.4l3.54 3.55c.39.38 1 .39 1.42.04C18.77 35.3 22.13 34 25.8 34c3.65 0 6.98 1.3 9.58 3.46.42.34 1.04.34 1.42-.05l3.54-3.54zm-7.8 7.79c.4-.4.4-1.06-.05-1.4a10.95 10.95 0 00-13.44.05.93.93 0 00-.06 1.4l6.05 6.04a1 1 0 001.41 0l6.1-6.1z"
+                              fill="currentColor"
+                            ></path></svg
+                          ><svg
+                            viewBox="0 0 79 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon"
+                          >
+                            <rect
+                              x="4.5"
+                              y="16.5"
+                              width="63"
+                              height="31"
+                              rx="6.5"
+                              stroke="currentColor"
+                              stroke-width="3"
+                            ></rect>
+                            <rect
+                              x="9"
+                              y="21"
+                              :width="equipmentElectricity / 1.8"
+                              height="22"
+                              rx="3"
+                              fill="currentColor"
+                              fill-opacity="0.4"
+                            ></rect>
+                            <path
+                              d="M72 27h.11A3.89 3.89 0 0176 30.89V33a4 4 0 01-4 4V27z"
+                              fill="currentColor"
+                            ></path>
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M29 33.78L37.89 20v10.22h4.45L33.44 44V33.78H29z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 小米5C -->
+                    <div
+                      v-if="equipmentType === '小米5C'"
+                      class="status-bar"
+                      style="--icon-height: 24px; --icon-text-size: 14px"
+                    >
+                      <div
+                        class="icons-wrap"
+                        style="padding: 8px 18px; color: white"
+                      >
+                        <div class="block left">
+                          <div class="icon-text">
+                            <span>{{ equipmentTime }}</span>
+                          </div>
+                        </div>
+                        <div class="block right">
+                          <svg
+                            viewBox="0 0 43 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M2 43.6h7.8v5.2H2zM12.4 41h5.2v7.8h-5.2zM20.2 38.4h5.2v10.4h-5.2zM28 35.8h5.2v13H28zM35.8 33.2H41v15.6h-5.2zM2 25.4h7.8v5.2H2zM12.4 22.8h5.2v7.8h-5.2zM20.2 20.2h5.2v10.4h-5.2zM28 17.6h5.2v13H28zM35.8 15H41v15.6h-5.2z"
+                            ></path></svg
+                          ><svg
+                            viewBox="0 0 47 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M35.3 43.31h-2.25a.75.75 0 01-.6-1.2L35 38.69a1 1 0 01.8-.4h.5a1 1 0 011 1v8.04a1 1 0 01-2 0V43.3zM38.99 43.31v4.02a1 1 0 001 1h.5a1 1 0 00.8-.4l2.56-3.41a.75.75 0 00-.6-1.2h-2.26v-4.03a1 1 0 00-2 0v4.02z"
+                              fill="currentColor"
+                            ></path>
+                            <circle
+                              cx="23.08"
+                              cy="44.52"
+                              r="3.8"
+                              fill="currentColor"
+                            ></circle>
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M31.35 39.39c.86-.87.88-2.29-.11-3a13.32 13.32 0 00-15.65-.05c-1 .71-.99 2.14-.12 3 .87.88 2.28.85 3.34.21a8.88 8.88 0 019.19.03c1.06.64 2.47.68 3.35-.2z"
+                              fill="currentColor"
+                            ></path>
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M36.86 32.76c.86-.87.87-2.28-.08-3.06a21.1 21.1 0 00-13.4-4.78 21.1 21.1 0 00-13.35 4.73c-.95.78-.95 2.2-.08 3.07.87.87 2.28.85 3.26.1a16.65 16.65 0 0110.17-3.44c3.84 0 7.39 1.3 10.21 3.48.98.76 2.4.77 3.27-.1z"
+                              fill="currentColor"
+                            ></path>
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M43.16 26.46a2.1 2.1 0 00-.05-3.1A29.98 29.98 0 0023.38 16c-7.52 0-14.4 2.76-19.68 7.32a2.1 2.1 0 00-.05 3.1c.87.86 2.28.85 3.22.06a25.54 25.54 0 0116.5-6.02c6.32 0 12.1 2.28 16.56 6.06.95.8 2.36.81 3.23-.06z"
+                              fill="currentColor"
+                            ></path></svg
+                          ><svg
+                            viewBox="0 0 71 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon"
+                          >
+                            <rect
+                              x="3.5"
+                              y="18.5"
+                              width="64"
+                              height="26"
+                              rx="10.5"
+                              stroke="currentColor"
+                              stroke-width="3"
+                            ></rect>
+                            <rect
+                              x="7.4"
+                              y="22.5"
+                              :width="equipmentElectricity / 1.8"
+                              height="18"
+                              rx="6.4"
+                              fill="currentColor"
+                              fill-opacity=".5"
+                            ></rect>
+                            <text x="26" y="37" fill="currentColor">
+                              {{ equipmentElectricity }}
+                            </text>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 小米 play -->
+                    <div
+                      v-if="equipmentType === '小米 play'"
+                      class="status-bar"
+                      style="--icon-height: 26px; --icon-text-size: 16px"
+                    >
+                      <div
+                        class="icons-wrap"
+                        style="padding: 6px 24px; color: white"
+                      >
+                        <div class="block left">
+                          <div class="icon-text m-r-xxs">
+                            <span>{{ equipmentTime }}</span>
+                          </div>
+                          <svg
+                            viewBox="0 0 32 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M29.57 17.44c.43.45.55 1.12.3 1.7L18.53 45.1c-.28.64-.94 1-1.6.86a1.5 1.5 0 01-1.18-1.42l-.5-12.27-11.85-.52a1.47 1.47 0 01-1.37-1.22c-.13-.69.21-1.37.83-1.66l25.08-11.75c.55-.25 1.2-.13 1.63.31zM9.65 29.01l7.06.31c.76.03 1.36.66 1.4 1.45l.3 7.3 7.21-16.54-15.97 7.48z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="block right">
+                          <svg
+                            viewBox="0 0 53 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <rect
+                              x="3"
+                              y="29.41"
+                              width="8.55"
+                              height="10.08"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="3"
+                              y="41.8"
+                              width="8.55"
+                              height="7.2"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="15.82"
+                              y="41.8"
+                              width="8.55"
+                              height="7.2"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="15.82"
+                              y="25.08"
+                              width="8.55"
+                              height="14.41"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="28.64"
+                              y="41.8"
+                              width="8.55"
+                              height="7.2"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="28.64"
+                              y="20.76"
+                              width="8.55"
+                              height="18.73"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect>
+                            <rect
+                              x="41.46"
+                              y="41.8"
+                              width="8.55"
+                              height="7.2"
+                              rx="2"
+                              fill="currentColor"
+                              fill-opacity=".5"
+                            ></rect>
+                            <rect
+                              x="41.46"
+                              y="15"
+                              width="8.55"
+                              height="24.49"
+                              rx="2"
+                              fill="currentColor"
+                            ></rect></svg
+                          ><svg
+                            viewBox="0 0 50 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon m-r-xxs"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M47.24 25.68a.98.98 0 00-.02-1.44A33.6 33.6 0 0025.02 16a33.6 33.6 0 00-22.24 8.3.98.98 0 00-.02 1.44l3.35 3.2c.38.36.98.37 1.38.02a26.68 26.68 0 0117.54-6.48c6.72 0 12.85 2.43 17.48 6.43.4.34 1 .34 1.38-.02l3.35-3.2zm-8.22 7.87A.96.96 0 0039 32.1c-3.74-3.11-8.62-5-13.96-5-5.37 0-10.28 1.91-14.03 5.05a.96.96 0 00-.02 1.44l3.34 3.2c.38.37.98.37 1.39.04a14.84 14.84 0 019.32-3.24c3.52 0 6.75 1.2 9.26 3.2.41.32 1 .32 1.38-.05l3.35-3.2zm-7.54 7.22c.42-.4.41-1.09-.06-1.43a10.9 10.9 0 00-6.4-2.04c-2.42 0-4.66.78-6.45 2.1-.47.34-.48 1.01-.06 1.42l5.77 5.52a1 1 0 001.38 0l5.82-5.57z"
+                              fill="currentColor"
+                            ></path></svg
+                          ><svg
+                            viewBox="0 0 75 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon"
+                          >
+                            <rect
+                              x="4"
+                              y="17"
+                              width="60"
+                              height="30"
+                              rx="7"
+                              stroke="currentColor"
+                              stroke-width="2"
+                            ></rect>
+                            <rect
+                              x="9"
+                              y="22"
+                              :width="equipmentElectricity / 1.9"
+                              height="20"
+                              rx="4"
+                              fill="#5FD263"
+                            ></rect>
+                            <path
+                              d="M68 28h.89C70.6 28 72 29.4 72 31.11V32a4 4 0 01-4 4v-8z"
+                              fill="currentColor"
+                            ></path>
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M27.48 33.97L35.85 21v9.63h4.2L31.66 43.6v-9.63h-4.19z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
                     <!-- 头条 -->
                     <div class="toutiao-app" v-if="activeIndex == 1">
                       <!-- 手机头部 -->
@@ -2066,16 +3483,37 @@
                   <div class="view">
                     <div class="toutiao-app-back">
                       <div class="header">
-                        <svg viewBox="0 0 77 27" xmlns="http://www.w3.org/2000/svg" class="logo"><path d="M57.63 7.27h13.5V5.13h-13.5v2.14zm-3.96 3.42V1.7h21.42v8.98H53.67zm-1.44 2.02h24.3v3.15h-16.6l-.57 2.03h16.27v1.84L74 27H57.63v-3.42H70.8l.5-2.27H54.94V19.6l1.03-3.74h-3.73v-3.15zM10.85 2.94v3.82l-8.6-1.23V1.7l8.6 1.23zm0 6.46v3.82l-8.6-1.23V8.17l8.6 1.23zm25.4 4.52h3.95v1.94h10.2v3.42H40.2V27h-3.96v-7.72H26.1v-3.42h10.14v-1.94zM17.56.86c-.1 7.28-.23 11.64-1.29 15h8.02v3.42h-9.6c-1.54 2.4-3.93 4.6-7.66 7.72H.94l.77-.63c3.75-3.07 6.34-5.18 8.09-7.09H0v-3.42h12.14c1.36-3.03 1.46-7.36 1.56-15h3.87zm-1.7 20.13h4.67L24.3 27h-4.67l-3.76-6zm26.1 0h4.68L50.4 27h-4.67l-3.75-6zM26.1 27l3.75-6h4.67l-3.75 6H26.1zm6.25-21.87c1.35.88 3.2 1.9 5.92 2.91a26.86 26.86 0 005.85-2.91H32.35zm18.05 9.62a75.48 75.48 0 01-12.24-2.93 72.21 72.21 0 01-12.06 2.92V11.1c2.63-.45 4.91-.93 6.9-1.44a30.5 30.5 0 01-4.6-2.91l-1.62-1.26L30.45 0l3.66 1.71h14.94v3.98c-1.1 1-2.78 2.43-5.69 3.93 2.02.52 4.34 1.02 7.04 1.48v3.65z" fill="#FF373C" fill-rule="evenodd"></path></svg>
+                        <svg
+                          viewBox="0 0 77 27"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="logo"
+                        >
+                          <path
+                            d="M57.63 7.27h13.5V5.13h-13.5v2.14zm-3.96 3.42V1.7h21.42v8.98H53.67zm-1.44 2.02h24.3v3.15h-16.6l-.57 2.03h16.27v1.84L74 27H57.63v-3.42H70.8l.5-2.27H54.94V19.6l1.03-3.74h-3.73v-3.15zM10.85 2.94v3.82l-8.6-1.23V1.7l8.6 1.23zm0 6.46v3.82l-8.6-1.23V8.17l8.6 1.23zm25.4 4.52h3.95v1.94h10.2v3.42H40.2V27h-3.96v-7.72H26.1v-3.42h10.14v-1.94zM17.56.86c-.1 7.28-.23 11.64-1.29 15h8.02v3.42h-9.6c-1.54 2.4-3.93 4.6-7.66 7.72H.94l.77-.63c3.75-3.07 6.34-5.18 8.09-7.09H0v-3.42h12.14c1.36-3.03 1.46-7.36 1.56-15h3.87zm-1.7 20.13h4.67L24.3 27h-4.67l-3.76-6zm26.1 0h4.68L50.4 27h-4.67l-3.75-6zM26.1 27l3.75-6h4.67l-3.75 6H26.1zm6.25-21.87c1.35.88 3.2 1.9 5.92 2.91a26.86 26.86 0 005.85-2.91H32.35zm18.05 9.62a75.48 75.48 0 01-12.24-2.93 72.21 72.21 0 01-12.06 2.92V11.1c2.63-.45 4.91-.93 6.9-1.44a30.5 30.5 0 01-4.6-2.91l-1.62-1.26L30.45 0l3.66 1.71h14.94v3.98c-1.1 1-2.78 2.43-5.69 3.93 2.02.52 4.34 1.02 7.04 1.48v3.65z"
+                            fill="#FF373C"
+                            fill-rule="evenodd"
+                          ></path>
+                        </svg>
                         <div class="flex items-center">
                           <div class="message flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon"><g fill="none"><path d="M0 0h20v20H0z"></path><path fill="currentColor" d="M18.75 2.5c.69 0 1.25.56 1.25 1.25v12.5c0 .69-.56 1.25-1.25 1.25H1.25C.56 17.5 0 16.94 0 16.25V3.75C0 3.06.56 2.5 1.25 2.5h17.5zm-.63 3.2l-7.46 7.46a.94.94 0 01-1.22.1l-.1-.1L1.88 5.7v9.93h16.25V5.7zM16.8 4.37H3.2l6.8 6.8 6.8-6.8z"></path></g></svg>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="icon"
+                            >
+                              <g fill="none">
+                                <path d="M0 0h20v20H0z"></path>
+                                <path
+                                  fill="currentColor"
+                                  d="M18.75 2.5c.69 0 1.25.56 1.25 1.25v12.5c0 .69-.56 1.25-1.25 1.25H1.25C.56 17.5 0 16.94 0 16.25V3.75C0 3.06.56 2.5 1.25 2.5h17.5zm-.63 3.2l-7.46 7.46a.94.94 0 01-1.22.1l-.1-.1L1.88 5.7v9.93h16.25V5.7zM16.8 4.37H3.2l6.8 6.8 6.8-6.8z"
+                                ></path>
+                              </g>
+                            </svg>
                             <div class="test">消息</div>
-                            <div class="num"> 99+ </div>
+                            <div class="num">99+</div>
                           </div>
                           <div class="user-info flex items-center">
                             <div class="avatar" v-loading="">
-                              <img src="" alt="">
+                              <img src="" alt="" />
                             </div>
                             <div class="name"></div>
                           </div>
@@ -2087,7 +3525,7 @@
                 </el-scrollbar>
               </div>
             </div>
-            <div class="tool-setting-wrap" >
+            <div class="tool-setting-wrap">
               <template v-if="status === 1">
                 <div class="block block-device">
                   <div class="block_header">
@@ -2133,6 +3571,7 @@
                         <el-button
                           icon="el-icon-refresh"
                           class="m-l-sm"
+                          @click="refreshPhoneType()"
                         ></el-button>
                       </el-form-item>
                       <el-form-item label="设备电量">
@@ -2147,6 +3586,7 @@
                           <el-button
                             icon="el-icon-refresh"
                             class="m-l-sm"
+                            @click="refreshPhoneElectricity()"
                           ></el-button>
                         </div>
                       </el-form-item>
@@ -2160,6 +3600,7 @@
                           <el-button
                             icon="el-icon-refresh"
                             class="m-l-sm"
+                            @click="refreshPhoneDate()"
                           ></el-button>
                         </div>
                       </el-form-item>
@@ -2342,7 +3783,11 @@
                                     ></path>
                                   </svg>
                                   <span class="title">自定义数据设置</span>
-                                  <span class="feed-edit-clean">清空</span>
+                                  <span
+                                    class="feed-edit-clean"
+                                    @click="clearCustomData()"
+                                    >清空</span
+                                  >
                                 </div>
                                 <div class="editor-wrap m-t-xs">
                                   <el-input
@@ -2351,7 +3796,10 @@
                                   ></el-input>
                                   <el-row
                                     class="m-t-sm"
-                                    style="margin-left: -5px; margin-right: -5px"
+                                    style="
+                                      margin-left: -5px;
+                                      margin-right: -5px;
+                                    "
                                   >
                                     <el-col
                                       :span="8"
@@ -2608,7 +4056,10 @@
                         </div>
                       </div>
                       <div
-                        :class="[exportImgStatus ? 'show' : '', 'consume-choose']"
+                        :class="[
+                          exportImgStatus ? 'show' : '',
+                          'consume-choose',
+                        ]"
                       >
                         <div class="option coin-option">
                           <div class="num din-font">0</div>
@@ -2621,7 +4072,10 @@
                       </div>
                     </div>
                     <div class="button">
-                      <el-button type="primary" class="w-100" @click="exportJPEG"
+                      <el-button
+                        type="primary"
+                        class="w-100"
+                        @click="exportJPEG"
                         >导出图片</el-button
                       >
                     </div>
@@ -2741,6 +4195,7 @@ export default {
       loading: false,
       indexList: new Array(5).fill(),
       firstNum: 0,
+      addDataType: 1,
     };
   },
   watch: {
@@ -2761,8 +4216,48 @@ export default {
     // this.init();
   },
   methods: {
+    //刷新手机类型
+    refreshPhoneType() {
+      this.equipmentType = this.equipmentTypeList[
+        randomNum(0, this.equipmentTypeList.length)
+      ];
+    },
+    //刷新手机电量
+    refreshPhoneElectricity() {
+      this.equipmentElectricity = randomNum(1, 100);
+    },
+    //刷新手机时间
+    refreshPhoneDate() {
+      let hour = randomNum(0, 23);
+      hour = hour > 9 ? hour : "0" + hour;
+      let minutes = randomNum(0, 59);
+      minutes = minutes > 9 ? minutes : "0" + minutes;
+      this.equipmentTime = hour + ":" + minutes;
+    },
+    //清除自定义数据
+    clearCustomData() {
+      this.recommendPhoneAdd = {
+        title: "",
+        source: "",
+        comment_count: 0,
+        publish_time: "2020-09-12 12:00:00",
+        styleType: 1,
+        source_list: [],
+        video_time: "",
+      };
+      // let obj = {
+      //   defalte: true,
+      //   title: "",
+      //   source: "",
+      //   comment_count: 0,
+      //   publish_time: "2020-09-12 12:00:00",
+      //   video_duration: "01:00",
+      // };
+      // this.$set(this.recommendList, 0, obj);
+    },
     //添加推荐数据 单条
     async addRecommendData() {
+      this.addDataType = this.addVal;
       let fillData = await this.getFileData();
       // let list = this.recommendData.filter((el) => {
       //   if (this.addVal === 3 && el.has_video) {
@@ -2775,7 +4270,7 @@ export default {
       //     return this.recommendData[0];
       //   }
       // });
-      this.recommendList.push(list[0]);
+      this.recommendList.push(JSON.parse(fillData.content));
       //  this.$set(this.recommendList, i, list[0]);
     },
     //删除所有推荐数据
@@ -2787,28 +4282,30 @@ export default {
     },
     // 刷新推荐数据（某一个）
     async refreshRecommendItem(i) {
-      let fillData = await this.getFileData();
-      // 数据类型 1=视频，2=多图，3=单图
       let dataType = null;
       // 数据项
       let item = this.recommendList[i];
       if (item.has_video) {
-        dataType = 1;
+        dataType = 3;
       } else if (item.has_image && item.image_list) {
         dataType = 2;
       } else if (item.has_image && !item.image_list) {
-        dataType = 3;
+        dataType = 1;
       }
-      let list = this.recommendData.filter((el) => {
-        if (dataType === 1 && el.has_video) {
-          return el;
-        } else if (dataType === 2 && el.has_image && el.image_list) {
-          return el;
-        } else if (dataType === 3 && el.has_image && !el.image_list) {
-          return el;
-        }
-      });
-      this.$set(this.recommendList, i, list[0]);
+      console.log("********************", item, dataType);
+      this.addDataType = dataType;
+      let fillData = await this.getFileData();
+      // 数据类型 1=视频，2=多图，3=单图
+      // let list = this.recommendData.filter((el) => {
+      //   if (dataType === 1 && el.has_video) {
+      //     return el;
+      //   } else if (dataType === 2 && el.has_image && el.image_list) {
+      //     return el;
+      //   } else if (dataType === 3 && el.has_image && !el.image_list) {
+      //     return el;
+      //   }
+      // });
+      this.$set(this.recommendList, i, JSON.parse(fillData.content));
     },
     // 删除推荐数据（某一个）
     deleteRecommendItem(i) {
@@ -2816,15 +4313,16 @@ export default {
     },
     async generateData() {
       // debugger
-      this.toggleVideoType = 4;
+      this.addDataType = 4;
       this.loading = true;
       let fillData = await this.getFileData();
+      let list = fillData.map((el) => JSON.parse(el.content));
       let searchData = await this.getSearchData();
       this.loading = false;
       if (this.firstNum === 0) {
-        this.recommendList.push(...this.recommendData.slice(10, 15));
+        this.recommendList.push(...list.slice(10, 15));
       } else {
-        this.recommendList.splice(1, 6, ...this.recommendData.slice(10, 15));
+        this.recommendList.splice(1, 6, ...list.slice(10, 15));
       }
       this.firstNum++;
     },
@@ -2854,19 +4352,14 @@ export default {
     getFileData() {
       let that = this;
       let query = {
-        type: this.toggleVideoType,
-        state: --this.activeIndex
+        type: this.addDataType,
+        state: this.activeIndex,
       };
-      
+
       return new Promise(function (resolve, reject) {
         getTouTiaoData(query).then((res) => {
-          console.log("***************",res)
           if (res.code === "000000") {
-            that.recommendData = res.data.data
-              .map((el) => JSON.parse(el.content))
-              .slice(2);
-            that.recommendData.unshift();
-            resolve(res);
+            resolve(res.data);
           } else {
             reject("请求错误");
           }
