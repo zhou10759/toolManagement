@@ -23,7 +23,7 @@ service.interceptors.request.use(
       config.headers['X-Token'] = getToken()
     }
     if (config.method === 'post' || config.method === 'put' || config.method === 'delete') {
-      config.data = qs.stringify(config.data)
+      // config.data = qs.stringify(config.data)
   }
     return config
   },

@@ -25,17 +25,34 @@ export function login(data) {
   })
 }
 
-export function getInfo(token) {
+export function getInfo(data) {
   return request({
     url: '/biio/user/getUserInfo',
+    method: 'POST',
+    data
+  })
+}
+
+export function getCoupon() {
+  return request({
+    url: '/biio/coupon/getCouponCount',
     method: 'POST'
   })
 }
 
-export function getCoupon(token) {
+export function updateUserInfo(data) {
   return request({
-    url: '/biio/coupon/getCouponCount',
-    method: 'POST'
+    url: '/biio/user/updateUserInfo',
+    method: 'POST',
+    data
+  })
+}
+
+export function changePassword(data) {
+  return request({
+    url: '/biio/user/changePassword',
+    method: 'POST',
+    data
   })
 }
 

@@ -1,12 +1,13 @@
 import axios from "axios";
 import request from '@/utils/request'
+import qs from 'qs'
 
 export function getTouTiaoData(data) {
     return request({
         url: '/biio/external/getNew',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
         method: 'POST',
-        data: data
+        data: qs.stringify( data )
     })
 }
 

@@ -292,9 +292,9 @@ export default {
     };
     return {
       loginForm: {
-        phone: "17612714215",
-        username: "17612714215",
-        password: "123456",
+        phone: "18268186295",
+        username: "18268186295",
+        password: "zz123123",
         uPassword: "",
         code: "",
       },

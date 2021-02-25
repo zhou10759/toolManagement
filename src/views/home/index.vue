@@ -12,7 +12,7 @@
                 />
               </div>
               <div class="user-info flex items-center">
-                <div class="user-name text-truncate m-r-md">18268186295</div>
+                <div class="user-name text-truncate m-r-md">{{userInfo.userPhone}}</div>
                 <div class="user-role">游客</div>
               </div>
             </div>
@@ -39,7 +39,7 @@
                     fill="#646a73"
                   ></path></svg
                 ><span class="margin-left">
-                  积分数： <span class="point din-font">0</span></span
+                  积分数： <span class="point din-font">{{userInfo.integralNum}}</span></span
                 >
               </p>
               <p class="spm text-icon">
@@ -64,7 +64,7 @@
                     fill="#646a73"
                   ></path></svg
                 ><span class="margin-left">
-                  兑换劵： <span class="point din-font">50</span></span
+                  兑换劵： <span class="point din-font">{{CouponNum||0}}</span></span
                 >
               </p>
             </div>
@@ -251,12 +251,21 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { mapActions } from 'vuex'
 
 export default {
   name: "Home",
   computed: {
-    ...mapGetters(["name"]),
+    ...mapGetters(["CouponNum","userInfo"]),
   },
+  created(){
+    this.$store.dispatch("user/getCouponById");
+    this.$store.dispatch("user/getInfo")
+    console.log(this.userInfo)
+  },
+  methods:{
+
+  }
 };
 </script>
 

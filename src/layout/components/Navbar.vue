@@ -20,13 +20,13 @@
       </div>
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar" />
+          <img :src="userInfo.avatar" class="user-avatar" />
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
           <router-link to="/">
             <el-dropdown-item>
-              <div>18268186295</div>
+              <div>{{userInfo.userPhone}}</div>
               <div>
                 <span class="login-type1">游客</span>
               </div>
@@ -52,14 +52,14 @@ export default {
     Hamburger,
   },
   computed: {
-    ...mapGetters(["sidebar", "avatar"]),
+    ...mapGetters(["sidebar","userInfo"]),
   },
   methods: {
     toggleSideBar() {
       this.$store.dispatch("app/toggleSideBar");
     },
     async logout() {
-      await this.$store.dispatch("user/logout");
+      await this.$store.dispatch("user/resetToken");
       this.$router.push(`/login?redirect=${this.$route.fullPath}`);
     },
     jumpPage(url){

@@ -38,14 +38,14 @@
                           <el-form-item label="用户昵称">
                             <el-input
                               v-model="form.nickName"
-                              maxlength="10"
+                              maxlength="24"
                               clearable
                             ></el-input>
                           </el-form-item>
                           <el-form-item size="small">
                             <el-button
                               type="primary"
-                              @click="onSubmit"
+                              @click="onSubmit('name')"
                               :disabled="!form.nickName"
                               >保存</el-button
                             >
@@ -55,7 +55,7 @@
                       <div class="avatar-wrap">
                         <div class="el-image avatar">
                           <img
-                            src="https://cdn.biio.cn/platform/app/base/logo.png"
+                            :src="form.imageUrl"
                             alt="avatar"
                             class="el-image__inner"
                           /><!---->
@@ -63,7 +63,7 @@
                         <div>
                           <el-upload
                             class="avatar-uploader"
-                            action="https://jsonplaceholder.typicode.com/posts/"
+                            action="/biio/admin/adminUpload/mapUpload"
                             :show-file-list="false"
                             :on-success="handleAvatarSuccess"
                             :before-upload="beforeAvatarUpload"
@@ -88,10 +88,11 @@
                           label-position="top"
                         >
                           <el-form-item label="旧密码">
-                            <el-input v-model="pwdForm.oldPwd"></el-input>
+                            <el-input type="password" v-model="pwdForm.oldPwd"></el-input>
                           </el-form-item>
                           <el-form-item label="新密码">
                             <el-input
+                              type="password"
                               v-model="pwdForm.newPwd"
                               maxlength="10"
                               clearable
@@ -99,6 +100,7 @@
                           </el-form-item>
                           <el-form-item label="确认密码">
                             <el-input
+                              type="password"
                               v-model="pwdForm.confirmPwd"
                               maxlength="10"
                               clearable
@@ -107,7 +109,7 @@
                           <el-form-item size="small">
                             <el-button
                               type="primary"
-                              @click="onSubmit"
+                              @click="onSubmit('pwd')"
                               :disabled="
                                 !(
                                   pwdForm.confirmPwd &&
@@ -135,19 +137,19 @@
 
 <script>
 import { mapGetters } from "vuex";
-
+import { updateUserInfo , changePassword } from "@/api/user";
 export default {
   name: "personalInfo",
   computed: {
-    ...mapGetters(["name"]),
+    ...mapGetters(["userInfo","token"]),
   },
   data() {
     return {
       navType: 1, //1：基础信息，2：修改密码
       form: {
-        userName: "18268186295",
-        nickname: "",
-        imageUrl: "https://cdn.biio.cn/platform/app/base/logo.png",
+        userName: "",
+        nickName: "",
+        imageUrl: "",
       },
       pwdForm: {
         oldPwd: "",
@@ -155,6 +157,11 @@ export default {
         confirmPwd: "",
       },
     };
+  },
+  created(){
+    this.form.userName = this.userInfo.userPhone;
+    this.form.nickName = this.userInfo.userName;
+    this.form.imageUrl = this.userInfo.userAvatar;
   },
   methods: {
     toggleType(type) {
@@ -170,8 +177,37 @@ export default {
         confirmPwd: "",
       };
     },
-    onSubmit() {},
-    handleAvatarSuccess() {},
+    onSubmit(type) {
+      if(type==='name'){
+        updateUserInfo({
+          userId: this.userInfo.userId,
+          token: this.token,
+          userName: this.form.nickName|| "",
+          userAvatar: this.form.imageUrl || ""
+        }).then(res=>{
+          this.$message.success("修改成功")
+          this.$store.dispatch("user/getInfo")
+        })
+      }else if(type==='pwd'){
+        changePassword({
+           userId: this.userInfo.userId,
+           token: this.token,
+           oldPassword: this.pwdForm.oldPwd|| "",
+           password: this.pwdForm.newPwd || "",
+           rePassword: this.pwdForm.confirmPwd || ""
+        }).then(res=>{
+          this.$message.success("修改成功")
+        })
+      }
+    },
+    handleAvatarSuccess(res) {
+      if(res.code==="000000"){
+        this.form.imageUrl = res.data;
+        this.$message.success("上传成功")
+      }else{
+        this.$message.error(res.msg)
+      }
+    },
     beforeAvatarUpload() {},
   },
 };
