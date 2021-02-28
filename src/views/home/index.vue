@@ -261,7 +261,6 @@ export default {
   created(){
     this.$store.dispatch("user/getCouponById");
     this.$store.dispatch("user/getInfo")
-    console.log(this.userInfo)
   },
   methods:{
 

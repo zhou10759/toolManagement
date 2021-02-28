@@ -3274,10 +3274,182 @@
                           <template v-if="recommendList.length > 0">
                             <div v-for="(el, i) in recommendList" :key="i">
                               <div class="item wangyi-item" v-if="el.defalte">
-                                <div class="recommend-placeholder-item">
+                                <div class="recommend-placeholder-item"  v-if="!recommendPhoneAdd.title">
                                   <span class="recommend-placeholder-title"
                                     >数据模拟区域</span
                                   >
+                                </div>
+                                  <div v-else>
+                                  <template v-if="toggleVideoType === 3">
+                                    <div class="toutiao-video-a">
+                                      <p class="title">
+                                        {{ recommendPhoneAdd.title }}
+                                      </p>
+                                      <div class="video">
+                                        <div class="icon">
+                                          <svg
+                                            t="1608021142883"
+                                            class="icon video-play"
+                                            viewBox="0 0 1024 1024"
+                                            version="1.1"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            p-id="3153"
+                                            width="32"
+                                            height="32"
+                                          >
+                                            <path
+                                              d="M264.900046 16.846187l606.765887 387.380928c75.069986 47.869991 75.069986 167.674969 0 215.54596l-606.702887 387.379928c-75.133986 47.870991-168.954969-12.029998-168.954969-107.83598V124.683167c0-95.869982 93.820983-155.706971 168.890969-107.83698z"
+                                              p-id="3154"
+                                              fill="#ffffff"
+                                            ></path>
+                                          </svg>
+                                        </div>
+                                        <div v-loading="loading">
+                                          <img
+                                            :src="
+                                              recommendPhoneAdd.source_list[0]
+                                            "
+                                            alt=""
+                                            style="display: block"
+                                          />
+                                        </div>
+                                        <div class="duration">
+                                          {{ recommendPhoneAdd.video_duration }}
+                                        </div>
+                                      </div>
+                                      <div class="other">
+                                        <div class="l">
+                                          <div class="user">
+                                            {{ recommendPhoneAdd.source }}
+                                          </div>
+                                          <div class="comment">
+                                            {{
+                                              recommendPhoneAdd.comment_count
+                                            }}跟帖
+                                          </div>
+                                        </div>
+                                        <div>
+                                          <svg
+                                            t="1608021653919"
+                                            class="icon close-btn"
+                                            viewBox="0 0 1024 1024"
+                                            version="1.1"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            p-id="4116"
+                                            width="32"
+                                            height="32"
+                                          >
+                                            <path
+                                              d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
+                                              fill="#cdcdcd"
+                                              p-id="4117"
+                                            ></path>
+                                          </svg>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </template>
+                                  <template v-if="toggleVideoType === 2">
+                                    <div class="toutiao-article-b">
+                                      <p class="title">
+                                        {{ recommendPhoneAdd.title }}
+                                      </p>
+                                      <div class="pics">
+                                        <div
+                                          v-loading="loading"
+                                          class="img"
+                                          v-for="(
+                                            c_el, c_i
+                                          ) in recommendPhoneAdd.source_list"
+                                          :key="c_i"
+                                        >
+                                          <img
+                                            :src="c_el.url"
+                                            alt=""
+                                            style="display: block"
+                                          />
+                                        </div>
+                                      </div>
+                                      <div class="other">
+                                        <div class="l">
+                                          <div class="user">
+                                            {{ recommendPhoneAdd.source }}
+                                          </div>
+                                          <div class="comment">
+                                            {{
+                                              recommendPhoneAdd.comment_count
+                                            }}跟帖
+                                          </div>
+                                        </div>
+                                        <div>
+                                          <svg
+                                            t="1608021653919"
+                                            class="icon close-btn"
+                                            viewBox="0 0 1024 1024"
+                                            version="1.1"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            p-id="4116"
+                                            width="32"
+                                            height="32"
+                                          >
+                                            <path
+                                              d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
+                                              fill="#cdcdcd"
+                                              p-id="4117"
+                                            ></path>
+                                          </svg>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </template>
+                                  <template v-if="toggleVideoType === 1">
+                                    <div class="toutiao-article-a two">
+                                      <div class="info">
+                                        <p class="title">
+                                          {{ recommendPhoneAdd.title }}
+                                        </p>
+                                        <div v-loading="loading" class="pic">
+                                          <img
+                                            :src="
+                                              recommendPhoneAdd.source_list[0]
+                                            "
+                                            alt=""
+                                            style="display: block"
+                                          />
+                                        </div>
+                                      </div>
+                                      <div class="other">
+                                        <div class="l">
+                                          <div class="user">
+                                            {{ recommendPhoneAdd.source }}
+                                          </div>
+                                          <div class="comment">
+                                            {{
+                                              recommendPhoneAdd.comment_count
+                                            }}跟帖
+                                          </div>
+                                        </div>
+                                        <div>
+                                          <svg
+                                            t="1608021653919"
+                                            class="icon close-btn"
+                                            viewBox="0 0 1024 1024"
+                                            version="1.1"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            p-id="4116"
+                                            width="32"
+                                            height="32"
+                                          >
+                                            <path
+                                              d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
+                                              fill="#cdcdcd"
+                                              p-id="4117"
+                                            ></path>
+                                          </svg>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </template>
                                 </div>
                               </div>
                               <div class="item wangyi-item" v-else>
@@ -3285,7 +3457,19 @@
                                   <div class="wangyi-video-a">
                                     <p class="title">{{ el.title }}</p>
                                     <div class="video">
-                                     <div class="icon"><svg viewBox="0 0 138 138" fill="none" xmlns="http://www.w3.org/2000/svg" class="video-play"><path d="M93 67.62a2 2 0 010 3.47L57.75 91.44a2 2 0 01-3-1.73V49a2 2 0 013-1.74L93 67.62z" fill="#fff"></path></svg></div>
+                                      <div class="icon">
+                                        <svg
+                                          viewBox="0 0 138 138"
+                                          fill="none"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          class="video-play"
+                                        >
+                                          <path
+                                            d="M93 67.62a2 2 0 010 3.47L57.75 91.44a2 2 0 01-3-1.73V49a2 2 0 013-1.74L93 67.62z"
+                                            fill="#fff"
+                                          ></path>
+                                        </svg>
+                                      </div>
                                       <div v-loading="loading">
                                         <img
                                           :src="
@@ -3347,9 +3531,9 @@
                                     </div>
                                     <div class="other">
                                       <div class="l">
-                                        <div class="user">{{ el.source }} </div>
+                                        <div class="user">{{ el.source }}</div>
                                         <div class="comment">
-                                           {{ el.comment_count }}跟帖
+                                          {{ el.comment_count }}跟帖
                                         </div>
                                       </div>
                                       <div>
@@ -3380,17 +3564,44 @@
                                       <div class="other">
                                         <div class="l">
                                           <div class="user">
-                                            {{ el.source }} 
+                                            {{ el.source }}
                                           </div>
                                           <div class="comment">
                                             {{ el.comment_count }}跟帖
                                           </div>
                                         </div>
-                                        <div class="r"><svg data-v-55b9dd50="" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" class="close-btn"><path data-v-55b9dd50="" fill-rule="evenodd" clip-rule="evenodd" d="M23.06 23.06a1.5 1.5 0 01-2.12 0L3.06 5.18a1.5 1.5 0 112.12-2.12l17.88 17.88a1.5 1.5 0 010 2.12z" fill="currentColor"></path><path data-v-55b9dd50="" fill-rule="evenodd" clip-rule="evenodd" d="M23.06 3.06a1.5 1.5 0 010 2.12L5.18 23.06a1.5 1.5 0 01-2.12-2.12L20.94 3.06a1.5 1.5 0 012.12 0z" fill="currentColor"></path></svg></div>
+                                        <div class="r">
+                                          <svg
+                                            data-v-55b9dd50=""
+                                            viewBox="0 0 26 26"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="close-btn"
+                                          >
+                                            <path
+                                              data-v-55b9dd50=""
+                                              fill-rule="evenodd"
+                                              clip-rule="evenodd"
+                                              d="M23.06 23.06a1.5 1.5 0 01-2.12 0L3.06 5.18a1.5 1.5 0 112.12-2.12l17.88 17.88a1.5 1.5 0 010 2.12z"
+                                              fill="currentColor"
+                                            ></path>
+                                            <path
+                                              data-v-55b9dd50=""
+                                              fill-rule="evenodd"
+                                              clip-rule="evenodd"
+                                              d="M23.06 3.06a1.5 1.5 0 010 2.12L5.18 23.06a1.5 1.5 0 01-2.12-2.12L20.94 3.06a1.5 1.5 0 012.12 0z"
+                                              fill="currentColor"
+                                            ></path>
+                                          </svg>
+                                        </div>
                                       </div>
                                     </div>
                                     <div class="pic" v-loading="loading">
-                                      <img :src="el.middle_image.url" alt="" v-loading="loading"> 
+                                      <img
+                                        :src="el.middle_image.url"
+                                        alt=""
+                                        v-loading="loading"
+                                      />
                                     </div>
                                   </div>
                                 </template>
@@ -3939,12 +4150,14 @@
                                       </div>
                                     </el-col>
                                     <el-col
+                                      v-if="activeIndex == 1"
                                       :span="8"
                                       style="
                                         padding-left: 5px;
                                         padding-right: 5px;
                                       "
-                                      ><div class="form-item">
+                                    >
+                                      <div class="form-item">
                                         <div class="label">评论数</div>
                                         <div class="b">
                                           <el-input
@@ -3957,6 +4170,27 @@
                                         </div></div
                                     ></el-col>
                                     <el-col
+                                      v-if="activeIndex == 2"
+                                      :span="8"
+                                      style="
+                                        padding-left: 5px;
+                                        padding-right: 5px;
+                                      "
+                                    >
+                                      <div class="form-item">
+                                        <div class="label">跟帖数</div>
+                                        <div class="b">
+                                          <el-input
+                                            v-model="
+                                              recommendPhoneAdd.comment_count
+                                            "
+                                            placeholder="评论数"
+                                            clearable
+                                          ></el-input>
+                                        </div></div
+                                    ></el-col>
+                                    <el-col
+                                      v-if="activeIndex == 1"
                                       :span="8"
                                       style="
                                         padding-left: 5px;
@@ -4168,10 +4402,16 @@
                 >
                   <div class="by-consume-button">
                     <div class="consume-wallet">
-                      <div class="tip-msg">
+                      <div class="tip-msg" v-if="userInfo.integralNum<5&&exchangeMode==='integral'">
+                        <div>
+                          积分不足
+                          <router-link   to="/costCnter/integral" class="route">立即充值</router-link>
+                        </div>
+                      </div>
+                       <div class="tip-msg" v-if="CouponNum<1&&exchangeMode==='coupon'">
                         <div>
                           智能推荐兑换劵不足
-                          <span class="route">立即充值</span>
+                          <router-link to="/costCnter/integral" class="route">立即充值</router-link>
                         </div>
                       </div>
                       <div
@@ -4180,12 +4420,12 @@
                           'consume-choose',
                         ]"
                       >
-                        <div class="option coin-option">
-                          <div class="num din-font">0</div>
+                        <div :class="[exchangeMode==='integral'?'active':'','option coin-option']" @click="toggleExchangeMode('integral')">
+                          <div class="num din-font">{{userInfo.integralNum||0}}</div>
                           <div class="label">账号积分</div>
                         </div>
-                        <div class="option exchange-option active">
-                          <div class="num din-font">50</div>
+                        <div :class="[exchangeMode==='coupon'?'active':'','option coin-option']" @click="toggleExchangeMode('coupon')">
+                          <div class="num din-font">{{CouponNum||0}}</div>
                           <div class="label">智能推荐兑换劵</div>
                         </div>
                       </div>
@@ -4195,7 +4435,7 @@
                         type="primary"
                         class="w-100"
                         @click="exportJPEG"
-                        >导出图片</el-button
+                        >{{exportImgStatus? exchangeMode==='integral'? '点击导出图片：消耗5积分' :'点击导出图片：消耗1智能推荐兑换券':"导出图片"}}</el-button
                       >
                     </div>
                   </div>
@@ -4226,12 +4466,10 @@ import html2canvas from "html2canvas";
 import vuedraggable from "vuedraggable";
 import { recommendNav } from "@/utils/staticData";
 import { getTouTiaoData, getTouTiaoRecommend } from "@/api/data";
+import { getCoupon , consumeCoupon } from "@/api/user";
 
 export default {
   name: "smartRecommend",
-  computed: {
-    ...mapGetters(["name"]),
-  },
   components: {
     vuedraggable,
   },
@@ -4315,7 +4553,11 @@ export default {
       indexList: new Array(5).fill(),
       firstNum: 0,
       addDataType: 1,
+      exchangeMode: "integral"
     };
+  },
+  computed:{
+      ...mapGetters(["userInfo", "token","CouponNum"]),
   },
   watch: {
     "recommendPhoneAdd.title": function (val, oldval) {},
@@ -4331,10 +4573,11 @@ export default {
       return handlePublishTimeDesc(new Date(val));
     },
   },
-  created() {
-    // this.init();
-  },
   methods: {
+    //切换兑换方式
+    toggleExchangeMode(val){
+      this.exchangeMode = val;
+    },
     //刷新手机类型
     refreshPhoneType() {
       this.equipmentType = this.equipmentTypeList[
@@ -4343,7 +4586,7 @@ export default {
     },
     //刷新手机电量
     refreshPhoneElectricity() {
-      this.equipmentElectricity = randomNum(1, 100);
+      this.exchangeMode = randomNum(1, 100);
     },
     //刷新手机时间
     refreshPhoneDate() {
@@ -4397,6 +4640,15 @@ export default {
       if (this.recommendList.length > 1) {
         this.recommendList.splice(1, this.recommendList.length);
         this.searchVal = "";
+        this.recommendPhoneAdd = {
+        title: "",
+        source: "",
+        comment_count: 0,
+        publish_time: "2020-09-12 12:00:00",
+        styleType: 1,
+        source_list: [],
+        video_time: "",
+      }
       }
     },
     // 刷新推荐数据（某一个）
@@ -4489,9 +4741,9 @@ export default {
       let that = this;
       return new Promise(function (resolve, reject) {
         getTouTiaoRecommend().then((res) => {
-          if (res.data.message === "success") {
-            that.searchData = res.data.data;
-            that.searchVal = that.searchData.homepage_search_suggest;
+          if (res.code == "000000") {
+            that.searchData = JSON.parse( res.data );
+            that.searchVal = that.searchData.data.homepage_search_suggest;
             resolve(res);
           } else {
             reject("请求错误");
@@ -4520,7 +4772,11 @@ export default {
     },
     // 导出图片
     exportJPEG() {
-      console.log("导出图片——————————————————————");
+      if(this.exchangeMode==="integral"&&this.userInfo.integralNum<5){
+        return;
+      }else if(this.exchangeMode==="coupon"&&this.CouponNum<1){
+        return;
+      }
       // html2canvas(document.getElementById("phone-data"), {
       //   onrendered: function (canvas) {
       //     $("#phone-data").html(canvas); // 容器
@@ -4638,7 +4894,6 @@ export default {
       font-size: 14px;
     }
     .tip-msg {
-      display: none;
       background-color: #ff4d4f;
       color: #fff;
       padding: 0.5em 0.75em;
@@ -4821,9 +5076,9 @@ export default {
     }
     .wangyi-article-a {
       padding: 14px 0;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-column-gap: 10px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-column-gap: 10px;
       .info {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -5912,111 +6167,114 @@ export default {
   font-family: suite-admin-din-font !important;
 }
 .wangyi-item .other {
-    margin-top: 10px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    font-size: 13px;
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 13px;
 }
 .wangyi-video-a {
-    padding: 14px 0;
+  padding: 14px 0;
 }
 .wangyi-video-a .title {
-    font-size: 19.5px;
-    line-height: 26px;
-    margin: 0 0 10px 0;
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+  font-size: 19.5px;
+  line-height: 26px;
+  margin: 0 0 10px 0;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .wangyi-video-a .video {
-    position: relative;
+  position: relative;
 }
 .wangyi-item .other {
-    margin-top: 10px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    font-size: 13px;
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 13px;
 }
 .wangyi-item .other .l {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    color: #b8b8b8;
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    margin-right: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #b8b8b8;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  margin-right: 2em;
 }
-.wangyi-item .other .comment.hot, .wangyi-item .other .r {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+.wangyi-item .other .comment.hot,
+.wangyi-item .other .r {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 .wangyi-item .other .r {
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-    margin-left: 10px;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-left: 10px;
 }
 .wangyi-item .other .user {
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
-.wangyi-item .other .comment, .wangyi-item .other .time {
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
+.wangyi-item .other .comment,
+.wangyi-item .other .time {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
-.wangyi-item .other .l>*+* {
-    margin-left: 8px;
+.wangyi-item .other .l > * + * {
+  margin-left: 8px;
 }
-.wangyi-item .other .comment.hot, .wangyi-item .other .r {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+.wangyi-item .other .comment.hot,
+.wangyi-item .other .r {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 .wangyi-item .other .r {
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-    margin-left: 10px;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-left: 10px;
 }
 .wangyi-video-a .video .duration {
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
-    line-height: 1;
-    font-size: 13px;
-    color: #fff;
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  line-height: 1;
+  font-size: 13px;
+  color: #fff;
 }
 .wangyi-video-a .video .icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 1;
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
-    width: 64px;
-    height: 64px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
 }
 </style>

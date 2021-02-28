@@ -1,6 +1,6 @@
 import { login, logout, getInfo } from '@/api/user'
-import { getCouponById } from '@/api/list'
-import { getToken, setToken, removeToken } from '@/utils/auth'
+import { getCoupon } from '@/api/user'
+import { getToken, setToken, removeToken , getUserID, setUserID , removeUserID } from '@/utils/auth'
 import { resetRouter } from '@/router'
 
 const getDefaultState = () => {
@@ -19,7 +19,7 @@ const mutations = {
   },
   SET_TOKEN: (state, token) => {
     state.token = token
-  },
+  },  
   SET_USERINFO: (state, userInfo) => {
     state.userInfo = userInfo
   },
@@ -44,10 +44,12 @@ const actions = {
     }
     return new Promise((resolve, reject) => {
       login(query).then(response => {
+        // debugger
         const { data } = response
         commit('SET_TOKEN', data.token || '')
         commit('SET_USERINFO', data)
         setToken(data.token || '')
+        setUserID(data.userId)
         resolve()
       }).catch(error => {
         reject(error)
@@ -58,7 +60,7 @@ const actions = {
   // get user info
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getInfo({userId:state.userInfo.userId,token:state.token}).then(response => {
+      getInfo({userId:state.userInfo.userId||getUserID(),token:state.token||getToken()}).then(response => {
         const { data } = response
 
         if (!data) {
@@ -76,7 +78,7 @@ const actions = {
   },
   getCouponById({ commit, state }){
     return new Promise((resolve, reject) => {
-      getCouponById({userId: state.userInfo.userId,token:state.userInfo.token}).then(response => {
+      getCoupon({userId: state.userInfo.userId||getUserID(),token:state.userInfo.token||getToken()}).then(response => {
         const { data } = response
         commit('SET_COUPONNUM', data)
         resolve(data)
@@ -90,6 +92,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       logout(state.token).then(() => {
         removeToken() // must remove  token  first
+        removeUserID()
         resetRouter()
         commit('RESET_STATE')
         resolve()
@@ -103,6 +106,7 @@ const actions = {
   resetToken({ commit }) {
     return new Promise(resolve => {
       removeToken() // must remove  token  first
+      removeUserID()
       commit('RESET_STATE')
       resolve()
     })

@@ -165,7 +165,9 @@
                     type="primary"
                     style="width: 100%; margin-top: 3.25em"
                     @click.native.prevent="handleLogin"
-                    >{{ type === 4 ? "注册" : "登录" }}</el-button
+                    >{{
+                      type === 4 ? "注册" : type === 5 ? "提交" : "登录"
+                    }}</el-button
                   >
                 </el-form>
               </div>
@@ -272,7 +274,7 @@
 
 <script>
 import { validUsername } from "@/utils/validate";
-import { register, sendMessage } from "@/api/user";
+import { register, sendMessage, resetPass } from "@/api/user";
 export default {
   name: "Login",
   data() {
@@ -406,19 +408,32 @@ export default {
               };
               that.type = 1;
             });
-          } else if (that.type === 1||that.type === 2) {
+          } else if (that.type === 1 || that.type === 2) {
             //账号登录
             that.loading = true;
-            that.loginForm.type = that.type === 1?that.type: 0;
+            that.loginForm.type = that.type === 1 ? that.type : 0;
             that.$store
               .dispatch("user/login", that.loginForm)
-              .then(() => {
-                that.$router.push({ path: that.redirect || "/" });
-                that.loading = false;
+              .then((res) => {
+                  that.$router.push({ path: that.redirect || "/" });
+                  that.loading = false;
               })
               .catch(() => {
                 that.loading = false;
               });
+          } else if (that.type === 5) {
+            resetPass({
+              phoneNumber: that.loginForm.phone,
+              code: that.loginForm.code,
+              password: that.loginForm.password,
+              rePassword: that.loginForm.uPassword,
+            }).then((res) => {
+              that.$message.success("重置成功");
+              setTimeout(() => {
+                that.type = 1;
+              }, 500);
+            });
+          } else if (that.type === 6) {
           }
         } else {
           console.log("error submit!!");

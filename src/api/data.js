@@ -4,7 +4,7 @@ import qs from 'qs'
 
 export function getTouTiaoData(data) {
     return request({
-        url: '/biio/external/getNew',
+        url: '/external/getNew',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
         method: 'POST',
         data: qs.stringify( data )
@@ -19,9 +19,11 @@ export function getTouTiaoData(data) {
 // }
 
 
-export function getTouTiaoRecommend(params) {
-    return axios({
-        url: '/search/suggest/homepage_suggest/?version_code=7.9.1&tma_jssdk_version=1.81.0.15&app_name=news_article&vid=11DCDF45-23F8-4E36-A537-765BFB63BC44&device_id=71065272585&channel=update_tf&resolution=1242*2688&aid=13&ab_feature=794528,1662483,1538699,1910351&ab_version=668774,2033166,1646978,2001178,1500054,1593455,1965376,1419597,2020941,668775,2063720,668779,660830,662176,1859937,1417596,662099,1403339,1877263,2104901,2089995&ab_group=794528,1662483,1538699,1910351&openudid=f99a765341f5a651ac1b5db964dfb60d0c35c65f&update_version_code=79108&cdid=902F061F-B5BF-415C-A20B-A056801ECC4F&idfv=11DCDF45-23F8-4E36-A537-765BFB63BC44&ac=WIFI&os_version=14.0.1&ssmix=a&device_platform=iphone&iid=2269005508786301&ab_client=a1,f2,f7,e1&device_type=iPhone12,5&idfa=35EC3CB2-C801-414A-8995-1AA8E74DA230&flag=1&suggest_params=%7B%22suggest_word%22%3A%7B%22sug_category%22%3A%22__all__%22%2C%22from%22%3A%22home%22%7D%7D&refresh_type=1&recom_cnt=2',
-        method: 'get'
+export function getTouTiaoRecommend(data) {
+    return request({
+        url: '/external/guessSearch',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
+        method: 'POST',
+        data: qs.stringify( data )
     })
 }

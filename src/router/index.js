@@ -42,7 +42,6 @@ export const constantRoutes = [
     component: () => import('@/views/404'),
     hidden: true
   },
-
   {
     path: '/',
     component: Layout,
@@ -113,7 +112,7 @@ export const constantRoutes = [
         name: 'Vouchers-detail',
         hidden: true, // 不在侧边栏线上
         component: () => import('@/views/costCnter/vouchers-detail'),
-        meta: { title: '兑换劵详情'}
+        meta: { title: '兑换劵详情' }
       }
     ]
   },
@@ -125,12 +124,162 @@ export const constantRoutes = [
       path: 'center',
       name: 'Center',
       component: () => import('@/views/kefu/center'),
-      meta: { title: '客服中心'}
+      meta: { title: '客服中心' }
     }]
   },
-  // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true }
+   // 404 page must be placed at the end !!!
+   { path: '*', redirect: '/404', hidden: true }
 ]
+
+// export const userRouter = [
+//   {
+//     path: '/',
+//     component: Layout,
+//     redirect: '/home',
+//     children: [{
+//       path: 'home',
+//       name: 'Home',
+//       component: () => import('@/views/home/index'),
+//       meta: { title: '首页', icon: 'el-icon-monitor' }
+//     }]
+//   },
+//   {
+//     path: '/personalInfo',
+//     component: Layout,
+//     children: [
+//       {
+//         path: 'index',
+//         name: 'PersonalInfo',
+//         component: () => import('@/views/personalInfo/personalInfo'),
+//         meta: { title: '个人信息', icon: 'el-icon-user' }
+//       }
+//     ]
+//   },
+//   {
+//     path: '/tool',
+//     component: Layout,
+//     alwaysShow: true,
+//     name: 'Tool',
+//     meta: { title: '工具集合', icon: 'el-icon-data-line' },
+//     children: [
+//       {
+//         path: 'smartRecommend',
+//         name: 'SmartRecommend',
+//         component: () => import('@/views/tool/smartRecommend'),
+//         meta: { title: '智能推荐', icon: 'el-icon-c-scale-to-original' }
+//       }
+//     ]
+//   },
+
+//   {
+//     path: '/costCnter',
+//     component: Layout,
+//     name: 'CostCnter',
+//     meta: {
+//       title: '费用中心',
+//       icon: 'nested'
+//     },
+//     children: [
+//       {
+//         path: 'integral',
+//         component: () => import('@/views/costCnter/integral'), // Parent router-view
+//         name: 'Integral',
+//         meta: { title: '积分充值' }
+//       },
+//       {
+//         path: 'vouchers',
+//         component: () => import('@/views/costCnter/vouchers'),
+//         name: 'Vouchers',
+//         meta: { title: '兑换券管理' }
+//       }, {
+//         path: 'historyBill',
+//         component: () => import('@/views/costCnter/historyBill'),
+//         name: 'HistoryBill',
+//         meta: { title: '历史账单' }
+//       },
+//       {
+//         path: 'vouchers-detail/:id',
+//         name: 'Vouchers-detail',
+//         hidden: true, // 不在侧边栏线上
+//         component: () => import('@/views/costCnter/vouchers-detail'),
+//         meta: { title: '兑换劵详情' }
+//       }
+//     ]
+//   },
+//   {
+//     path: '/kefu',
+//     component: Layout,
+//     hidden: true, // 不在侧边栏线上
+//     children: [{
+//       path: 'center',
+//       name: 'Center',
+//       component: () => import('@/views/kefu/center'),
+//       meta: { title: '客服中心' }
+//     }]
+//   },
+//    // 404 page must be placed at the end !!!
+//    { path: '*', redirect: '/404', hidden: true }
+// ]
+
+// export const menberRouter = [
+//   {
+//     path: '/',
+//     component: Layout,
+//     redirect: '/adminHome',
+//     children: [{
+//       path: 'adminHome',
+//       name: 'AdminHome',
+//       component: () => import('@/views/menber/home/index'),
+//       meta: { title: '后台首页', icon: 'el-icon-monitor' }
+//     }]
+//   },
+//   {
+//     path: '/userAdmin',
+//     component: Layout,
+//     redirect: '/userAdmin',
+//     children: [{
+//       path: 'userAdmin',
+//       name: 'UserAdmin',
+//       component: () => import('@/views/menber/admin/index'),
+//       meta: { title: '用户管理', icon: 'el-icon-monitor' }
+//     }]
+//   },
+//   {
+//     path: '/taskStatistics',
+//     component: Layout,
+//     redirect: '/taskStatistics',
+//     children: [{
+//       path: 'taskStatistics',
+//       name: 'TaskStatistics',
+//       component: () => import('@/views/menber/dataStatistics/index'),
+//       meta: { title: '任务统计', icon: 'el-icon-monitor' }
+//     }]
+//   },
+//   {
+//     path: '/taskStatisticsTabe',
+//     component: Layout,
+//     hidden: true, // 不在侧边栏线上
+//     children: [{
+//       path: 'taskStatisticsTabe',
+//       name: 'TaskStatisticsTabe',
+//       component: () => import('@/views/menber/dataStatistics/statisticsSurface'),
+//       meta: { title: '任务统计表', icon: 'el-icon-monitor' }
+//     }]
+//   },
+//   {
+//     path: '/notice',
+//     component: Layout,
+//     redirect: '/notice',
+//     children: [{
+//       path: 'notice',
+//       name: 'Notice',
+//       component: () => import('@/views/menber/noticeAdmin/index'),
+//       meta: { title: '公告管理', icon: 'el-icon-monitor' }
+//     }]
+//   },
+//    // 404 page must be placed at the end !!!
+//    { path: '*', redirect: '/404', hidden: true }
+// ]
 
 const createRouter = () => new Router({
   // mode: 'history', // require service support

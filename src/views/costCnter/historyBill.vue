@@ -8,7 +8,7 @@
           mode="horizontal"
           @select="handleSelect"
         >
-          <el-menu-item index="1">充值记录</el-menu-item>
+          <!-- <el-menu-item index="1">充值记录</el-menu-item> -->
           <el-menu-item index="2">消费记录</el-menu-item>
         </el-menu>
       </div>
@@ -17,6 +17,9 @@
         <div class="by-card-block h-full">
           <div class="block-table-header p-md">
             <div class="getter flex">
+              <div class="d2-search-group">
+                <el-input v-model="screening.exchangeId" type="text" placeholder="账单编号"  size="small"></el-input>
+              </div>
               <div class="d2-search-group">
                 <el-date-picker
                   v-model="screening.date"
@@ -31,8 +34,8 @@
               <div class="d2-filter-group m-l-xs">
                 <div class="item">
                   <el-select
-                    v-model="screening.voucherType"
-                    placeholder="兑换券类型"
+                    v-model="screening.type"
+                    placeholder="项目类型"
                     size="small"
                   >
                     <el-option
@@ -46,7 +49,7 @@
                 </div>
                 <div class="item">
                   <el-select
-                    v-model="screening.voucherStatus"
+                    v-model="screening.status"
                     placeholder="兑换券状态"
                     size="small"
                   >
@@ -61,8 +64,8 @@
                 </div>
               </div>
               <div class="d2-confirm-group m-l-xs">
-                <el-button type="primary" size="small">查询</el-button>
-                <el-button size="small">清空</el-button>
+                <el-button type="primary" size="small" @click="searchData()">查询</el-button>
+                <el-button size="small" @click="emptyData()">清空</el-button>
               </div>
             </div>
             <div class="controller"></div>
@@ -72,25 +75,25 @@
               <div class="d2-crud-body">
                 <el-table :data="tableData" style="width: 100%" height="640">
                   <el-table-column
-                    prop="projectType"
-                    label="项目类型"
+                    prop="id"
+                    label="账单编号"
                     width="240"
                   >
                   </el-table-column>
                   <el-table-column
-                    prop="voucherDescribe"
-                    label="兑换券描述"
+                    prop="explain"
+                    label="消费说明"
                     width="240"
                   >
                   </el-table-column>
                   <el-table-column
                     prop="issueType"
-                    label="发放方式"
+                    label="支付方式"
                     width="240"
                     align="center"
                   >
                   </el-table-column>
-                  <el-table-column label="状态" width="240" align="center">
+                  <el-table-column label="账单状态" width="240" align="center">
                     <template slot-scope="scope">
                       <div>
                         <div
@@ -191,12 +194,6 @@
                     align="center"
                   >
                   </el-table-column>
-                  <el-table-column
-                    prop="endTime"
-                    label="结束时间"
-                    width="150"
-                    align="center"
-                  ></el-table-column>
                   <el-table-column label="操作" width="100" align="right">
                     <template slot-scope="scope">
                       <div>
@@ -221,11 +218,11 @@
                   style="float: right"
                   @size-change="handleSizeChange"
                   @current-change="handleCurrentChange"
-                  :current-page="currentPage"
-                  :page-sizes="[100, 200, 300, 400]"
-                  :page-size="20"
+                  :current-page="page"
+                  :page-sizes="[20, 40, 60, 100]"
+                  :page-size="pageSize"
                   layout="total, sizes, prev, pager, next, jumper"
-                  :total="400"
+                  :total="total"
                 >
                 </el-pagination>
               </div>
@@ -240,71 +237,92 @@
 
 <script>
 import { mapGetters } from "vuex";
-
+import { consumeLog } from "@/api/list";
+import { parseTime } from "@/utils/index";
 export default {
   name: "historyBill",
   computed: {
-    ...mapGetters(["name"]),
+    ...mapGetters(["token","userInfo"]),
   },
   data() {
     return {
       activeIndex: "1",
-      typeList: [
+       typeList: [
         {
-          value: "通用",
-          label: "通用",
-        },
-        {
-          value: "智能推荐",
+          value: 0,
           label: "智能推荐",
         },
       ],
       statusList: [
         {
-          value: "待领取",
-          label: "待领取",
+          value: 1,
+          label: "待确定",
         },
         {
-          value: "待使用",
-          label: "待使用",
+          value: 2,
+          label: "交易关闭",
         },
         {
-          value: "已过期",
-          label: "已过期",
-        },
-        {
-          value: "已作废",
-          label: "已作废",
-        },
-        {
-          value: "已使用",
-          label: "已使用",
-        },
+          value: 0,
+          label: "交易完成",
+        }
       ],
       screening: {
+        type: "",
+        exchangeId: "",
         date: "",
-        voucherType: "",
-        voucherStatus: "",
+        status: "",
       },
-      tableData: new Array(20).fill({
-        id: "5fa86a6110f282100a3d7462",
-        projectType: "智能推荐",
-        voucherDescribe: "每日发放兑换劵",
-        issueType: "自动",
-        status: "待使用",
-        statusDescribe: "将在16 小时后失效",
-        createTime: "2020/11/09 06:00",
-        endTime: "- -",
-      }),
-      currentPage: 1,
+      tableData: [],
+      page: 1,
+      pageSize: 20,
+      total: 0,
     };
   },
+  created(){
+    this.getList()
+  },
   methods: {
+    getList(){
+      consumeLog({
+        userId: this.userInfo.userId,
+        token: this.token,
+        page: this.page,
+        pageSize: this.pageSize,
+         startTime: this.screening.date[0]
+          ? parseTime(this.screening.date[0])
+          : null,
+        endTime: this.screening.date[1]
+          ? parseTime(this.screening.date[1])
+          : null,
+        status: this.screening.status !=""? this.screening.status: "",
+        exchangeId: this.screening.exchangeId ||"",
+        type: 0
+      }).then(res=>{
+        this.total = res.count;
+        this.tableData = res.data;
+      })
+    },
     handleSizeChange(size) {
       //页大小变化
+      this.pageSize = size;
+      this.getList()
     },
     handleCurrentChange(current) {
       //当前页变化
+      this.page = current;
+       this.getList()
+    },
+    searchData(){
+      this.getList()
+    },
+    emptyData(){
+      this.screening = {
+        type: "",
+        exchangeId: "",
+        date: "",
+        status: "",
+      }
     },
     handleSelect(key, keyPath) {
       console.log(key, keyPath);

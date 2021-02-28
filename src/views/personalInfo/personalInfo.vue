@@ -63,7 +63,7 @@
                         <div>
                           <el-upload
                             class="avatar-uploader"
-                            action="/biio/admin/adminUpload/mapUpload"
+                            action="/admin/adminUpload/mapUpload"
                             :show-file-list="false"
                             :on-success="handleAvatarSuccess"
                             :before-upload="beforeAvatarUpload"

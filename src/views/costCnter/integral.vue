@@ -8,7 +8,7 @@
             <div class="center-wrap">
               <div class="assets-wrap">
                 <div class="title">当前积分</div>
-                <div class="num din-font">0</div>
+                <div class="num din-font">{{userInfo.integralNum}}</div>
               </div>
               <div class="recharge-opts text-center m-t-xl">
                 <div class="kf-qr">
@@ -40,7 +40,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "integral",
   computed: {
-    ...mapGetters(["name"]),
+    ...mapGetters(["userInfo"]),
   },
 };
 </script>

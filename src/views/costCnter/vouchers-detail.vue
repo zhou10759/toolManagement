@@ -9,17 +9,17 @@
               <div class="bill-detail">
                 <div class="bill-base-info">
                   <div class="flex items-center">
-                    <div class="bill-id">兑换劵编号 {{ vouchers.id }}</div>
+                    <div class="bill-id">兑换劵编号 {{ vouchers.exchangeId }}</div>
                     <div
                       class="by-status light-pending m-l-md"
-                      v-if="vouchers.status === '待领取'"
+                      v-if="vouchers.state === 4"
                     >
                       <i></i>
-                      <span>{{ vouchers.status }}</span>
+                      <span>待领取</span>
                     </div>
                     <div
                       class="by-status light-pending m-l-md"
-                      v-if="vouchers.status === '待使用'"
+                      v-if="vouchers.status === 4"
                     >
                       <svg
                         t="1604906603494"
@@ -37,11 +37,11 @@
                           p-id="3107"
                         ></path>
                       </svg>
-                      <span>{{ vouchers.status }}</span>
+                      <span>待领取</span>
                     </div>
                     <div
                       class="by-status light-info m-l-md"
-                      v-if="vouchers.status === '已过期'"
+                      v-if="vouchers.status === 2"
                     >
                       <svg
                         t="1604906659996"
@@ -59,18 +59,18 @@
                           p-id="8224"
                         ></path>
                       </svg>
-                      <span>{{ vouchers.status }}</span>
+                      <span>已过期</span>
                     </div>
                     <div
                       class="by-status light-info m-l-md"
-                      v-if="vouchers.status === '已作废'"
+                      v-if="vouchers.status === 3"
                     >
                       <i></i>
-                      <span>{{ vouchers.status }}</span>
+                      <span>已作废</span>
                     </div>
                     <div
                       class="by-status light-success m-l-md"
-                      v-if="vouchers.status === '已使用'"
+                      v-if="vouchers.status === 1"
                     >
                       <svg
                         t="1604906766166"
@@ -90,7 +90,7 @@
                           class="selected"
                         ></path>
                       </svg>
-                      <span>{{ vouchers.status }}</span>
+                      <span>已使用</span>
                     </div>
                   </div>
                   <div class="bill-time m-t-xs">
@@ -102,28 +102,30 @@
                   <div class="detail-items">
                     <div class="item">
                       <div class="label">兑换劵编号</div>
-                      <div class="t">{{ vouchers.id }}</div>
+                      <div class="t">{{ vouchers.exchangeId }}</div>
                     </div>
                     <div class="item">
                       <div class="label">描述</div>
-                      <div class="t">{{ vouchers.voucherDescribe }}</div>
+                      <div class="t">{{ vouchers.description }}</div>
                     </div>
                     <div class="item">
                       <div class="label">兑换类型</div>
-                      <div class="t">{{ vouchers.projectType }}</div>
+                      <div class="t" v-if="vouchers.type==0">智能推荐</div>
+                      <div class="t" v-if="vouchers.type==1">通用</div>
                     </div>
                     <div class="item">
                       <div class="label">兑换劵发放账号</div>
-                      <div class="t">{{ vouchers.phone }}</div>
+                      <div class="t">{{ vouchers.phoneNumber }}</div>
                     </div>
                     <div class="item">
                       <div class="label">发放方式</div>
-                      <div class="t">{{ vouchers.issueType }}</div>
+                      <div class="t" v-if="vouchers.mode==0">自动</div>
+                      <div class="t" v-if="vouchers.mode==1">手动</div>
                     </div>
                     <div class="item">
                       <div class="label">起止时间</div>
                       <div class="t">
-                        {{ vouchers.createTime }} ~ {{ vouchers.endTime }}
+                        {{ vouchers.createTime }} ~ {{ vouchers.expiredateTime }}
                       </div>
                     </div>
                   </div>
@@ -140,27 +142,35 @@
 
 <script>
 import { mapGetters } from "vuex";
-
+import { getCouponById } from "@/api/list";
+import { parseTime } from "@/utils/index";
 export default {
   name: "vouchers-detail",
   computed: {
-    ...mapGetters(["name"]),
+    ...mapGetters(["userInfo", "token"]),
   },
   data() {
     return {
-      vouchers: {
-        id: "5fa86a6110f282100a3d7462",
-        phone: "18268186295",
-        projectType: "智能推荐",
-        voucherDescribe: "每日发放兑换劵",
-        issueType: "自动",
-        status: "待使用",
-        statusDescribe: "将在16 小时后失效",
-        createTime: "2020/11/09 06:00",
-        endTime: "- -",
-      },
+      vouchers: {}
     };
   },
+  created(){
+    console.log( this.$route)
+    this.getDetails()
+  },
+  methods:{
+    getDetails(){
+      getCouponById({
+        userId: this.userInfo.userId,
+        token: this.token,
+        exchangeId: this.$route.params.id,
+      }).then(res=>{
+        res.data.createTime = parseTime( res.data.createTime )
+        res.data.expiredateTime = parseTime( res.data.expiredateTime )
+        this.vouchers = res.data;
+      })
+    }
+  }
 };
 </script>
 
