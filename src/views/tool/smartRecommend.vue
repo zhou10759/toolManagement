@@ -3274,12 +3274,15 @@
                           <template v-if="recommendList.length > 0">
                             <div v-for="(el, i) in recommendList" :key="i">
                               <div class="item wangyi-item" v-if="el.defalte">
-                                <div class="recommend-placeholder-item"  v-if="!recommendPhoneAdd.title">
+                                <div
+                                  class="recommend-placeholder-item"
+                                  v-if="!recommendPhoneAdd.title"
+                                >
                                   <span class="recommend-placeholder-title"
                                     >数据模拟区域</span
                                   >
                                 </div>
-                                  <div v-else>
+                                <div v-else>
                                   <template v-if="toggleVideoType === 3">
                                     <div class="toutiao-video-a">
                                       <p class="title">
@@ -4402,16 +4405,29 @@
                 >
                   <div class="by-consume-button">
                     <div class="consume-wallet">
-                      <div class="tip-msg" v-if="userInfo.integralNum<5&&exchangeMode==='integral'">
+                      <div
+                        class="tip-msg"
+                        v-if="
+                          userInfo.integralNum < 5 &&
+                          exchangeMode === 'integral'
+                        "
+                      >
                         <div>
                           积分不足
-                          <router-link   to="/costCnter/integral" class="route">立即充值</router-link>
+                          <router-link to="/costCnter/integral" class="route"
+                            >立即充值</router-link
+                          >
                         </div>
                       </div>
-                       <div class="tip-msg" v-if="CouponNum<1&&exchangeMode==='coupon'">
+                      <div
+                        class="tip-msg"
+                        v-if="CouponNum < 1 && exchangeMode === 'coupon'"
+                      >
                         <div>
                           智能推荐兑换劵不足
-                          <router-link to="/costCnter/integral" class="route">立即充值</router-link>
+                          <router-link to="/costCnter/integral" class="route"
+                            >立即充值</router-link
+                          >
                         </div>
                       </div>
                       <div
@@ -4420,12 +4436,26 @@
                           'consume-choose',
                         ]"
                       >
-                        <div :class="[exchangeMode==='integral'?'active':'','option coin-option']" @click="toggleExchangeMode('integral')">
-                          <div class="num din-font">{{userInfo.integralNum||0}}</div>
+                        <div
+                          :class="[
+                            exchangeMode === 'integral' ? 'active' : '',
+                            'option coin-option',
+                          ]"
+                          @click="toggleExchangeMode('integral')"
+                        >
+                          <div class="num din-font">
+                            {{ userInfo.integralNum || 0 }}
+                          </div>
                           <div class="label">账号积分</div>
                         </div>
-                        <div :class="[exchangeMode==='coupon'?'active':'','option coin-option']" @click="toggleExchangeMode('coupon')">
-                          <div class="num din-font">{{CouponNum||0}}</div>
+                        <div
+                          :class="[
+                            exchangeMode === 'coupon' ? 'active' : '',
+                            'option coin-option',
+                          ]"
+                          @click="toggleExchangeMode('coupon')"
+                        >
+                          <div class="num din-font">{{ CouponNum || 0 }}</div>
                           <div class="label">智能推荐兑换劵</div>
                         </div>
                       </div>
@@ -4435,7 +4465,13 @@
                         type="primary"
                         class="w-100"
                         @click="exportJPEG"
-                        >{{exportImgStatus? exchangeMode==='integral'? '点击导出图片：消耗5积分' :'点击导出图片：消耗1智能推荐兑换券':"导出图片"}}</el-button
+                        >{{
+                          exportImgStatus
+                            ? exchangeMode === "integral"
+                              ? "点击导出图片：消耗5积分"
+                              : "点击导出图片：消耗1智能推荐兑换券"
+                            : "导出图片"
+                        }}</el-button
                       >
                     </div>
                   </div>
@@ -4466,8 +4502,8 @@ import html2canvas from "html2canvas";
 import vuedraggable from "vuedraggable";
 import { recommendNav } from "@/utils/staticData";
 import { getTouTiaoData, getTouTiaoRecommend } from "@/api/data";
-import { getCoupon , consumeCoupon } from "@/api/user";
-
+import { getCoupon, consumeCoupon } from "@/api/user";
+import $ from "jquery";
 export default {
   name: "smartRecommend",
   components: {
@@ -4553,11 +4589,11 @@ export default {
       indexList: new Array(5).fill(),
       firstNum: 0,
       addDataType: 1,
-      exchangeMode: "integral"
+      exchangeMode: "integral",
     };
   },
-  computed:{
-      ...mapGetters(["userInfo", "token","CouponNum"]),
+  computed: {
+    ...mapGetters(["userInfo", "token", "CouponNum"]),
   },
   watch: {
     "recommendPhoneAdd.title": function (val, oldval) {},
@@ -4575,7 +4611,7 @@ export default {
   },
   methods: {
     //切换兑换方式
-    toggleExchangeMode(val){
+    toggleExchangeMode(val) {
       this.exchangeMode = val;
     },
     //刷新手机类型
@@ -4641,14 +4677,14 @@ export default {
         this.recommendList.splice(1, this.recommendList.length);
         this.searchVal = "";
         this.recommendPhoneAdd = {
-        title: "",
-        source: "",
-        comment_count: 0,
-        publish_time: "2020-09-12 12:00:00",
-        styleType: 1,
-        source_list: [],
-        video_time: "",
-      }
+          title: "",
+          source: "",
+          comment_count: 0,
+          publish_time: "2020-09-12 12:00:00",
+          styleType: 1,
+          source_list: [],
+          video_time: "",
+        };
       }
     },
     // 刷新推荐数据（某一个）
@@ -4742,7 +4778,7 @@ export default {
       return new Promise(function (resolve, reject) {
         getTouTiaoRecommend().then((res) => {
           if (res.code == "000000") {
-            that.searchData = JSON.parse( res.data );
+            that.searchData = JSON.parse(res.data);
             that.searchVal = that.searchData.data.homepage_search_suggest;
             resolve(res);
           } else {
@@ -4771,10 +4807,10 @@ export default {
       //删除
     },
     // 导出图片
-    exportJPEG() {
-      if(this.exchangeMode==="integral"&&this.userInfo.integralNum<5){
+    async exportJPEG() {
+      if (this.exchangeMode === "integral" && this.userInfo.integralNum < 5) {
         return;
-      }else if(this.exchangeMode==="coupon"&&this.CouponNum<1){
+      } else if (this.exchangeMode === "coupon" && this.CouponNum < 1) {
         return;
       }
       // html2canvas(document.getElementById("phone-data"), {
@@ -4784,6 +4820,9 @@ export default {
       //   width: 547,
       //   height: 398,
       // });
+      await this.convertSvg2Canvas();
+      // return
+
       let element = document.getElementById("phone-data");
       let filename = generateRandomNum() + ".png";
       // let { height } = getComputedStyle(element, false);
@@ -4794,14 +4833,80 @@ export default {
       canvas.width = parseInt(width, 10);
       canvas.height = parseInt(height, 10);
       let context = canvas.getContext("2d");
+      //防止图片模糊的设置
+      context.mozImageSmoothingEnabled = false;
+      context.webkitImageSmoothingEnabled = false;
+      context.msImageSmoothingEnabled = false;
+      context.imageSmoothingEnabled = false;
       context.scale(2, 2);
-      html2canvas(element, {
-        useCORS: true,
+      html2canvas(element,{
+         useCORS: true
       }).then((canvas) => {
         canvas.toBlob((blob) => {
           saveAs(blob, `${filename}`);
         });
       });
+    },
+    onclone(html) {
+      const imageNodes = $(html).find("svg.svg image");
+      const promises = [];
+      imageNodes.each(function () {
+        const element = $(this);
+        const href = element.attr("href");
+        if (href.startsWith("base64")) return;
+        const promise = new Promise((resolve, reject) => {
+          const img = new Image();
+          img.crossOrigin = "anonymous";
+          img.onload = function () {
+            const width = parseFloat(element.css("width"));
+            const height = parseFloat(element.css("height"));
+            const canvas = document.createElement("canvas");
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, width, height);
+            const base64 = canvas.toDataURL("image/jpeg");
+            element.attr("href", base64);
+            resolve();
+          };
+          img.onerror = reject;
+          img.src = href;
+        });
+        promises.push(promise);
+      });
+      return Promise.all(promises);
+    },
+    // 把svg转换为canvas
+    async convertSvg2Canvas() {
+      const svgElms = $(".device svg");
+      console.log("——————————————————svgElms——————————————————————————",svgElms)
+      // 回调
+      const callbacks = [];
+      for (let svg of svgElms) {
+        const parentElement = svg.parentElement;
+        const img = new Image();
+        img.src = `data:image/svg+xml,${encodeURIComponent(
+          new XMLSerializer().serializeToString(svg)
+        )}`;
+        img.crossOrigin = "anonymous";
+        img.onload = async () => {
+          const width = parseFloat(svg.style.width);
+          const height = parseFloat(svg.style.height);
+          const canvas = document.createElement("canvas");
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, width, height);
+          parentElement.append(canvas);
+          svg.remove();
+          img.remove();
+        };
+        console.log('******************img.src*************',img)
+        parentElement.append(img);
+        callbacks.push(img.onload);
+      }
+      //await this.axios.all(callbacks);
+      await Promise.all(callbacks);
     },
   },
 };
