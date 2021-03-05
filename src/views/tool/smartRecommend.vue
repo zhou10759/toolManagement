@@ -287,7 +287,7 @@
                             viewBox="0 0 23 62"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
-                            class="icon"
+                            class="icon xinhao"
                           >
                             <path
                               fill-rule="evenodd"
@@ -2758,17 +2758,14 @@
                           </div>
                         </div>
                         <svg
-                          data-v-3b7dbd72=""
                           viewBox="0 0 40 37"
                           xmlns="http://www.w3.org/2000/svg"
                           class="menu"
                         >
                           <path
-                            data-v-3b7dbd72=""
                             fill-rule="evenodd"
                             clip-rule="evenodd"
                             d="M0 2C0 .9.9 0 2 0h36a2 2 0 110 4H2a2 2 0 01-2-2zM0 18c0-1.1.9-2 2-2h36a2 2 0 110 4H2a2 2 0 01-2-2zM0 35c0-1.1.9-2 2-2h36a2 2 0 110 4H2a2 2 0 01-2-2z"
-                            :fill="currentColor"
                           ></path>
                         </svg>
                       </div>
@@ -3160,7 +3157,7 @@
                               viewBox="0 0 64 64"
                               fill="none"
                               xmlns="http://www.w3.org/2000/svg"
-                              class="icon"
+                              class="icon tab-icon"
                               v-html="el.icon"
                             ></svg>
                             <div class="label">{{ el.name }}</div>
@@ -3652,7 +3649,7 @@
                               :fill="currentColor"
                             ></path>
                           </svg>
-                          <div class="text">{{searchVal||''}}</div>
+                          <div class="text">{{ searchVal || "" }}</div>
                           <svg
                             viewBox="0 0 55 55"
                             fill="none"
@@ -3724,162 +3721,178 @@
                                   >
                                 </div>
                                 <div v-else>
-                                  <template
-                                    v-if="toggleVideoType === 3"
-                                  >
+                                  <template v-if="toggleVideoType === 3">
                                     <div class="baidu-video-a">
-                                    <p class="title">{{ recommendPhoneAdd.title }}</p>
-                                    <div class="video">
-                                      <div class="icon">
-                                        <svg
-                                          viewBox="0 0 138 138"
-                                          fill="none"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          class="video-play"
-                                        >
-                                          <path
-                                            d="M93 67.62a2 2 0 010 3.47L57.75 91.44a2 2 0 01-3-1.73V49a2 2 0 013-1.74L93 67.62z"
-                                            fill="#fff"
-                                          ></path>
-                                        </svg>
-                                      </div>
-                                      <div v-loading="loading">
-                                        <img
-                                          :src="
-                                            recommendPhoneAdd.source_list[0]
-                                          "
-                                          alt=""
-                                          style="display: block"
-                                        />
-                                      </div>
-                                      <div class="duration">
-                                        {{ recommendPhoneAdd.video_time | parseVideoTime }}
-                                      </div>
-                                    </div>
-                                    <div class="other">
-                                      <div class="l">
-                                        <div class="user">{{ recommendPhoneAdd.source }}</div>
-                                        <div class="comment">
-                                          {{ recommendPhoneAdd.read_count }} 次播放
+                                      <p class="title">
+                                        {{ recommendPhoneAdd.title }}
+                                      </p>
+                                      <div class="video">
+                                        <div class="icon">
+                                          <svg
+                                            viewBox="0 0 138 138"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="video-play"
+                                          >
+                                            <path
+                                              d="M93 67.62a2 2 0 010 3.47L57.75 91.44a2 2 0 01-3-1.73V49a2 2 0 013-1.74L93 67.62z"
+                                              fill="#fff"
+                                            ></path>
+                                          </svg>
+                                        </div>
+                                        <div v-loading="loading">
+                                          <img
+                                            :src="
+                                              recommendPhoneAdd.source_list[0]
+                                            "
+                                            alt=""
+                                            style="display: block"
+                                          />
+                                        </div>
+                                        <div class="duration">
+                                          {{
+                                            recommendPhoneAdd.video_time
+                                              | parseVideoTime
+                                          }}
                                         </div>
                                       </div>
-                                      <div>
-                                        <svg
-                                          t="1608021653919"
-                                          class="icon close-btn"
-                                          viewBox="0 0 1024 1024"
-                                          version="1.1"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          p-id="4116"
-                                          width="32"
-                                          height="32"
-                                        >
-                                          <path
-                                            d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
-                                            fill="#cdcdcd"
-                                            p-id="4117"
-                                          ></path>
-                                        </svg>
-                                      </div>
-                                    </div>
-                                    </div>
-                                  </template>
-                                  <template
-                                    v-if="toggleVideoType === 2"
-                                  >
-                                     <div class="baidu-article-b">
-                                    <p class="title">{{ recommendPhoneAdd.title }}</p>
-                                    <div class="pics">
-                                      <div
-                                        v-loading="loading"
-                                        class="img"
-                                        v-for="(c_el, c_i) in recommendPhoneAdd.source_list"
-                                        :key="c_i"
-                                      >
-                                        <img
-                                          :src="c_el"
-                                          alt=""
-                                          style="display: block"
-                                        />
-                                      </div>
-                                    </div>
-                                    <div class="other">
-                                      <div class="l">
-                                        <div class="user">{{ recommendPhoneAdd.source }}</div>
-                                        <div class="comment">
-                                          {{ recommendPhoneAdd.comment_count }}评论
+                                      <div class="other">
+                                        <div class="l">
+                                          <div class="user">
+                                            {{ recommendPhoneAdd.source }}
+                                          </div>
+                                          <div class="comment">
+                                            {{ recommendPhoneAdd.read_count }}
+                                            次播放
+                                          </div>
+                                        </div>
+                                        <div>
+                                          <svg
+                                            t="1608021653919"
+                                            class="icon close-btn"
+                                            viewBox="0 0 1024 1024"
+                                            version="1.1"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            p-id="4116"
+                                            width="32"
+                                            height="32"
+                                          >
+                                            <path
+                                              d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
+                                              fill="#cdcdcd"
+                                              p-id="4117"
+                                            ></path>
+                                          </svg>
                                         </div>
                                       </div>
-                                      <div>
-                                        <svg
-                                          t="1608021653919"
-                                          class="icon close-btn"
-                                          viewBox="0 0 1024 1024"
-                                          version="1.1"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          p-id="4116"
-                                          width="32"
-                                          height="32"
-                                        >
-                                          <path
-                                            d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
-                                            fill="#cdcdcd"
-                                            p-id="4117"
-                                          ></path>
-                                        </svg>
-                                      </div>
                                     </div>
-                                  </div>
                                   </template>
-                                  <template
-                                    v-if="toggleVideoType === 1"
-                                  >
-                                    <div class="baidu-article-a two">
-                                    <div class="info">
-                                      <p class="title">{{ el.recommendPhoneAdd }}</p>
-                                      <div class="pic" v-loading="loading">
-                                        <img
-                                          :src="recommendPhoneAdd.source_list[0]"
-                                          alt=""
+                                  <template v-if="toggleVideoType === 2">
+                                    <div class="baidu-article-b">
+                                      <p class="title">
+                                        {{ recommendPhoneAdd.title }}
+                                      </p>
+                                      <div class="pics">
+                                        <div
                                           v-loading="loading"
-                                        />
-                                      </div>
-                                    </div>
-                                    <div class="other">
-                                      <div class="l">
-                                        <div class="user">
-                                          {{ recommendPhoneAdd.source }}
-                                        </div>
-                                        <div class="comment">
-                                          {{ recommendPhoneAdd.comment_count }}评论
-                                        </div>
-                                      </div>
-                                      <div class="r">
-                                        <svg
-                                          data-v-55b9dd50=""
-                                          viewBox="0 0 26 26"
-                                          fill="none"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          class="close-btn"
+                                          class="img"
+                                          v-for="(
+                                            c_el, c_i
+                                          ) in recommendPhoneAdd.source_list"
+                                          :key="c_i"
                                         >
-                                          <path
-                                            data-v-55b9dd50=""
-                                            fill-rule="evenodd"
-                                            clip-rule="evenodd"
-                                            d="M23.06 23.06a1.5 1.5 0 01-2.12 0L3.06 5.18a1.5 1.5 0 112.12-2.12l17.88 17.88a1.5 1.5 0 010 2.12z"
-                                            :fill="currentColor"
-                                          ></path>
-                                          <path
-                                            data-v-55b9dd50=""
-                                            fill-rule="evenodd"
-                                            clip-rule="evenodd"
-                                            d="M23.06 3.06a1.5 1.5 0 010 2.12L5.18 23.06a1.5 1.5 0 01-2.12-2.12L20.94 3.06a1.5 1.5 0 012.12 0z"
-                                            :fill="currentColor"
-                                          ></path>
-                                        </svg>
+                                          <img
+                                            :src="c_el"
+                                            alt=""
+                                            style="display: block"
+                                          />
+                                        </div>
+                                      </div>
+                                      <div class="other">
+                                        <div class="l">
+                                          <div class="user">
+                                            {{ recommendPhoneAdd.source }}
+                                          </div>
+                                          <div class="comment">
+                                            {{
+                                              recommendPhoneAdd.comment_count
+                                            }}评论
+                                          </div>
+                                        </div>
+                                        <div>
+                                          <svg
+                                            t="1608021653919"
+                                            class="icon close-btn"
+                                            viewBox="0 0 1024 1024"
+                                            version="1.1"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            p-id="4116"
+                                            width="32"
+                                            height="32"
+                                          >
+                                            <path
+                                              d="M544.61428226 512.2890871L716.38458776 340.46622015c8.67261343-8.67261343 8.67261343-22.91672368-1e-8-31.64189811l-0.946103-0.94610343c-8.67261343-8.67261343-22.91672368-8.67261343-31.64189855 0L512.02628071 479.91133046 340.25597523 307.82565717C331.53080036 299.15304417 317.28669012 299.15304417 308.61407668 307.82565717l-0.94610341 0.94610342c-8.88285833 8.67261343-8.88285833 22.91672368 0 31.64189856l171.82286692 171.87542795-171.82286692 171.77030547c-8.67261343 8.67261343-8.67261343 22.91672368 0 31.64189856l0.94610341 0.94610299c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l171.8228665-171.8228665 171.82286694 171.8228665c8.67261343 8.67261343 22.91672368 8.67261343 31.64189855 0l0.94610341-0.94610299c8.67261343-8.67261343 8.67261343-22.91672368 0-31.64189856l-171.87542837-171.77030547z m0 0"
+                                              fill="#cdcdcd"
+                                              p-id="4117"
+                                            ></path>
+                                          </svg>
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
+                                  </template>
+                                  <template v-if="toggleVideoType === 1">
+                                    <div class="baidu-article-a two">
+                                      <div class="info">
+                                        <p class="title">
+                                          {{ el.recommendPhoneAdd }}
+                                        </p>
+                                        <div class="pic" v-loading="loading">
+                                          <img
+                                            :src="
+                                              recommendPhoneAdd.source_list[0]
+                                            "
+                                            alt=""
+                                            v-loading="loading"
+                                          />
+                                        </div>
+                                      </div>
+                                      <div class="other">
+                                        <div class="l">
+                                          <div class="user">
+                                            {{ recommendPhoneAdd.source }}
+                                          </div>
+                                          <div class="comment">
+                                            {{
+                                              recommendPhoneAdd.comment_count
+                                            }}评论
+                                          </div>
+                                        </div>
+                                        <div class="r">
+                                          <svg
+                                            data-v-55b9dd50=""
+                                            viewBox="0 0 26 26"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="close-btn"
+                                          >
+                                            <path
+                                              data-v-55b9dd50=""
+                                              fill-rule="evenodd"
+                                              clip-rule="evenodd"
+                                              d="M23.06 23.06a1.5 1.5 0 01-2.12 0L3.06 5.18a1.5 1.5 0 112.12-2.12l17.88 17.88a1.5 1.5 0 010 2.12z"
+                                              :fill="currentColor"
+                                            ></path>
+                                            <path
+                                              data-v-55b9dd50=""
+                                              fill-rule="evenodd"
+                                              clip-rule="evenodd"
+                                              d="M23.06 3.06a1.5 1.5 0 010 2.12L5.18 23.06a1.5 1.5 0 01-2.12-2.12L20.94 3.06a1.5 1.5 0 012.12 0z"
+                                              :fill="currentColor"
+                                            ></path>
+                                          </svg>
+                                        </div>
+                                      </div>
+                                    </div>
                                   </template>
                                 </div>
                               </div>
@@ -4006,7 +4019,9 @@
                                           {{ recommendPhoneAdd.source }}
                                         </div>
                                         <div class="comment">
-                                          {{ recommendPhoneAdd.comment_count }}评论
+                                          {{
+                                            recommendPhoneAdd.comment_count
+                                          }}评论
                                         </div>
                                       </div>
                                       <div class="r">
@@ -4057,7 +4072,7 @@
                               viewBox="0 0 64 64"
                               fill="none"
                               xmlns="http://www.w3.org/2000/svg"
-                              :class="i === 2 ? 'icon-btn' : 'icon'"
+                              :class="[i === 2 ? 'icon-btn' : 'icon','tab-icon']"
                               v-html="el.icon"
                             ></svg>
                             <div class="label">{{ el.name }}</div>
@@ -4194,7 +4209,9 @@
                               ></path>
                             </svg>
                           </div>
-                          <div data-v-60575d54="" class="text">{{searchVal||''}}</div>
+                          <div data-v-60575d54="" class="text">
+                            {{ searchVal || "" }}
+                          </div>
                         </div>
                         <div data-v-60575d54="" class="put-btn">
                           <svg
@@ -5585,6 +5602,7 @@ import { recommendNav } from "@/utils/staticData";
 import { getTouTiaoData, getTouTiaoRecommend } from "@/api/data";
 import { getCoupon, consumeCoupon } from "@/api/user";
 import $ from "jquery";
+import canvg from "canvg";
 export default {
   name: "smartRecommend",
   components: {
@@ -5916,10 +5934,10 @@ export default {
       //   width: 547,
       //   height: 398,
       // });
-      await this.convertSvg2Canvas();
       // return
-
+      await this.convertSvg2Canvas();
       let element = document.getElementById("phone-data");
+            
       let filename = generateRandomNum() + ".png";
       // let { height } = getComputedStyle(element, false);
       // let { width } = getComputedStyle(element, false);
@@ -5944,12 +5962,12 @@ export default {
       });
     },
     onclone(html) {
-      const imageNodes = $(html).find("svg.svg image");
+      const imageNodes = $(html).find("svg");
       const promises = [];
       imageNodes.each(function () {
         const element = $(this);
-        const href = element.attr("href");
-        if (href.startsWith("base64")) return;
+        // const href = element.attr("href");
+        // if (href.startsWith("base64")) return;
         const promise = new Promise((resolve, reject) => {
           const img = new Image();
           img.crossOrigin = "anonymous";
@@ -5974,11 +5992,8 @@ export default {
     },
     // 把svg转换为canvas
     async convertSvg2Canvas() {
+      // debugger
       const svgElms = $(".device svg");
-      console.log(
-        "——————————————————svgElms——————————————————————————",
-        svgElms
-      );
       // 回调
       const callbacks = [];
       for (let svg of svgElms) {
@@ -5989,19 +6004,32 @@ export default {
         )}`;
         img.crossOrigin = "anonymous";
         img.onload = async () => {
-          const width = parseFloat(svg.style.width);
-          const height = parseFloat(svg.style.height);
+          const width = parseFloat(svg.width.animVal.value);
+          const height = parseFloat(svg.height.animVal.value);
+          const className = svg.className.animVal;
+           console.log("******************img*************", img);
+           console.log("******************svg*************", svg.className);
+          console.log("****************** svg.style*************", svg.style);
           const canvas = document.createElement("canvas");
-          canvas.width = width;
-          canvas.height = height;
+          canvas.width = width||20;
+          canvas.height =className.indexOf('xinhao')>-1? 28 :  height;
+      
+          
           const ctx = canvas.getContext("2d");
+           if(className.indexOf('xinhao')>-1){
+            ctx.scale(.5,.5);
+          }
           ctx.drawImage(img, 0, 0, width, height);
-          parentElement.append(canvas);
           svg.remove();
-          img.remove();
+          if(className.indexOf('tab-icon')>-1){
+            parentElement.prepend(canvas);
+          }else{
+            parentElement.append(canvas);
+          }
+          // img.remove();
         };
-        console.log("******************img.src*************", img);
-        parentElement.append(img);
+        // console.log("******************img.src*************", img);
+        // parentElement.prepend(img);
         callbacks.push(img.onload);
       }
       //await this.axios.all(callbacks);
@@ -6253,10 +6281,10 @@ export default {
         font-size: 19.5px;
         line-height: 30px;
         margin: 0 0 10px 0;
-        display: -webkit-box;
-        overflow: hidden;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
+        // display: -webkit-box;
+        // overflow: hidden;
+        // -webkit-line-clamp: 2;
+        // -webkit-box-orient: vertical;
       }
       .video {
         position: relative;
@@ -6297,10 +6325,10 @@ export default {
         .other {
           margin-top: auto;
           .user {
-            display: -webkit-box;
-            overflow: hidden;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
+            // display: -webkit-box;
+            // overflow: hidden;
+            // -webkit-line-clamp: 1;
+            // -webkit-box-orient: vertical;
           }
           .comment {
             flex-shrink: 0;
@@ -6329,10 +6357,10 @@ export default {
         font-size: 19.5px;
         line-height: 26px;
         margin: 0;
-        display: -webkit-box;
-        overflow: hidden;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
+        // display: -webkit-box;
+        // overflow: hidden;
+        // -webkit-line-clamp: 2;
+        // -webkit-box-orient: vertical;
       }
       .pic {
         img {
@@ -6368,12 +6396,12 @@ export default {
         -ms-flex-positive: 1;
         flex-grow: 1;
         margin-right: 2em;
-        .user {
-          display: -webkit-box;
-          overflow: hidden;
-          -webkit-line-clamp: 1;
-          -webkit-box-orient: vertical;
-        }
+        // .user {
+        //   display: -webkit-box;
+        //   overflow: hidden;
+        //   -webkit-line-clamp: 1;
+        //   -webkit-box-orient: vertical;
+        // }
         .comment,
         .time {
           flex-shrink: 0;
@@ -6429,8 +6457,8 @@ export default {
         .search-input {
           position: relative;
           background-color: #fff;
-          -webkit-box-shadow: 0 0 0.3px #ad5d5e;
-          box-shadow: 0 0 0.3px #ad5d5e;
+          // -webkit-box-shadow: 0 0 0.3px #ad5d5e;
+          // box-shadow: 0 0 0.3px #ad5d5e;
           height: 48px;
           border-radius: 50rem;
           -webkit-box-flex: 1;
@@ -6520,8 +6548,8 @@ export default {
         -ms-flex-align: center;
         align-items: center;
         padding: 0 20px;
-        -webkit-box-shadow: 0 1px 1px -1px #cecece;
-        box-shadow: 0 1px 1px -1px #cecece;
+        // -webkit-box-shadow: 0 1px 1px -1px #cecece;
+        // box-shadow: 0 1px 1px -1px #cecece;
         .items {
           position: relative;
           display: -webkit-box;
@@ -7272,10 +7300,10 @@ export default {
     font-size: 19.5px;
     line-height: 30px;
     margin: 0 0 10px 0;
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    // display: -webkit-box;
+    // overflow: hidden;
+    // -webkit-line-clamp: 2;
+    // -webkit-box-orient: vertical;
   }
   .pics {
     display: grid;
@@ -7307,10 +7335,10 @@ export default {
         margin-left: 10px;
       }
       .user {
-        display: -webkit-box;
-        overflow: hidden;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
+        // display: -webkit-box;
+        // overflow: hidden;
+        // -webkit-line-clamp: 1;
+        // -webkit-box-orient: vertical;
       }
       .comment {
         flex-shrink: 0;
@@ -7344,12 +7372,12 @@ export default {
     font-size: 19.5px;
     line-height: 30px;
     margin: 0 8px 0 0;
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    -ms-flex-item-align: start;
-    align-self: start;
+    // display: -webkit-box;
+    // overflow: hidden;
+    // -webkit-line-clamp: 3;
+    // -webkit-box-orient: vertical;
+    // -ms-flex-item-align: start;
+    // align-self: start;
   }
   .pic {
     width: 100%;
@@ -8562,15 +8590,15 @@ export default {
   font-size: 14px;
 }
 .baidu-app .header .search-input .text {
-    margin: 0 8px;
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    font-size: 17px;
-    line-height: 42px;
-    color: #929292;
-    letter-spacing: 1px;
-     overflow: hidden;
+  margin: 0 8px;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  font-size: 17px;
+  line-height: 42px;
+  color: #929292;
+  letter-spacing: 1px;
+  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
