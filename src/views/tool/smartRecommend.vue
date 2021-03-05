@@ -120,6 +120,12 @@
         <div class="d2-container-full__body">
           <div class="app-recommend-wrap by-card-block h-100 front">
             <div id="recommend-canvas-wrap-front" class="canvas-wrap">
+              <div id="watermark">
+                <watermark
+                  @mounted="domChangeInit"
+                  v-if="DestroyIncomeStatistics == true"
+                ></watermark>
+              </div>
               <div id="phone-data" class="device-wrap" v-if="status === 1">
                 <el-scrollbar style="height: 96%">
                   <div class="device" style="width: 432px; height: 768px">
@@ -4072,7 +4078,10 @@
                               viewBox="0 0 64 64"
                               fill="none"
                               xmlns="http://www.w3.org/2000/svg"
-                              :class="[i === 2 ? 'icon-btn' : 'icon','tab-icon']"
+                              :class="[
+                                i === 2 ? 'icon-btn' : 'icon',
+                                'tab-icon',
+                              ]"
                               v-html="el.icon"
                             ></svg>
                             <div class="label">{{ el.name }}</div>
@@ -5601,12 +5610,13 @@ import vuedraggable from "vuedraggable";
 import { recommendNav } from "@/utils/staticData";
 import { getTouTiaoData, getTouTiaoRecommend } from "@/api/data";
 import { getCoupon, consumeCoupon } from "@/api/user";
+import watermark from "@/components/watermark/index";
 import $ from "jquery";
-import canvg from "canvg";
 export default {
   name: "smartRecommend",
   components: {
     vuedraggable,
+    watermark,
   },
   data() {
     return {
@@ -5691,6 +5701,8 @@ export default {
       addDataType: 1,
       exchangeMode: "integral",
       currentColor: "#fff",
+      DestroyIncomeStatistics: true,
+      observe: null,
     };
   },
   computed: {
@@ -5710,7 +5722,35 @@ export default {
       return handlePublishTimeDesc(new Date(val));
     },
   },
+  mounted() {
+    // this.domChangeInit()
+  },
   methods: {
+    domChangeInit() {
+      let config = {
+        attributes: true, //目标节点的属性变化
+        childList: true, //目标节点的子节点的新增和删除
+        characterData: true, //如果目标节点为characterData节点(一种抽象接口,具体可以为文本节点,注释节点,以及处理指令节点)时,也要观察该节点的文本内容是否发生变化
+        subtree: true, //目标节点所有后代节点的attributes、childList、characterData变化
+      };
+      this.observe = new MutationObserver(this.handleLoad);
+      this.observe.observe(document.getElementById("watermark"), config); // 后面介绍config的配置
+    },
+    //子组件重新加载方法
+    handleLoad() {
+      // 然后再父组件内的增删改查方法中操作，就好了
+      this.DestroyIncomeStatistics = false;
+      // 然后你的方法成功后
+      // Vue 实现响应式并不是数据发生变化之后 DOM 立即变化，而是按一定的策略进行 DOM 的更新。
+      // 在vue的深入响应式原理中有解释：
+      // $nextTick 是在下次 DOM 更新循环结束之后执行延迟回调，在修改数据之后使用 $nextTick，则可以在回调中获取更新后的 DOM
+      // 随后,你还可以停止观察
+      this.$nextTick(() => {
+        this.DestroyIncomeStatistics = true;
+      });
+      this.observe.disconnect();
+      //这样的话就会完成强制刷新
+    },
     //切换兑换方式
     toggleExchangeMode(val) {
       this.exchangeMode = val;
@@ -5937,7 +5977,7 @@ export default {
       // return
       await this.convertSvg2Canvas();
       let element = document.getElementById("phone-data");
-            
+
       let filename = generateRandomNum() + ".png";
       // let { height } = getComputedStyle(element, false);
       // let { width } = getComputedStyle(element, false);
@@ -6007,23 +6047,22 @@ export default {
           const width = parseFloat(svg.width.animVal.value);
           const height = parseFloat(svg.height.animVal.value);
           const className = svg.className.animVal;
-           console.log("******************img*************", img);
-           console.log("******************svg*************", svg.className);
+          console.log("******************img*************", img);
+          console.log("******************svg*************", svg.className);
           console.log("****************** svg.style*************", svg.style);
           const canvas = document.createElement("canvas");
-          canvas.width = width||20;
-          canvas.height =className.indexOf('xinhao')>-1? 28 :  height;
-      
-          
+          canvas.width = width || 20;
+          canvas.height = className.indexOf("xinhao") > -1 ? 28 : height;
+
           const ctx = canvas.getContext("2d");
-           if(className.indexOf('xinhao')>-1){
-            ctx.scale(.5,.5);
+          if (className.indexOf("xinhao") > -1) {
+            ctx.scale(0.5, 0.5);
           }
           ctx.drawImage(img, 0, 0, width, height);
           svg.remove();
-          if(className.indexOf('tab-icon')>-1){
+          if (className.indexOf("tab-icon") > -1) {
             parentElement.prepend(canvas);
-          }else{
+          } else {
             parentElement.append(canvas);
           }
           // img.remove();
