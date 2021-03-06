@@ -23,7 +23,7 @@ export const recommendNav = [
             bottomTab: [
                 {
                     name: "首页",
-                    icon: `<path data-v-3b7dbd72="" fill-rule="evenodd" clip-rule="evenodd" d="M34.65 4.77a7 7 0 00-9.3 0l-20 17.78A7 7 0 003 27.78v21.85a7 7 0 007 7h40a7 7 0 007-7V27.78a7 7 0 00-2.35-5.23l-20-17.78z" fill="currentColor"></path>`
+                    icon: `<path data-v-3b7dbd72="" fill-rule="evenodd" clip-rule="evenodd" d="M34.65 4.77a7 7 0 00-9.3 0l-20 17.78A7 7 0 003 27.78v21.85a7 7 0 007 7h40a7 7 0 007-7V27.78a7 7 0 00-2.35-5.23l-20-17.78z" fill="#f04143"></path>`
                 },
                 {
                     name: "西瓜视频",

@@ -5967,39 +5967,17 @@ export default {
       } else if (this.exchangeMode === "coupon" && this.CouponNum < 1) {
         return;
       }
-      // html2canvas(document.getElementById("phone-data"), {
-      //   onrendered: function (canvas) {
-      //     $("#phone-data").html(canvas); // 容器
-      //   },
-      //   width: 547,
-      //   height: 398,
-      // });
-      // return
       await this.convertSvg2Canvas();
-      let element = document.getElementById("phone-data");
-
-      let filename = generateRandomNum() + ".png";
-      // let { height } = getComputedStyle(element, false);
-      // let { width } = getComputedStyle(element, false);
-      let height = 300;
-      let width = 300;
-      let canvas = document.createElement("canvas");
-      canvas.width = parseInt(width, 10);
-      canvas.height = parseInt(height, 10);
-      let context = canvas.getContext("2d");
-      //防止图片模糊的设置
-      context.mozImageSmoothingEnabled = false;
-      context.webkitImageSmoothingEnabled = false;
-      context.msImageSmoothingEnabled = false;
-      context.imageSmoothingEnabled = false;
-      context.scale(2, 2);
-      html2canvas(element, {
-        useCORS: true,
-      }).then((canvas) => {
-        canvas.toBlob((blob) => {
-          saveAs(blob, `${filename}`);
+      setTimeout(() => {
+        let filename = generateRandomNum() + ".png";
+        html2canvas(document.getElementById("phone-data"), {
+          useCORS: true,
+        }).then((canvas) => {
+          canvas.toBlob((blob) => {
+            saveAs(blob, `${filename}`);
+          });
         });
-      });
+      }, 100);
     },
     onclone(html) {
       const imageNodes = $(html).find("svg");
@@ -6047,10 +6025,8 @@ export default {
           const width = parseFloat(svg.width.animVal.value);
           const height = parseFloat(svg.height.animVal.value);
           const className = svg.className.animVal;
-          console.log("******************img*************", img);
-          console.log("******************svg*************", svg.className);
-          console.log("****************** svg.style*************", svg.style);
           const canvas = document.createElement("canvas");
+          img.className = svg.className.animVal;
           canvas.width = width || 20;
           canvas.height = className.indexOf("xinhao") > -1 ? 28 : height;
 
@@ -6639,8 +6615,8 @@ export default {
           flex-direction: column;
           .item {
             & + .item {
-              -webkit-box-shadow: 0 -1px 1px -1px #cecece;
-              box-shadow: 0 -1px 1px -1px #cecece;
+              // -webkit-box-shadow: 0 -1px 1px -1px #cecece;
+              // box-shadow: 0 -1px 1px -1px #cecece;
             }
           }
         }
@@ -6652,8 +6628,8 @@ export default {
         bottom: 0;
         width: 100%;
         background-color: #f8f8f8;
-        -webkit-box-shadow: 0 -1px 1px -1px #cecece;
-        box-shadow: 0 -1px 1px -1px #cecece;
+        // -webkit-box-shadow: 0 -1px 1px -1px #cecece;
+        // box-shadow: 0 -1px 1px -1px #cecece;
         padding: 0 16px;
         .items {
           display: -webkit-box;
@@ -9365,5 +9341,8 @@ export default {
   overflow: hidden;
   font-family: Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei,
     SimSun, Arial, sans-serif;
+}
+.device .toutiao-app .tab .items .active .active-tab {
+  filter: drop-shadow(#f04143 0 0);
 }
 </style>
