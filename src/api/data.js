@@ -27,3 +27,12 @@ export function getTouTiaoRecommend(data) {
         data: qs.stringify( data )
     })
 }
+
+export function getUrlInfo(data) {
+    return request({
+        url: '/external/getUrlInfo',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
+        method: 'POST',
+        data: qs.stringify( data )
+    })
+}

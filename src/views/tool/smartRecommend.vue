@@ -5178,7 +5178,7 @@
                             clearable
                           >
                           </el-input>
-                          <el-button type="primary" class="m-l-sm"
+                          <el-button type="primary" class="m-l-sm" @click="getUrlData()"
                             >分析</el-button
                           >
                         </div>
@@ -5608,7 +5608,7 @@ import { saveAs } from "filesaver.js-npm";
 import html2canvas from "html2canvas";
 import vuedraggable from "vuedraggable";
 import { recommendNav } from "@/utils/staticData";
-import { getTouTiaoData, getTouTiaoRecommend } from "@/api/data";
+import { getTouTiaoData, getTouTiaoRecommend,getUrlInfo } from "@/api/data";
 import { getCoupon, consumeCoupon } from "@/api/user";
 import watermark from "@/components/watermark/index";
 import $ from "jquery";
@@ -5726,6 +5726,14 @@ export default {
     // this.domChangeInit()
   },
   methods: {
+    //分析url数据
+    getUrlData(){
+      getUrlInfo({
+        url: this.searchArticle
+      }).then(res=>{
+        console.log(res)
+      })
+    },
     domChangeInit() {
       let config = {
         attributes: true, //目标节点的属性变化
