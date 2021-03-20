@@ -4076,7 +4076,7 @@
                           >
                             <svg
                               viewBox="0 0 64 64"
-                              fill="none"
+                              :fill=" i === 2?'#4a6cf8':'none'"
                               xmlns="http://www.w3.org/2000/svg"
                               :class="[
                                 i === 2 ? 'icon-btn' : 'icon',
@@ -6071,7 +6071,11 @@ export default {
           canvas.height = className.indexOf("xinhao") > -1 ? 28 : height;
 
           const ctx = canvas.getContext("2d");
-          if (className.indexOf("xinhao") > -1) {
+          if (className.indexOf("icon-btn") > -1) {
+            console.log("ddd————————————————————————————",img)
+            // ctx.addClass() =  className
+          }
+          if (className.indexOf("tab-btn") > -1) {
             ctx.scale(0.5, 0.5);
           }
           ctx.drawImage(img, 0, 0, width, height);
@@ -7048,7 +7052,7 @@ export default {
         left: 0;
         bottom: 0;
         width: 100%;
-        background-color: #fff;
+        background-color: #cecece;
         // -webkit-box-shadow: 0 -1px 1px -1px #cecece;
         // box-shadow: 0 -1px 1px -1px #cecece;
         padding: 5px 0 4px 0;
@@ -7080,7 +7084,7 @@ export default {
             }
           }
           .center {
-            .icon-btn {
+            .icon-btn,canvas {
               border-radius: 8px;
               background-color: #4a6cf8;
               padding: 6px 6px;
