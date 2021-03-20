@@ -5178,7 +5178,10 @@
                             clearable
                           >
                           </el-input>
-                          <el-button type="primary" class="m-l-sm" @click="getUrlData()"
+                          <el-button
+                            type="primary"
+                            class="m-l-sm"
+                            @click="getUrlData()"
                             >分析</el-button
                           >
                         </div>
@@ -5391,11 +5394,12 @@
                                         <div class="flex">
                                           <div>
                                             <el-upload
-                                              action="https://jsonplaceholder.typicode.com/posts/"
+                                              action="/admin/adminUpload/mapUpload"
                                               list-type="picture-card"
-                                              :on-preview="
-                                                handlePictureCardPreview
+                                              :on-success="
+                                                handleAvatarSuccess
                                               "
+                                              :limit="(toggleVideoType==1||toggleVideoType==3)?1:3"
                                               :on-remove="handleRemove"
                                             >
                                               <i class="el-icon-plus"></i>
@@ -5608,7 +5612,7 @@ import { saveAs } from "filesaver.js-npm";
 import html2canvas from "html2canvas";
 import vuedraggable from "vuedraggable";
 import { recommendNav } from "@/utils/staticData";
-import { getTouTiaoData, getTouTiaoRecommend,getUrlInfo } from "@/api/data";
+import { getTouTiaoData, getTouTiaoRecommend, getUrlInfo } from "@/api/data";
 import { getCoupon, consumeCoupon } from "@/api/user";
 import watermark from "@/components/watermark/index";
 import $ from "jquery";
@@ -5705,6 +5709,7 @@ export default {
       observe: null,
     };
   },
+
   computed: {
     ...mapGetters(["userInfo", "token", "CouponNum"]),
   },
@@ -5727,12 +5732,12 @@ export default {
   },
   methods: {
     //分析url数据
-    getUrlData(){
+    getUrlData() {
       getUrlInfo({
-        url: this.searchArticle
-      }).then(res=>{
-        console.log(res)
-      })
+        url: this.searchArticle,
+      }).then((res) => {
+        console.log(res);
+      });
     },
     domChangeInit() {
       let config = {
@@ -5961,31 +5966,57 @@ export default {
     toggle(val) {
       this.status = val;
     },
-    handlePictureCardPreview(file) {
+    handleAvatarSuccess(file) {
       //上传
-      this.recommendPhoneAdd.source_list.push(file.url);
+      console.log("file————————————————————————",file)
+      this.recommendPhoneAdd.source_list.push(file.data);
     },
-    handleRemove() {
+    handleRemove(file) {
       //删除
+      console.log(file)
     },
     // 导出图片
     async exportJPEG() {
+      let that = this;
       if (this.exchangeMode === "integral" && this.userInfo.integralNum < 5) {
         return;
       } else if (this.exchangeMode === "coupon" && this.CouponNum < 1) {
         return;
       }
-      await this.convertSvg2Canvas();
-      setTimeout(() => {
-        let filename = generateRandomNum() + ".png";
-        html2canvas(document.getElementById("phone-data"), {
-          useCORS: true,
-        }).then((canvas) => {
-          canvas.toBlob((blob) => {
-            saveAs(blob, `${filename}`);
+      let el = '.toutiao-app';
+      if(this.activeIndex==1){
+        el = '.toutiao-app'
+      }else if(this.activeIndex==2){
+         el = '.wangyi-app'
+      }else if(this.activeIndex==3){
+         el = '.baidu-app'
+      }
+      await this.convertSvg2Canvas(el);
+      await this.convertSvg2Canvas('.status-bar');
+      let num = this.activeIndex;
+      let consume_res = await consumeCoupon({
+        userId: this.userInfo.userId,
+        token: this.token,
+        comType: this.exchangeMode === "integral" ? 1 : 0,
+        newType: --num,
+      });
+      if (consume_res.code === "000000") {
+        setTimeout(() => {
+          let filename = generateRandomNum() + ".png";
+          html2canvas(document.getElementById("phone-data"), {
+            useCORS: true,
+          }).then((canvas) => {
+            canvas.toBlob((blob) => {
+              saveAs(blob, `${filename}`);
+            });
+             that.$store.dispatch("user/getCouponById");
+             that.$store.dispatch("user/getInfo");
           });
-        });
-      }, 100);
+        }, 100);
+       
+      } else {
+        this.$message.error(res.message);
+      }
     },
     onclone(html) {
       const imageNodes = $(html).find("svg");
@@ -6017,9 +6048,10 @@ export default {
       return Promise.all(promises);
     },
     // 把svg转换为canvas
-    async convertSvg2Canvas() {
+    async convertSvg2Canvas(el) {
       // debugger
-      const svgElms = $(".device svg");
+     
+      const svgElms = $(el+" svg");
       // 回调
       const callbacks = [];
       for (let svg of svgElms) {
@@ -6909,8 +6941,8 @@ export default {
         -ms-flex-align: center;
         align-items: center;
         padding: 0 20px;
-        -webkit-box-shadow: 0 1px 1px -1px #cecece;
-        box-shadow: 0 1px 1px -1px #cecece;
+        // -webkit-box-shadow: 0 1px 1px -1px #cecece;
+        // box-shadow: 0 1px 1px -1px #cecece;
         -webkit-box-pack: justify;
         -ms-flex-pack: justify;
         justify-content: space-between;
@@ -6977,8 +7009,8 @@ export default {
         }
         .earphone {
           padding-left: 12px;
-          -webkit-box-shadow: -1px 0 1px -1px #949494;
-          box-shadow: -1px 0 1px -1px #949494;
+          // -webkit-box-shadow: -1px 0 1px -1px #949494;
+          // box-shadow: -1px 0 1px -1px #949494;
           -ms-flex-negative: 0;
           flex-shrink: 0;
           display: -webkit-box;
@@ -7017,8 +7049,8 @@ export default {
         bottom: 0;
         width: 100%;
         background-color: #fff;
-        -webkit-box-shadow: 0 -1px 1px -1px #cecece;
-        box-shadow: 0 -1px 1px -1px #cecece;
+        // -webkit-box-shadow: 0 -1px 1px -1px #cecece;
+        // box-shadow: 0 -1px 1px -1px #cecece;
         padding: 5px 0 4px 0;
         .tab-items {
           display: -webkit-box;
@@ -7443,10 +7475,10 @@ export default {
   font-size: 19.5px;
   line-height: 26px;
   margin: 0 0 10px 0;
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  // display: -webkit-box;
+  // overflow: hidden;
+  // -webkit-line-clamp: 2;
+  // -webkit-box-orient: vertical;
 }
 .wangyi-video-a .video {
   position: relative;
@@ -7489,10 +7521,10 @@ export default {
   margin-left: 10px;
 }
 .wangyi-item .other .user {
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  // display: -webkit-box;
+  // overflow: hidden;
+  // -webkit-line-clamp: 1;
+  // -webkit-box-orient: vertical;
 }
 .wangyi-item .other .comment,
 .wangyi-item .other .time {
@@ -9195,10 +9227,10 @@ export default {
   font-size: 19.5px;
   line-height: 30px;
   margin: 0 0 10px 0;
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  // display: -webkit-box;
+  // overflow: hidden;
+  // -webkit-line-clamp: 2;
+  // -webkit-box-orient: vertical;
 }
 .baidu-article-b .pics {
   display: grid;
@@ -9239,10 +9271,10 @@ export default {
   display: flex;
 }
 .baidu-item .other .l .user {
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  // display: -webkit-box;
+  // overflow: hidden;
+  // -webkit-line-clamp: 1;
+  // -webkit-box-orient: vertical;
 }
 .baidu-item .other .l .comment,
 .baidu-item .other .l .time {
@@ -9299,10 +9331,10 @@ export default {
   font-size: 19.5px;
   line-height: 30px;
   margin: 0 0 10px 0;
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  // display: -webkit-box;
+  // overflow: hidden;
+  // -webkit-line-clamp: 2;
+  // -webkit-box-orient: vertical;
 }
 .baidu-video-a .video {
   position: relative;
